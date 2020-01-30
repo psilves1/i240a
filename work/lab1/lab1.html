@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 240: Lab 1</title>
+    <link href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" 
+       rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" async=""></script>    
+<link href="lab1/hl-fine_blue.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exams-quizzes/index.html">Exams &amp; Quizzes</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hws/index.html">Homeworks</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <section data-coord="lab1.umt:1:0"><h1 data-coord="lab1.umt:1:0">Lab 1</h1><p data-coord="lab1.umt:3:0"><strong data-coord="lab1.umt:3:0">Date</strong>: Jan 30, 2020
+</p><p data-coord="lab1.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><p data-coord="lab1.umt:9:0">In the listings which follow, comments are any text extending from 
+a <samp data-coord="lab1.umt:9:70">#</samp> character to end-of-line.
+</p><section data-coord="lab1.umt:12:0"><h2 data-coord="lab1.umt:12:0">Aims</h2><p data-coord="lab1.umt:15:0">The aim of this lab is to introduce you to theuse of <samp data-coord="lab1.umt:15:53">Makefile</samp>'s
+under Unix for building c++ programs.  After completing this lab, you
+should be familiar with the following topics:
+</p><ul data-coord="lab1.umt:19:0"><li data-coord="lab1.umt:19:0"><p data-coord="lab1.umt:19:4">The basic operation of <samp data-coord="lab1.umt:19:27">make</samp> for building C++ programs.
+</p></li><li data-coord="lab1.umt:21:0"><p data-coord="lab1.umt:21:4">Common problems when using <samp data-coord="lab1.umt:21:31">make</samp>.
+</p></li><li data-coord="lab1.umt:23:0"><p data-coord="lab1.umt:23:4">The use of <samp data-coord="lab1.umt:23:15">make</samp> <em data-coord="lab1.umt:23:22">variables</em>.
+</p></li><li data-coord="lab1.umt:25:0"><p data-coord="lab1.umt:25:4">The presence of <em data-coord="lab1.umt:25:20">implicit commands</em> in <samp data-coord="lab1.umt:25:43">make</samp>.
+</p></li><li data-coord="lab1.umt:27:0"><p data-coord="lab1.umt:27:4">Writing simple C++ programs.
+</p></li><li data-coord="lab1.umt:29:0"><p data-coord="lab1.umt:29:4">Some idea of the growth of different functions measuring
+program performance.
+</p></li></ul></section><section data-coord="lab1.umt:32:0"><h2 data-coord="lab1.umt:32:0">Background</h2><p data-coord="lab1.umt:35:0"><span id="background" data-coord="lab1.umt:35:14">A</span> typical large program consists of multiple sub-systems
+and libraries.  Each sub-system or library will contain multiple
+source files.  Building the program entails compiling all sub-systems
+and libraries with the correct options and assembling them together.
+This can often be quite complex and time consuming.  If any source
+file changes, it should be possible to rebuild the program while
+redoing as little work as possible.  The <samp data-coord="lab1.umt:35:448">make</samp> program allows the
+automation of such tasks.  The operation of <samp data-coord="lab1.umt:35:518">make</samp> is controlled by a
+file typically named <samp data-coord="lab1.umt:35:565">Makefile</samp> in the directory where <samp data-coord="lab1.umt:35:599">make</samp> is
+invoked.
+</p><p data-coord="lab1.umt:46:0">Note that <samp data-coord="lab1.umt:46:10">make</samp> is an example of a <em data-coord="lab1.umt:46:36">build</em> tool.  The <samp data-coord="lab1.umt:46:55">make</samp> used in this
+lab is typical of that found in Unix systems.  Microsoft's <samp data-coord="lab1.umt:46:134">nmake</samp> is a
+similar program.  Build tools like Java's <samp data-coord="lab1.umt:46:189">ant</samp>, Ruby's <samp data-coord="lab1.umt:46:203">rake</samp> and Python's 
+<samp data-coord="lab1.umt:46:224">scons</samp> have similar functionality.
+</p><section data-coord="lab1.umt:51:0"><h3 data-coord="lab1.umt:51:0">Principles</h3><p data-coord="lab1.umt:54:0">A <samp data-coord="lab1.umt:54:2">Makefile</samp> basically consists of a set of <em data-coord="lab1.umt:54:44">rules</em>.  Each rule describes
+the <em data-coord="lab1.umt:54:78">prerequisite</em> files for building a <em data-coord="lab1.umt:54:114">target</em> file and the <em data-coord="lab1.umt:54:136">recipe</em> which
+needs to be carried out if any of the prerequisite files are newer than the
+target file.
+</p><pre data-coord="lab1.umt:60:0">target:         prequisite ...
+                recipe
+</pre><p data-coord="lab1.umt:64:0">The <em data-coord="lab1.umt:64:4">recipe</em> can consist of multiple Unix shell commands (this can include
+compilation commands), which must be run to make the <em data-coord="lab1.umt:64:128">target</em> from the
+<em data-coord="lab1.umt:64:146">prerequisite</em> files.  
+</p><p data-coord="lab1.umt:68:0">The <em data-coord="lab1.umt:68:4">target</em> for one rule can be a <em data-coord="lab1.umt:68:35">prequisite</em> for another rule.  Hence the
+first rule will not be run until the prerequisite is made up-to-date by its
+rule.  The <samp data-coord="lab1.umt:68:164">make</samp> program (at least the GNU version) tracks these
+dependencies across any number of levels and executes all necessary recipes
+to bring the targets of all relevant rules up-to-date.
+</p><p data-coord="lab1.umt:74:0">To build a particular target, <samp data-coord="lab1.umt:74:30">make</samp> can be invoked with that <samp data-coord="lab1.umt:74:62">target</samp> as
+its command-line argument.  If invoked with no targets, it will attempt to
+build the target for the <strong data-coord="lab1.umt:74:174">first rule</strong> in the <samp data-coord="lab1.umt:74:194">Makefile</samp>.
+</p><p data-coord="lab1.umt:78:0">Consider building an executable <samp data-coord="lab1.umt:78:32">hello</samp> from 3 files: a <samp data-coord="lab1.umt:78:56">hello</samp> module
+consisting of a specification header file <samp data-coord="lab1.umt:78:113">hello.hh</samp> and an
+implementation file <samp data-coord="lab1.umt:78:151">hello.cc</samp> and a <samp data-coord="lab1.umt:78:168">main.cc</samp> which includes the
+<samp data-coord="lab1.umt:78:197">hello.hh</samp> header file.  This can be achieved using the following
+<samp data-coord="lab1.umt:78:263">Makefile</samp>:
+</p><pre data-coord="lab1.umt:85:0">hello:                  main.o hello.o
+                        #link main.o and hello.o to executable hello
+                        gcc main.o hello.o -o hello 
+
+hello.o:                hello.cc hello.hh
+                        #compile hello.c to object file hello.o
+                        g++ -g -Wall -std=c++17 -c hello.cc
+
+main.o:                 main.c hello.hh
+                        #compile main.c to object file main.o
+                        gcc -g -Wall -std=c++17 -c main.cv
+
+clean:
+                        rm -f *~ *.o hello
+</pre><p data-coord="lab1.umt:101:0">Note the last target <samp data-coord="lab1.umt:101:21">clean</samp>.  It does not have any prerequisites and
+hence will run its recipe whenever it is invoked (typically invoked
+explicitly as <samp data-coord="lab1.umt:101:152">make clean</samp>). It's recipe runs the shell <samp data-coord="lab1.umt:101:194">rm</samp> command
+which will remove all emacs backup files specified by the wildcard
+pattern <samp data-coord="lab1.umt:101:282">*~</samp>, all object files specified by <samp data-coord="lab1.umt:101:318">*.o</samp> as well as the built
+<samp data-coord="lab1.umt:101:345">hello</samp> executable.  The name <samp data-coord="lab1.umt:101:375">clean</samp> is conventionally used for such
+targets which clean-up files built by <samp data-coord="lab1.umt:101:453">make</samp> as well as any garbage
+files.
+</p></section><section data-coord="lab1.umt:111:0"><h3 data-coord="lab1.umt:111:0">Variables in make</h3><p data-coord="lab1.umt:114:0">Note that in the previous example, both the <samp data-coord="lab1.umt:114:44">hello.o</samp> and <samp data-coord="lab1.umt:114:58">main.o</samp>
+using the compiler options <samp data-coord="lab1.umt:114:94">-g</samp> to turn on debugging and <samp data-coord="lab1.umt:114:124">-Wall</samp> to
+turn on reasonable warnings.  This is a violation of the
+<em data-coord="lab1.umt:114:248"><a href="http://en.wikipedia.org/wiki/Don%27t_repeat_yourself" data-coord="lab1.umt:114:248">DRY
+principle</a></em>, since the same options were specified multiple times.  Such
+violations can be avoided by the use of <samp data-coord="lab1.umt:114:365">make</samp> variables.
+</p><p data-coord="lab1.umt:121:0">A <samp data-coord="lab1.umt:121:2">make</samp> variable is defined on a line which consists of an identifier
+<em data-coord="lab1.umt:121:71">VAR</em> followed by an <samp data-coord="lab1.umt:121:92">=</samp> character which may be preceeded/followed by
+linear whitespace (i.e. whitespace within the same line) followed by a
+definition.  If the definition is spread across multiple lines, then
+the last character must be a <samp data-coord="lab1.umt:121:310">\</samp> on all except the last line of the
+definition.
+</p><p data-coord="lab1.umt:128:0">The use of a variable <em data-coord="lab1.umt:128:22">VAR</em> within a rule is indicated by <samp data-coord="lab1.umt:128:58">$(</samp><em data-coord="lab1.umt:128:62">VAR</em><samp data-coord="lab1.umt:128:67">)</samp> and
+is replaced by its definition.  If a <samp data-coord="lab1.umt:128:112">$</samp> is to occur within a rule, then it
+must be quoted by repeating it.
+</p><p data-coord="lab1.umt:132:0">Additionally, within each rule, the special <samp data-coord="lab1.umt:132:44">make</samp> variable <samp data-coord="lab1.umt:132:60">$@</samp>
+stands for the target and the special <samp data-coord="lab1.umt:132:103">make</samp> variable <samp data-coord="lab1.umt:132:119">$&lt;</samp> stands for
+the first prerequisite and <samp data-coord="lab1.umt:132:162">$^</samp> stands for all the prerequisites with
+spaces between them.
+</p><p data-coord="lab1.umt:137:0">With the use of variables, the previous <samp data-coord="lab1.umt:137:40">Makefile</samp> can become:
+</p><pre data-coord="lab1.umt:140:0">TARGET = hello
+OBJS = \
+  main.o \
+  hello.o
+
+CXX = gcc
+CXXFLAGS = -g -Wall -std=c++17
+LDFLAGS =
+
+$(TARGET):              $(OBJS)
+                        #link $(OBJS) to executable hello
+                        $(CXX) $(OBJS) $(LDFLAGS) -o $@
+
+hello.o:                hello.cc hello.hh
+                        #compile hello.c to object file hello.o
+                        $(CXX) $(CXXFLAGS) -c $&lt;
+
+main.o:                 main.cc hello.hh
+                        #compile main.c to object file main.o
+                        $(CXX) $(CXXFLAGS) -c $&lt;
+
+clean:
+                        rm -f *~ *.o $(TARGET)
+</pre></section><section data-coord="lab1.umt:166:0"><h3 data-coord="lab1.umt:166:0">Implicit Rules</h3><p data-coord="lab1.umt:169:0">Note that in the previous example, the recipes for building both <samp data-coord="lab1.umt:169:65">hello.o</samp>
+and <samp data-coord="lab1.umt:169:79">main.o</samp> are absolutely identical.  In fact, a little thought will
+reveal that this recipe can always be used for building a <samp data-coord="lab1.umt:169:204">.o</samp> file from a 
+<samp data-coord="lab1.umt:169:222">.c</samp> file.  So <samp data-coord="lab1.umt:169:237">make</samp> contains a set of implicit rule similar to this.
+If there is no recipe given for building a prerequisite file, then <samp data-coord="lab1.umt:169:360">make</samp>
+uses its implicit rules.
+</p><p data-coord="lab1.umt:176:0">With the use of implicit rules, the <samp data-coord="lab1.umt:176:36">Makefile</samp> can be simplified to:
+</p><pre data-coord="lab1.umt:179:0">TARGET = hello
+OBJS = \
+  main.o \
+  hello.o
+
+CXX = gcc
+CXXFLAGS = -g -Wall -std=c++17
+LDFLAGS =
+
+$(TARGET):              $(OBJS)
+                        #link $(OBJS) to executable hello
+                        $(CC) $(OBJS) $(LDFLAGS) -o $@
+
+clean:
+                        rm -f *~ *.o $(TARGET)
+
+hello.o:                hello.c hello.h
+main.o:                 main.c hello.h
+</pre><p data-coord="lab1.umt:199:0">Note that the rules specifying the dependencies for the <samp data-coord="lab1.umt:199:56">.o</samp> file have
+been moved to the bottom of the <samp data-coord="lab1.umt:199:103">Makefile</samp> as they are purely
+declarative (using the implicit rules).  If it was not necessary to
+record the fact that both <samp data-coord="lab1.umt:199:227">hello.o</samp> and <samp data-coord="lab1.umt:199:241">main.o</samp> also depended on
+<samp data-coord="lab1.umt:199:267">hello.h</samp>, then the last two lines too could be removed as <samp data-coord="lab1.umt:199:326">make</samp> is
+capable of concluding that <samp data-coord="lab1.umt:199:363">hello.o</samp> depends on <samp data-coord="lab1.umt:199:384">hello.c</samp> and <samp data-coord="lab1.umt:199:398">main.o</samp>
+depends on <samp data-coord="lab1.umt:199:418">main.c</samp>.
+</p></section><section data-coord="lab1.umt:208:0"><h3 data-coord="lab1.umt:208:0">Gotcha's</h3><p data-coord="lab1.umt:211:0"><span id="gotchas" data-coord="lab1.umt:211:11">The</span> <samp data-coord="lab1.umt:211:15">make</samp> program evolved in the 1970's when many
+programming languages were line-oriented.  Hence it has a
+line-oriented syntax with some very peculiar syntax rules which can
+result in extremely painful gotcha's for the unwary.
+</p><ul data-coord="lab1.umt:216:0"><li data-coord="lab1.umt:216:0"><p data-coord="lab1.umt:216:4">The lines containing recipes <strong data-coord="lab1.umt:216:33">MUST BEGIN WITH A TAB CHARACTER</strong>.
+Since most text editors do not distinguish between the display of
+tab and space characters, this is a very common problem (the <samp data-coord="lab1.umt:216:203">emacs</samp>
+editor will warn you about <em data-coord="lab1.umt:216:242">suspicious lines</em>).
+</p></li><li data-coord="lab1.umt:221:0"><p data-coord="lab1.umt:221:4">When <samp data-coord="lab1.umt:221:9">make</samp> variable definitions or recipe commands extend over 
+multiple lines, all but the last line must terminate with a <samp data-coord="lab1.umt:221:133">\</samp>
+character.  There <strong data-coord="lab1.umt:221:159">CANNOT BE ANY SPACES</strong> after the <samp data-coord="lab1.umt:221:192">\</samp> character.
+</p></li><li data-coord="lab1.umt:225:0"><p data-coord="lab1.umt:225:4">Each command in a recipe is run in a separate shell.  Hence
+a command cannot affect the state of the shell for a subsequent
+command.
+</p><p data-coord="lab1.umt:229:4">For example, the following rule attempts to delete all <samp data-coord="lab1.umt:229:59">.o</samp> files
+in directory <samp data-coord="lab1.umt:229:87">dir</samp>:
+</p><pre data-coord="lab1.umt:233:0">      clean-dir:        
+                        cd dir
+                        rm -f *.o
+</pre><p data-coord="lab1.umt:238:4">This will not work.  The first command runs in a separate shell
+and changes its current directory to <samp data-coord="lab1.umt:238:109">dir</samp>, but then that shell
+terminates.  The second command runs in a new shell and will
+delete all <samp data-coord="lab1.umt:238:216">*.o</samp> in the current directory, not the <samp data-coord="lab1.umt:238:256">dir</samp> directory.
+</p><p data-coord="lab1.umt:243:4">The fix for this is to run both commands within a single shell as
+follows:
+</p><pre data-coord="lab1.umt:247:0">      clean-dir:        
+                        cd dir; \
+                        rm -f *.o
+</pre><p data-coord="lab1.umt:252:4">By using the trailing <samp data-coord="lab1.umt:252:26">\</samp> after the first command, only a single
+shell is used to run the sequential shell command <samp data-coord="lab1.umt:252:123">cd dir; rm -f *.o</samp>
+which has the desired effect.
+</p></li></ul></section></section><section data-coord="lab1.umt:257:0"><h2 data-coord="lab1.umt:257:0">Exercises</h2><p data-coord="lab1.umt:260:0">Follow the <em data-coord="lab1.umt:260:44"><a href="../submission/submission.html" data-coord="lab1.umt:260:44">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="lab1.umt:260:104">lab1</samp> branch and a new
+<samp data-coord="lab1.umt:260:128">submit/lab1</samp> directory.  Copy all the lab1 exercises into your
+<samp data-coord="lab1.umt:260:192">submit/lab1</samp> directory by copying the contents of the
+<samp data-coord="lab1.umt:260:247">~/cs240/labs/lab1/exercises</samp>:
+</p><pre data-coord="lab1.umt:267:0">$ cd ~/i240?/submit/lab1
+$ cp -r ~/cs240/labs/lab1/exercises/* .
+$ cp -r ~/cs240/labs/lab1/.gitignore/* .
+</pre><p data-coord="lab1.umt:272:0">When the exercises mention a new Unix command you are unfamiliar with,
+it is a good idea to do a <samp data-coord="lab1.umt:272:97">man</samp> or google lookup on that command to
+get an idea of its capabilities.
+</p><section data-coord="lab1.umt:277:0"><h3 data-coord="lab1.umt:277:0">Exercise 0: Hello World</h3><p data-coord="lab1.umt:280:0">Change over to the <samp data-coord="lab1.umt:280:19">0-hello</samp> directory.
+</p><pre data-coord="lab1.umt:283:0">$ cd ~/i240?/submit/lab1/0-hello
+$ ls -l
+</pre><p data-coord="lab1.umt:287:0">You should see that the directory contains a single <samp data-coord="lab1.umt:287:52">hello.cc</samp> file.
+</p><p data-coord="lab1.umt:289:0">Simply type <samp data-coord="lab1.umt:289:12">make</samp> in that directory.  You should get an error
+message.  However, now try <samp data-coord="lab1.umt:289:90">make hello</samp>.  You should see that <samp data-coord="lab1.umt:289:125">make</samp>
+automatically builds a <samp data-coord="lab1.umt:289:155">hello</samp> executable.  Type <samp data-coord="lab1.umt:289:181">ls -l</samp> to see the
+created file, use the command <samp data-coord="lab1.umt:289:230">file hello</samp> to confirm that it is an
+executable, and type <samp data-coord="lab1.umt:289:289">./hello</samp> to execute it.  You should see the
+usual <samp data-coord="lab1.umt:289:340">hello world</samp> message.
+</p><p data-coord="lab1.umt:296:0">How did <samp data-coord="lab1.umt:296:8">make</samp> know how to build <samp data-coord="lab1.umt:296:33">hello</samp> even though there is no
+<samp data-coord="lab1.umt:296:65">Makefile</samp> in the directory?  The answer is by using implicit rules.
+</p><p data-coord="lab1.umt:299:0">To see the list of <samp data-coord="lab1.umt:299:19">make</samp>'s builtin implicit rules, type <samp data-coord="lab1.umt:299:57">make -p |
+less</samp> The <samp data-coord="lab1.umt:299:78">less</samp> command allows you to page back and forth through the
+output using the spacebar and the <samp data-coord="lab1.umt:299:173">b</samp> key respectively).  You will see
+that the set of rules is quite extensive.  To see lines which are
+relevant to c++ programs, type <samp data-coord="lab1.umt:299:307">make -p | egrep 'cc|CXX'</samp> (the <samp data-coord="lab1.umt:299:339">grep</samp>
+program filters out lines which do not match the pattern given by its
+argument).  You will see lines relevant to compiling C++ programs (but
+you will also see lines related to <samp data-coord="lab1.umt:299:522">YACC</samp> which is a parser-generator
+program).
+</p></section><section data-coord="lab1.umt:309:0"><h3 data-coord="lab1.umt:309:0">Exercise 1: Measuring Growth of Functions</h3><p data-coord="lab1.umt:312:0">In this course, we will be analyzing algorithms for their time and
+space complexity.  This analysis will result in formulas in terms
+of \(n\), where \(n\) is some measure of the size of the problem.
+The exercises in the rest of this lab will compare how the
+results of different complexity functions \(f(n)\).
+</p><p data-coord="lab1.umt:318:0">Change over to the <samp data-coord="lab1.umt:318:19">1-monolithic</samp> directory.  It contains
+a single file <a href="exercises/1-monolithic/fns-compare.cc" data-coord="lab1.umt:318:113">fns-compare.cc</a>
+which is set up to print out \(n\) and the corresponding value
+of the function \(\mbox{linear}(n) \equiv 100000 \times n\).
+</p><p data-coord="lab1.umt:323:0">Build the program by typing <samp data-coord="lab1.umt:323:28">make fns-compare</samp>.  The program should
+build correctly using an implicit make rule.  You can run it by typing
+<samp data-coord="lab1.umt:323:139">./fns-compare</samp> and you should get \(n\) and \(\mbox{linear}(n)\)
+printed out for \(n \in \{1, 10, 100, 1000, 10000\}\).
+</p><p data-coord="lab1.umt:328:0">If you look at the code in <a href="exercises/1-monolithic/fns-compare.cc" data-coord="lab1.umt:328:68">fns-compare.cc,</a> you will see that there is a function <samp data-coord="lab1.umt:328:122">quadratic()</samp>
+which is unused.  The compiler can warn you about unused function,
+but not with the options used by the implicit make rule.  You
+can build it by invoking the compiler directly:
+</p><pre>$ g<span class="hl opt">++</span> <span class="hl kwb">-g -Wall -std</span><span class="hl opt">=</span>c<span class="hl opt">++</span><span class="hl num">17</span> fns-compare.cc <span class="hl kwb">-o</span> fns-compare</pre><p data-coord="lab1.umt:339:0">The options used above have the following effect:
+</p><dl data-coord="lab1.umt:341:0"><dt data-coord="lab1.umt:341:2"> <samp data-coord="lab1.umt:341:1">-g</samp> </dt><dd data-coord="lab1.umt:342:0"><p data-coord="lab1.umt:342:4">Include information necessary for debugging in the generated
+executable.
+</p></dd><dt data-coord="lab1.umt:345:2"> <samp data-coord="lab1.umt:345:1">-Wall</samp> </dt><dd data-coord="lab1.umt:346:0"><p data-coord="lab1.umt:346:4">Output reasonable warnings during compilation.
+</p></dd><dt data-coord="lab1.umt:348:2"> <samp data-coord="lab1.umt:348:1">-std=c++17</samp> </dt><dd data-coord="lab1.umt:349:0"><p data-coord="lab1.umt:349:4">Specify that the program uses C++-17.
+</p></dd><dt data-coord="lab1.umt:351:2"> <samp data-coord="lab1.umt:351:1">-o fns-compare</samp> </dt><dd data-coord="lab1.umt:352:0"><p data-coord="lab1.umt:352:4">Specify the file to hold the executable output.  If not specified,
+the executable will be output to <samp data-coord="lab1.umt:352:108">a.out</samp>.
+</p></dd></dl><p data-coord="lab1.umt:355:0">Because of the <samp data-coord="lab1.umt:355:15">-Wall</samp> option, you should receive a warning that
+the <samp data-coord="lab1.umt:355:69">quadratic()</samp> function is not being used.  Modify the file
+to print out <samp data-coord="lab1.umt:355:141">quadratic(n)</samp>; i.e. each output line should
+contain <samp data-coord="lab1.umt:355:194">n</samp>, <samp data-coord="lab1.umt:355:199">linear(n)</samp> and <samp data-coord="lab1.umt:355:215">quadratic(n)</samp>.  Recompile
+until you get a clean compile (no errors and warnings).  Run
+the program and verify that the output has 3 "columns" containing
+the values of <samp data-coord="lab1.umt:355:384">n</samp>, <samp data-coord="lab1.umt:355:389">linear(n)</samp> and <samp data-coord="lab1.umt:355:405">quadratic(n)</samp>.
+</p><p data-coord="lab1.umt:363:0">A problem with our approach is that all our code lives within a single
+file.  Though that is fine for this toy example, such an approach will
+not scale as the size of our program increases.  The next exercise
+looks at partitioning a program source code among multiple source files
+and compiling each source file separately.
+</p></section><section data-coord="lab1.umt:370:0"><h3 data-coord="lab1.umt:370:0">Exercise 2: Separate Compilation</h3><p data-coord="lab1.umt:373:0">Change over to the <samp data-coord="lab1.umt:373:19">2-separate-compilation</samp> directory and take a look
+at the files there.  This directory contains a main <samp data-coord="lab1.umt:373:122">fns-compare</samp>
+module having specification file <samp data-coord="lab1.umt:373:169">fns-compare.hh</samp> and implementation file
+<samp data-coord="lab1.umt:373:210">fns-compare.cc</samp>.  This  module is responsible for iterating through
+specified values of <samp data-coord="lab1.umt:373:299">n</samp> and calling all defined complexity functions.
+</p><p data-coord="lab1.umt:379:0">However, this <samp data-coord="lab1.umt:379:14">fns-compare</samp> module does not have any direct knowledge
+of any complexity function.  Instead, each defined complexity function
+registers itself with the <samp data-coord="lab1.umt:379:167">fns-compare</samp> module.  This registration is
+supported by the interface given in <samp data-coord="lab1.umt:379:247">fns-compare.hh</samp> which defines the
+following:
+</p><dl data-coord="lab1.umt:385:0"><dt data-coord="lab1.umt:385:2"> <samp data-coord="lab1.umt:385:1">FN</samp> </dt><dd data-coord="lab1.umt:386:0"><p data-coord="lab1.umt:386:4">The initial typedef defines a <samp data-coord="lab1.umt:386:34">FN</samp> to be a function type
+which takes a single <samp data-coord="lab1.umt:386:86">double</samp> argument and returns a <samp data-coord="lab1.umt:386:118">double</samp>.
+</p></dd><dt data-coord="lab1.umt:389:2"> <samp data-coord="lab1.umt:389:1">FnInfo</samp> </dt><dd data-coord="lab1.umt:390:0"><p data-coord="lab1.umt:390:4">This is a structure containing 2 fields:
+</p><dl data-coord="lab1.umt:392:0"><dt data-coord="lab1.umt:392:6"> <samp data-coord="lab1.umt:392:1">descr</samp> </dt><dd data-coord="lab1.umt:393:0"><p data-coord="lab1.umt:393:8">A <samp data-coord="lab1.umt:393:10">char *</samp> <samp data-coord="lab1.umt:393:19">NUL</samp>-terminated C string giving a description
+for the complexity function.
+</p></dd><dt data-coord="lab1.umt:396:6"> <samp data-coord="lab1.umt:396:1">fn</samp> </dt><dd data-coord="lab1.umt:397:0"><p data-coord="lab1.umt:397:8">A pointer to a function implementing the complexity function.
+</p></dd></dl><p data-coord="lab1.umt:399:4">The structure is initialized using the <samp data-coord="lab1.umt:399:43">FnInfo()</samp> constructor.
+It uses C++ syntax to initialize the two fields directly
+from the arguments using the initializers after the <samp data-coord="lab1.umt:399:184">:</samp>
+and before the empty constructor body <samp data-coord="lab1.umt:399:230">{ }</samp>.
+</p></dd><dt data-coord="lab1.umt:404:2"> <samp data-coord="lab1.umt:404:1">register(FnInfo fnInfo)</samp> </dt><dd data-coord="lab1.umt:405:0"><p data-coord="lab1.umt:405:4">This function can be called to register a <samp data-coord="lab1.umt:405:46">fnInfo</samp>.
+</p></dd></dl><p data-coord="lab1.umt:407:0">The implementation file <samp data-coord="lab1.umt:407:24">fns-compare.cc</samp> uses a C++ STL <samp data-coord="lab1.umt:407:56">vector</samp>
+to hold all the registered <samp data-coord="lab1.umt:407:92">FnInfo</samp>'s with the implementation
+of <samp data-coord="lab1.umt:407:130">register()</samp> merely adding the incoming <samp data-coord="lab1.umt:407:170">FnInfo</samp> to the vector
+using <samp data-coord="lab1.umt:407:199">vector</samp>'s <samp data-coord="lab1.umt:407:210">push_back()</samp> method.
+</p><p data-coord="lab1.umt:412:0">The <samp data-coord="lab1.umt:412:4">main()</samp> function contained in <samp data-coord="lab1.umt:412:35">fns-compare.cc</samp> prints
+out a header line containing <em data-coord="lab1.umt:412:88">n</em> and the names of all the
+registered complexity functions.  It then loops through
+values for <samp data-coord="lab1.umt:412:184">n</samp>, printing out the results of each registered
+complexity function for that value of <samp data-coord="lab1.umt:412:271">n</samp>.  To ensure that
+columns line up, it uses a <samp data-coord="lab1.umt:412:319">WIDTH</samp> constant to specify
+the width for each column.
+</p><p data-coord="lab1.umt:421:0">Finally, <samp data-coord="lab1.umt:421:9">linear.cc</samp> implements the same <samp data-coord="lab1.umt:421:41">linear()</samp> function
+as in the previous exercise.  It uses the initialization
+of a <samp data-coord="lab1.umt:421:123">static</samp> variable to register itself with the <samp data-coord="lab1.umt:421:169">fns-check</samp>
+module.
+</p><p data-coord="lab1.umt:426:0">We will compile the files separately:
+</p><pre><span class="hl slc">#compile source code *.cc into binary object file *.o</span>
+$ g<span class="hl opt">++</span> <span class="hl kwb">-g -Wall -std</span><span class="hl opt">=</span>c<span class="hl opt">++</span><span class="hl num">17</span> <span class="hl kwb">-c</span> fns-compare.cc 
+$ g<span class="hl opt">++</span> <span class="hl kwb">-g -Wall -std</span><span class="hl opt">=</span>c<span class="hl opt">++</span><span class="hl num">17</span> <span class="hl kwb">-c</span> linear.cc
+
+<span class="hl slc">#link object files into executable</span>
+$ g<span class="hl opt">++</span> fns-compare.o linear.o <span class="hl kwb">-o</span> fns-compare</pre><p data-coord="lab1.umt:438:0">Now you should be able to run the <samp data-coord="lab1.umt:438:34">fns-compare</samp> executable.
+</p><p data-coord="lab1.umt:440:0">Add a <samp data-coord="lab1.umt:440:6">quadratic</samp> function to the program computing <samp data-coord="lab1.umt:440:52">1000 * n * n</samp>.
+You should be able to do so by cutting and pasting code from the
+previous exercise and code from <samp data-coord="lab1.umt:440:165">linear.cc</samp> in the current exercise.
+Build your program using <samp data-coord="lab1.umt:440:227">g++</samp>.  Specifically, you will need to
+compile your new <samp data-coord="lab1.umt:440:283">quadratic.cc</samp> into a <samp data-coord="lab1.umt:440:305">quadratic.o</samp> and then link
+<samp data-coord="lab1.umt:440:333">fns-compare.o</samp>, <samp data-coord="lab1.umt:440:350">linear.o</samp> and <samp data-coord="lab1.umt:440:365">quadratic.o</samp> into a <samp data-coord="lab1.umt:440:386">fns-compare</samp>
+executable.  Test your program, iterating the previous steps until you
+are sure it is working.
+</p><p data-coord="lab1.umt:449:0">At this point, you should realize that typing separate commands
+for compilation of each source file as well as linking all the
+files manually is very tedious and error prone.  The next
+exercise will use a <samp data-coord="lab1.umt:449:205">Makefile</samp> to automate the process.
+</p></section><section data-coord="lab1.umt:454:0"><h3 data-coord="lab1.umt:454:0">Exercise 3: Using a Makefile</h3><p data-coord="lab1.umt:457:0">Change over to the <samp data-coord="lab1.umt:457:19">3-makefile</samp> directory.  You will see a slightly modified
+<samp data-coord="lab1.umt:457:77">fns-compare</samp> module along with files defining the following
+complexity functions:
+</p>\[\begin{array}{lcl}
+\mbox{lg}(n)&\equiv& 1,\!000,\!000 \times \lg(n)\\
+\mbox{linear}(n)&\equiv& 100,\!000 \times n\\
+\mbox{nlg}(n)&\equiv& 10,\!000 \times n\times \lg(n)\\
+\mbox{quadratic}(n)&\equiv& 1,\!000 \times n^2\\
+\mbox{cubic}(n)&\equiv& 100 \times n^3\\
+\mbox{exponential}(n)&\equiv& 10 \times 2^n\\
+\mbox{factorial}(n)&\equiv& 1 \times n!\\
+
+\end{array}
+\]<p data-coord="lab1.umt:474:0">Besides the additions of these additional complexity functions, the
+changes from the previous exercise involve performing computations
+using <samp data-coord="lab1.umt:474:141">long double</samp>'s to minimize the occurrence of overflow.
+</p><p data-coord="lab1.umt:478:0">Looks at the provided <samp data-coord="lab1.umt:478:22">Makefile</samp>. You should be able to understand it
+based on the discussion given at the start of this document.  Note
+that all the compilation steps are done using make's implicit rules.
+</p><p data-coord="lab1.umt:482:0">Compile the program simply using the command <samp data-coord="lab1.umt:482:45">make</samp>.  It should
+compile and link the program.  Run it; it should print out
+the values of all the complexity functions at the different values
+of \(n\).  Note that even though the slower growth functions
+like <samp data-coord="lab1.umt:482:255">lg()</samp> and <samp data-coord="lab1.umt:482:266">linear()</samp> have very large multipliers, their
+output is rapidly overtaken by the higher growth functions like
+<samp data-coord="lab1.umt:482:376">exponential()</samp> and <samp data-coord="lab1.umt:482:396">factorial()</samp> even though those functions
+have much smaller multipliers.
+</p><p data-coord="lab1.umt:491:0">Without deleting any of your <samp data-coord="lab1.umt:491:29">*.o</samp> files or the <samp data-coord="lab1.umt:491:48">fns-compare</samp>
+executable, go into <samp data-coord="lab1.umt:491:82">fns-compare.hh</samp> and change the definition of
+<samp data-coord="lab1.umt:491:128">Float</samp> from <samp data-coord="lab1.umt:491:141">long double</samp> to <samp data-coord="lab1.umt:491:158">float</samp>.  If you now try to rebuild
+using <samp data-coord="lab1.umt:491:200">make</samp>, nothing will happen.  This is wrong!!  We have made a
+drastic change to the interface for all the complexity functions and
+they should all be recompiled.
+</p><p data-coord="lab1.umt:498:0">The problem is that the provided <samp data-coord="lab1.umt:498:33">Makefile</samp> simply has implicit
+depends of the <samp data-coord="lab1.umt:498:79">*.o</samp> files on the <samp data-coord="lab1.umt:498:98">*.cc</samp> files.  All the files
+should also depend on <samp data-coord="lab1.umt:498:149">fns-compare.hh</samp> but <samp data-coord="lab1.umt:498:170">make</samp> does not know
+that.
+</p></section><section data-coord="lab1.umt:503:0"><h3 data-coord="lab1.umt:503:0">Exercise 4: Dependencies</h3><p data-coord="lab1.umt:507:0">Change over to the <samp data-coord="lab1.umt:507:19">4-dependencies</samp> directory.  The files provided
+are identical to those from the previous exercise except for the
+<samp data-coord="lab1.umt:507:132">Makefile</samp>.  If you look at the end of the <samp data-coord="lab1.umt:507:175">Makefile</samp>, you will notice
+that it has the dependencies for each object file explicitly listed.
+</p><p data-coord="lab1.umt:512:0">Build the executable.  Unfortunately, the provided Makefile contains
+an error.  Identify the error, it is one of the <a href="#gotchas" data-coord="lab1.umt:512:129">gotchas</a> listed
+earlier.  Once you fix the error, you should be able to build and
+run the executable as in the previous exercise.
+</p><p data-coord="lab1.umt:517:0">However, if you now change the definition of
+<samp data-coord="lab1.umt:517:45">Float</samp> from <samp data-coord="lab1.umt:517:58">long double</samp> to <samp data-coord="lab1.umt:517:75">float</samp> in <samp data-coord="lab1.umt:517:86">fns-compare.hh</samp> and attempt
+to rebuild, all the files will be recompiled.  You will get an error
+because the <samp data-coord="lab1.umt:517:196">printf()</samp> format specifier does not match the new definition
+of <samp data-coord="lab1.umt:517:261">Float</samp>.  Revert the change to the definition of <samp data-coord="lab1.umt:517:310">Float</samp> and you should
+be back in business.
+</p></section><section data-coord="lab1.umt:525:0"><h3 data-coord="lab1.umt:525:0">Exercise 5: Auto-Dependencies</h3><p data-coord="lab1.umt:528:0">Change over to the <samp data-coord="lab1.umt:528:19">5-auto-dependencies</samp> directory.  The files provided
+are identical to those from the previous exercise except for the
+<samp data-coord="lab1.umt:528:137">Makefile</samp>.  Instead of explicitly listing the dependencies, the
+<samp data-coord="lab1.umt:528:202">Makefile</samp> is set up to automatically generate them with help
+from the compiler.
+</p><p data-coord="lab1.umt:534:0">Compile and run.  Everything should work as before.  Notice the
+creation of a <samp data-coord="lab1.umt:534:78">.deps</samp> directory which contains dependency files
+for each <samp data-coord="lab1.umt:534:137">.cc</samp> file.
+</p></section><section data-coord="lab1.umt:540:0"><h3 data-coord="lab1.umt:540:0">Exercise 6: Produce a tar Distribution</h3><p data-coord="lab1.umt:544:0">Stay in the <samp data-coord="lab1.umt:544:12">5-auto-dependencies</samp> directory.  Add a target <samp data-coord="lab1.umt:544:59">dist</samp>
+to the <samp data-coord="lab1.umt:544:73">Makefile</samp> such that running <samp data-coord="lab1.umt:544:102">make dist</samp> produces a
+<samp data-coord="lab1.umt:544:125">fns-compare.tar</samp> archive which contains all the source files
+necessary to build the <samp data-coord="lab1.umt:544:210">fns-compare</samp> executable.
+</p><p data-coord="lab1.umt:550:0">The following tips will be useful:
+</p><ul data-coord="lab1.umt:552:0"><li data-coord="lab1.umt:552:0"><p data-coord="lab1.umt:552:4">Look at the <samp data-coord="lab1.umt:552:16">tar</samp> man page.  The command which you will
+need will be
+</p><pre data-coord="lab1.umt:556:0">    tar -cf fns-compare.tar SRC_FILE...
+</pre><p data-coord="lab1.umt:559:4">where <samp data-coord="lab1.umt:559:10">SRC_FILE...</samp> are all the necessary source files.
+</p></li><li data-coord="lab1.umt:561:0"><p data-coord="lab1.umt:561:4">The source files necessary can be divided into:
+</p><ul data-coord="lab1.umt:563:0"><li data-coord="lab1.umt:563:0"><p data-coord="lab1.umt:563:8">The <samp data-coord="lab1.umt:563:12">Makefile</samp>.
+</p></li><li data-coord="lab1.umt:565:0"><p data-coord="lab1.umt:565:8">All the <samp data-coord="lab1.umt:565:16">*.cc</samp> files.
+</p></li><li data-coord="lab1.umt:567:0"><p data-coord="lab1.umt:567:8">All the <samp data-coord="lab1.umt:567:16">*.hh</samp> files.
+</p></li></ul></li><li data-coord="lab1.umt:570:0"><p data-coord="lab1.umt:570:4">At the start of the <samp data-coord="lab1.umt:570:24">Makefile</samp> all the <samp data-coord="lab1.umt:570:43">*.cc</samp> files have been
+pulled into a <samp data-coord="lab1.umt:570:84">make</samp> variable <samp data-coord="lab1.umt:570:100">CXX_FILES</samp>.  It should
+be possible to pull all the <samp data-coord="lab1.umt:570:156">*.hh</samp> files into another make
+variable in a similar manner.  Then it should be possible
+to define a <samp data-coord="lab1.umt:570:265">SRC_FILES</samp> <samp data-coord="lab1.umt:570:277">make</samp> variable containing all
+the source files.  This <samp data-coord="lab1.umt:570:336">make</samp> variable can be provided
+as an input to the <samp data-coord="lab1.umt:570:391">tar</samp> command.
+</p></li></ul><p data-coord="lab1.umt:578:0">Once you build your <samp data-coord="lab1.umt:578:20">fns-compare.tar</samp> distribution using your modified
+<samp data-coord="lab1.umt:578:71">Makefile</samp>, test your distribution by unpacking it into an empty directory.
+</p><pre>$ mkdir <span class="hl kwb">-p</span> ~<span class="hl opt">/</span>tmp<span class="hl opt">/</span>fns-compare
+$ <span class="hl kwb">cd</span> ~<span class="hl opt">/</span>tmp<span class="hl opt">/</span>fns-compare
+$ <span class="hl kwc">tar</span> <span class="hl kwb">-xvf</span> ~<span class="hl opt">/</span>i240?<span class="hl opt">/</span>submit<span class="hl opt">/</span>lab<span class="hl num">1</span><span class="hl opt">/</span><span class="hl num">5</span><span class="hl opt">*/</span>fns-compare.<span class="hl kwc">tar</span>
+$ <span class="hl kwc">make</span></pre><p data-coord="lab1.umt:589:0">This should build the <samp data-coord="lab1.umt:589:22">fns-compare</samp> program using the distributed source
+files.
+</p></section></section><section data-coord="lab1.umt:593:0"><h2 data-coord="lab1.umt:593:0">Winding Up</h2><p data-coord="lab1.umt:596:0">Wind up your lab by using the <em data-coord="lab1.umt:596:63"><a href="../submission/submission.html" data-coord="lab1.umt:596:63">provided directions</a></em> to terminate your log in a <samp data-coord="lab1.umt:596:112">lab1.LOG</samp> file
+and merging your <samp data-coord="lab1.umt:596:145">lab1</samp> branch into the <samp data-coord="lab1.umt:596:168">master</samp> branch.  Once you
+have the lab on your <samp data-coord="lab1.umt:596:216">master</samp> branch, commit and push your changes to
+github.  Be sure to include your <samp data-coord="lab1.umt:596:298">lab1.LOG</samp> file as well as all the
+exercise directories.
+</p></section><section data-coord="lab1.umt:605:0"><h2 data-coord="lab1.umt:605:0">References</h2><p data-coord="lab1.umt:608:0"><em data-coord="lab1.umt:608:44"><a href="http://www.gnu.org/software/make/manual/" data-coord="lab1.umt:608:44">GNU Make Manual</a></em>.
+</p><p data-coord="lab1.umt:610:0"><em data-coord="lab1.umt:610:46"><a href="http://mad-scientist.net/make/autodep.html" data-coord="lab1.umt:610:46">Advanced
+Auto-Dependency Generation</a></em>. 
+</p><p data-coord="lab1.umt:613:0">Robert Mecklenburg, <em data-coord="lab1.umt:613:20">Managing Projects with GNU Make</em>, O'Reilly, 2004.
+</p></section></section>
+    </div> <!-- #content -->
+  </body>
+</html>
