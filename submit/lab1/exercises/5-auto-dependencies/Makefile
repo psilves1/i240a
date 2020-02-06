@@ -11,16 +11,13 @@ OFILES = $(CXX_FILES:cc=o)
 
 TARGET = fns-compare
 
-dist = fns-compare.tar
-
 #default target
 all:		$(TARGET)
 
 $(TARGET):	$(OFILES)
 		$(CXX) $(OFILES) -o $@
 
-.phony:		dist
-$(dist):
+dist:
 		tar -cf fns-compare.tar $(CXX_FILES) $(HH_FILES)
 
 .phony:		clean

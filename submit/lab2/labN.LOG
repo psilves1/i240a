@@ -1,0 +1,612 @@
+Script started on 2020-02-06 10:09:23-05:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="94" LINES="49"]
+bash: /home/umrigar/cs240/bin/student.rc: Permission denied
+psilves1@g7-21:/import/linux/home1/psilves1/projects/cs240$ ls[K[Kcd labs
+psilves1@g7-21:/import/linux/home1/psilves1/projects/cs240/labs$ ls
+index.html  index.umt  lab0  lab1  lab2  submission
+psilves1@g7-21:/import/linux/home1/psilves1/projects/cs240/labs$ cp -r lab2 ../../2[K91[K[Ki240a
+psilves1@g7-21:/import/linux/home1/psilves1/projects/cs240/labs$ cd ../..//[Ki240a
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a$ ls
+lab2  README.md  submit  work
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a$ mv la[K[K[K[K[Kcd submit
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit$ ls
+lab0
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit$ cd..
+bash: cd..: command not found
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit$ cd ..
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a$ ls
+lab2  README.md  submit  work
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a$ cd work
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/work$ ls
+lab1
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/work$ cp -r lab1[K[K[K[K[K[K[K[K[K[Kmv lab1 .. [K/submit
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/work$ ls[K[Kcd ../submit
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit$ ls
+lab0  lab1
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit$ cd ..
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a$ cp [K[K[Kmv ab[K[Klab2 submit
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a$ ls[K[Kcd suu[Kbmit
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit$ ls
+lab0  lab1  lab2
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit$ cd [K[K[Ksl[K[Kls
+lab0  lab1  lab2
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit$ cd lab2
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2$ clear
+[H[2J[3Jpsilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2$ ls
+exercises  lab2  lab2.html  lab2.pdf  lab2.umt
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2$ cd exercises [K/l0[K=[K-hello[K[K[K[K[K[K[K`[K1-hello
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ ls 0 [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C- l
+total 12
+-rw-r--r-- 1 psilves1 psilves1 363 Feb  6 10:10 hello.cc
+-rw-r--r-- 1 psilves1 psilves1  39 Feb  6 10:10 Makefile
+-rw-r--r-- 1 psilves1 psilves1  61 Feb  6 10:10 README
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ emac s README
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ make [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ke
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ ./he llo
+usage: ./hello NAME...
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ ./he llo bart   [K[Klisa
+hello bart
+hello lisa
+hello psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ gdb  he[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[Kasfa s;fj
+bash: asfas: command not found
+bash: fj: command not found
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ sdfa [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[Kgdb  ehl[K[K[Khello
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from hello...done.
+(gdb) start[K[K[K[K[Kstart bart lisa
+Temporary breakpoint 1 at 0x11cd: file hello.cc, line 13.
+Starting program: /import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello/hello bart lisa
+
+Temporary breakpoint 1, main (argc=3, argv=0x7fffffffe718) at hello.cc:13
+13	  if (argc == 1) {
+(gdb) l 
+8	}
+9	
+10	int 
+11	main(int argc, const char *argv[])
+12	{
+13	  if (argc == 1) {
+14	    std::cerr << "usage: " << argv[0] << " NAME..." << std::endl;
+15	    std::exit(1);
+16	  }
+17	  else {
+(gdb) 
+18	    for (int i = 1; i <= argc; i++) {
+19	      sayHello(argv[i]);
+20	    }
+21	  }
+22	}
+(gdb) b sayHello
+Breakpoint 2 at 0x555555555181: file hello.cc, line 7.
+(gdb) arc[Kgc
+Undefined command: "argc".  Try "help".
+(gdb) p argc
+$1 = 3
+(gdb) p argv
+$2 = (const char **) 0x7fffffffe718
+(gdb) p argv[11[K[K0]
+$3 = 0x7fffffffea0f "/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello/hello"
+(gdb) p argv[0][K[K1]
+$4 = 0x7fffffffea5f "bart"
+(gdb) p argv[1][K[K2}[K]
+$5 = 0x7fffffffea64 "lisa"
+(gdb) n
+18	    for (int i = 1; i <= argc; i++) {
+(gdb) n
+19	      sayHello(argv[i]);
+(gdb) p i
+$6 = 1
+(gdb) b[Kc.sayHello()
+Not stopped at any breakpoint; argument ignored.
+Continuing.
+
+Breakpoint 2, sayHello (name=0x7fffffffea5f "bart") at hello.cc:7
+7	  std::cout << "hello " << name << std::endl;
+(gdb) l
+2	#include <cstdlib>
+3	
+4	static void
+5	sayHello(const char *name)
+6	{
+7	  std::cout << "hello " << name << std::endl;
+8	}
+9	
+10	int 
+11	main(int argc, const char *argv[])
+(gdb) backtrace
+#0  sayHello (name=0x7fffffffea5f "bart") at hello.cc:7
+#1  0x0000555555555257 in main (argc=3, argv=0x7fffffffe718) at hello.cc:19
+(gdb) up
+#1  0x0000555555555257 in main (argc=3, argv=0x7fffffffe718) at hello.cc:19
+19	      sayHello(argv[i]);
+(gdb) down
+#0  sayHello (name=0x7fffffffea5f "bart") at hello.cc:7
+7	  std::cout << "hello " << name << std::endl;
+(gdb) c.sayHello()
+A syntax error in expression, near `.sayHello()'.
+(gdb) up
+#1  0x0000555555555257 in main (argc=3, argv=0x7fffffffe718) at hello.cc:19
+19	      sayHello(argv[i]);
+(gdb) upc.sayHello()
+A syntax error in expression, near `.sayHello()'.
+(gdb) c.a[KsayHello()
+A syntax error in expression, near `.sayHello()'.
+(gdb) down
+#0  sayHello (name=0x7fffffffea5f "bart") at hello.cc:7
+7	  std::cout << "hello " << name << std::endl;
+(gdb) p name
+$7 = 0x7fffffffea5f "bart"
+(gdb) n
+hello bart
+8	}
+(gdb) c.sayHello
+Not stopped at any breakpoint; argument ignored.
+Continuing.
+
+Breakpoint 2, sayHello (name=0x7fffffffea64 "lisa") at hello.cc:7
+7	  std::cout << "hello " << name << std::endl;
+(gdb) c
+Continuing.
+hello lisa
+
+Breakpoint 2, sayHello (name=0x0) at hello.cc:7
+7	  std::cout << "hello " << name << std::endl;
+(gdb) up
+#1  0x0000555555555257 in main (argc=3, argv=0x7fffffffe718) at hello.cc:19
+19	      sayHello(argv[i]);
+(gdb) print i
+$8 = 3
+(gdb) print argc
+$9 = 3
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 1639890] will be killed.
+
+Quit anyway? (y or n) y
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ ls
+hello  hello.cc  Makefile  README
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ emac s hello.cc
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ make [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ke
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ make [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cemacs hello.cc[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[2Pls
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgdb hello[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Casfas[1P;fj[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C./hello bart lisa
+hello bart
+hello lisa
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/1-hello$ cd . ./2-hello
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ clea r
+[H[2J[3Jpsilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ ls
+hello.cc  Makefile  README
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ gd[K[Kmake [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ke
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ gdb  heloo[K[Klo
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from hello...done.
+(gdb) stat[Krt Bart [K[K[K[K[K
+Temporary breakpoint 1 at 0x12e1: file hello.cc, line 36.
+Starting program: /import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello/hello 
+
+Temporary breakpoint 1, main (argc=1, argv=0x7fffffffe728) at hello.cc:36
+36	  if (argc == 1) {
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 1641067] will be killed.
+
+Quit anyway? (y or n) y
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ gdb hello
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from hello...done.
+(gdb) start 'bart simpson' 'lisa simpson'
+Temporary breakpoint 1 at 0x12e1: file hello.cc, line 36.
+Starting program: /import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello/hello 'bart simpson' 'lisa simpson'
+
+Temporary breakpoint 1, main (argc=3, argv=0x7fffffffe6f8) at hello.cc:36
+36	  if (argc == 1) {
+(gdb) l
+31	
+32	
+33	int
+34	main(int argc, const char *argv[])
+35	{
+36	  if (argc == 1) {
+37	    std::cerr << "usage: " << argv[0] << " NAME..." << std::endl;
+38	    std::exit(1);
+39	  }
+40	  else {
+(gdb) l
+41	    for (int i = 1; i <= argc; i++) {
+42	      const char *name = argv[i];
+43	      char friendlyName[strlen(name)];
+44	      upcaseWords(name, friendlyName);
+45	      sayHello(friendlyName);
+46	    }
+47	  }
+48	}
+(gdb) c.[K[Kb sayHello
+Breakpoint 2 at 0x55555555528c: file hello.cc, line 29.
+(gdb) c
+Continuing.
+
+Breakpoint 2, sayHello (name=0x7fffffffe5a0 "Bart SimpsonUU") at hello.cc:29
+29	  std::cout << "Hello " << name << std::endl;
+(gdb) ls[K[Kq
+A debugging session is active.
+
+	Inferior 1 [process 1641111] will be killed.
+
+Quit anyway? (y or n) y
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ gdb hello
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from hello...done.
+(gdb) start 'Bart S[K[K Simpson' 'Lisa Simpson'
+Temporary breakpoint 1 at 0x12e1: file hello.cc, line 36.
+Starting program: /import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello/hello 'Bart Simpson' 'Lisa Simpson'
+
+Temporary breakpoint 1, main (argc=3, argv=0x7fffffffe6f8) at hello.cc:36
+36	  if (argc == 1) {
+(gdb) l
+31	
+32	
+33	int
+34	main(int argc, const char *argv[])
+35	{
+36	  if (argc == 1) {
+37	    std::cerr << "usage: " << argv[0] << " NAME..." << std::endl;
+38	    std::exit(1);
+39	  }
+40	  else {
+(gdb) 
+41	    for (int i = 1; i <= argc; i++) {
+42	      const char *name = argv[i];
+43	      char friendlyName[strlen(name)];
+44	      upcaseWords(name, friendlyName);
+45	      sayHello(friendlyName);
+46	    }
+47	  }
+48	}
+(gdb) b upcaws[K[KseWords
+Breakpoint 2 at 0x5555555551b5: file hello.cc, line 13.
+(gdb) b sayHello
+Breakpoint 3 at 0x55555555528c: file hello.cc, line 29.
+(gdb) p argv[1]
+$1 = 0x7fffffffea3d "Bart Simpson"
+(gdb) c
+Continuing.
+
+Breakpoint 2, upcaseWords (in=0x7fffffffea3d "Bart Simpson", out=0x7fffffffe5a0 "")
+    at hello.cc:13
+13	  bool inWord = false;
+(gdb) l
+8	 *  has enough space for the strlen(in) characters of in.
+9	 */
+10	void
+11	upcaseWords(const char in[], char out[])
+12	{
+13	  bool inWord = false;
+14	  const int n = std::strlen(in);
+15	  for (int i = 0; i < n; i++) {
+16	    if (!inWord && std::isalpha(in[i])) {
+17	      out[i] = std::toupper(in[i]);
+(gdb) l
+18	    }
+19	    else {
+20	      out[i] = in[i];
+21	    }
+22	    inWord = std::isalpha(in[i]);
+23	  }
+24	}
+25	
+26	static void
+27	sayHello(const char *name)
+(gdb) l[Kp[Klcp argv[1]
+No symbol "argv" in current context.
+(gdb) l
+28	{
+29	  std::cout << "Hello " << name << std::endl;
+30	}
+31	
+32	
+33	int
+34	main(int argc, const char *argv[])
+35	{
+36	  if (argc == 1) {
+37	    std::cerr << "usage: " << argv[0] << " NAME..." << std::endl;
+(gdb) c
+Continuing.
+
+Breakpoint 3, sayHello (name=0x7fffffffe5a0 "Bart SimpsonUU") at hello.cc:29
+29	  std::cout << "Hello " << name << std::endl;
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 1641306] will be killed.
+
+Quit anyway? (y or n) y
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ ls
+hello  hello.cc  Makefile  README
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ emca [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kac s[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[Kp[Klsgdb hello
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from hello...done.
+(gdb) start 'bart simpson' 'lisa'[K i[Ksimpa[Kson'
+Temporary breakpoint 1 at 0x12e1: file hello.cc, line 36.
+Starting program: /import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello/hello 'bart simpson' 'lisa simpson'
+
+Temporary breakpoint 1, main (argc=3, argv=0x7fffffffe6f8) at hello.cc:36
+36	  if (argc == 1) {
+(gdb) b [K[Kl
+31	
+32	
+33	int
+34	main(int argc, const char *argv[])
+35	{
+36	  if (argc == 1) {
+37	    std::cerr << "usage: " << argv[0] << " NAME..." << std::endl;
+38	    std::exit(1);
+39	  }
+40	  else {
+(gdb) 
+41	    for (int i = 1; i <= argc; i++) {
+42	      const char *name = argv[i];
+43	      char friendlyName[strlen(name)];
+44	      upcaseWords(name, friendlyName);
+45	      sayHello(friendlyName);
+46	    }
+47	  }
+48	}
+(gdb) b upcaseWords
+Breakpoint 2 at 0x5555555551b5: file hello.cc, line 13.
+(gdb) c
+Continuing.
+
+Breakpoint 2, upcaseWords (in=0x7fffffffea3d "bart simpson", out=0x7fffffffe5a0 "")
+    at hello.cc:13
+13	  bool inWord = false;
+(gdb) l
+8	 *  has enough space for the strlen(in) characters of in.
+9	 */
+10	void
+11	upcaseWords(const char in[], char out[])
+12	{
+13	  bool inWord = false;
+14	  const int n = std::strlen(in);
+15	  for (int i = 0; i < n; i++) {
+16	    if (!inWord && std::isalpha(in[i])) {
+17	      out[i] = std::toupper(in[i]);
+(gdb) n
+14	  const int n = std::strlen(in);
+(gdb) 
+15	  for (int i = 0; i < n; i++) {
+(gdb) 
+16	    if (!inWord && std::isalpha(in[i])) {
+(gdb) 
+17	      out[i] = std::toupper(in[i]);
+(gdb) 
+22	    inWord = std::isalpha(in[i]);
+(gdb) 
+15	  for (int i = 0; i < n; i++) {
+(gdb) 
+16	    if (!inWord && std::isalpha(in[i])) {
+(gdb) l
+11	upcaseWords(const char in[], char out[])
+12	{
+13	  bool inWord = false;
+14	  const int n = std::strlen(in);
+15	  for (int i = 0; i < n; i++) {
+16	    if (!inWord && std::isalpha(in[i])) {
+17	      out[i] = std::toupper(in[i]);
+18	    }
+19	    else {
+20	      out[i] = in[i];
+(gdb) 
+21	    }
+22	    inWord = std::isalpha(in[i]);
+23	  }
+24	}
+25	
+26	static void
+27	sayHello(const char *name)
+28	{
+29	  std::cout << "Hello " << name << std::endl;
+30	}
+(gdb) q
+A debugging session is active.
+
+	Inferior 1 [process 1641766] will be killed.
+
+Quit anyway? (y or n) y
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ ls
+hello  hello.cc  Makefile  README
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ emac s hello.cc
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ make [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ke
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+[01m[Khello.cc:[m[K In function ‘[01m[Kint main(int, const char**)[m[K’:
+[01m[Khello.cc:44:37:[m[K [01;31m[Kerror: [m[Kconflicting declaration ‘[01m[Kchar friendlyName [strlen(name)][m[K’
+       char friendlyName[strlen(name)[01;31m[K][m[K = "/0";
+                                     [01;31m[K^[m[K
+[01m[Khello.cc:43:12:[m[K [01;36m[Knote: [m[Kprevious declaration as ‘[01m[Kchar friendlyName [(strlen(name) + 1)][m[K’
+       char [01;36m[KfriendlyName[m[K[strlen(name)+1];
+            [01;36m[K^~~~~~~~~~~~[m[K
+make: *** [<builtin>: hello] Error 1
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ make [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ke
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+[01m[Khello.cc:[m[K In function ‘[01m[Kint main(int, const char**)[m[K’:
+[01m[Khello.cc:44:37:[m[K [01;31m[Kerror: [m[Kconflicting declaration ‘[01m[Kchar friendlyName [strlen(name)][m[K’
+       char friendlyName[strlen(name)[01;31m[K][m[K = "/0";
+                                     [01;31m[K^[m[K
+[01m[Khello.cc:43:12:[m[K [01;36m[Knote: [m[Kprevious declaration as ‘[01m[Kchar friendlyName [(strlen(name) + 1)][m[K’
+       char [01;36m[KfriendlyName[m[K[strlen(name)+1];
+            [01;36m[K^~~~~~~~~~~~[m[K
+make: *** [<builtin>: hello] Error 1
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ make [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cemacs hello.cc
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ a[Kmake [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ke
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+[01m[Khello.cc:[m[K In function ‘[01m[Kint main(int, const char**)[m[K’:
+[01m[Khello.cc:44:37:[m[K [01;31m[Kerror: [m[Kconflicting declaration ‘[01m[Kchar friendlyName [strlen(name)][m[K’
+       char friendlyName[strlen(name)[01;31m[K][m[K = '\0';
+                                     [01;31m[K^[m[K
+[01m[Khello.cc:43:12:[m[K [01;36m[Knote: [m[Kprevious declaration as ‘[01m[Kchar friendlyName [(strlen(name) + 1)][m[K’
+       char [01;36m[KfriendlyName[m[K[strlen(name)+1];
+            [01;36m[K^~~~~~~~~~~~[m[K
+make: *** [<builtin>: hello] Error 1
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ make [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cemacs hello.cc
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ make [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ke
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ make [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cemacs hello.cc[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cemacs hello.cc[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[Khell o[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[K[K./ [Khe loo [K[K[Klo ba[K[K'a[Kbat[Krt simpson' l[K'lisa simpson'
+Hello Bart Simpson
+Hello Lisa Simpson
+Segmentation fault
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ ./hello 'bart simpson' 'lisa simpson'[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cemacs hello.cc
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ make [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Ke
+g++ -g -Wall -std=c++17    hello.cc   -o hello
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ make [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cemacs hello.cc[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C./hello 'bart simpson' 'lisa simpson'
+Hello Bart Simpson
+Hello Lisa Simpson
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/2-hello$ cd . ./2-[K[K3-overload
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/3-overload$ c lear
+[H[2J[3Jpsilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/3-overload$ s [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cl s
+Makefile  overload.cc
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/3-overload$ m ake[K[K[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cm ake
+g++ -g -Wall -std=c++17    overload.cc   -o overload
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/3-overload$ . /overload
+f(a) = 3; f(&a) = 4; f(a, b) = -1
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/3-overload$ g db overlao[K[Koad
+GNU gdb (Debian 8.2.1-2+b3) 8.2.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+Type "show copying" and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+    <http://www.gnu.org/software/gdb/documentation/>.
+
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from overload...done.
+(gdb) b f{[K(int
+f(int)       f(int*)      f(int, int)  
+(gdb) b f(int
+f(int)       f(int*)      f(int, int)  
+(gdb) b f(int[K[K[K[K[K[K[Kf [K(([Kint*)
+A syntax error in expression, near `'.
+(gdb) b [K[Kf(int*)bf(int*) f(int*)
+Breakpoint 1 at 0x117d: file overload.cc, line 3.
+(gdb) c
+The program is not being run.
+(gdb) st[K[Krun
+Starting program: /import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/3-overload/overload 
+
+Breakpoint 1, f (a=0x7fffffffe618) at overload.cc:3
+3	int f(int *a) { return *a * 2; }
+(gdb) p a
+$1 = (int *) 0x7fffffffe618
+(gdb) p a*
+A syntax error in expression, near `'.
+(gdb) p a*[K[K*a
+$2 = 2
+(gdb)  [Kp *a=5
+$3 = 5
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/3-overload/overload 
+
+Breakpoint 1, f (a=0x7fffffffe618) at overload.cc:3
+3	int f(int *a) { return *a * 2; }
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) n
+Program not restarted.
+(gdb) c
+Continuing.
+f(a) = 3; f(&a) = 4; f(a, b) = -1
+[Inferior 1 (process 1642830) exited normally]
+(gdb) c
+The program is not being run.
+(gdb) q
+psilves1@g7-21:/import/linux/home1/psilves1/projects/i240a/submit/lab2/exercises/3-overload$ exit
+
+Script done on 2020-02-06 10:37:33-05:00 [COMMAND_EXIT_CODE="0"]
