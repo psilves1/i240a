@@ -10,10 +10,11 @@
 
 typedef std::set<std::string> FileNames;
 
-std::map<int, FileNames> 
+std::map<std::string, int>  //should be map<std::string, int>
 readNums(std::vector<std::string> fileNames)
 {
-  std::map<int, FileNames> map; //empty collection
+  //Change the line below this
+  std::map<std::string, int> map; //empty collection
   for (auto fileName : fileNames) { //let compiler figure out fileName is string
     std::ifstream in(fileName); //open file
     if (!in) {
@@ -21,9 +22,14 @@ readNums(std::vector<std::string> fileNames)
       std::exit(1);
     }
     int i;
+    int sum = 0;
     while (in >>i) {
-      map[i].insert(fileName);
+      sum += i; 
+      //map[i].insert(int);
     }
+    
+    map[fileName] = sum;
+    
     if (!in.eof()) {
       std::cerr << "i/o error on file \"" << fileName << "\"" << std::endl;
       std::exit(1);
@@ -40,13 +46,13 @@ operator<<(std::ostream& out, const std::set<std::string>& set)
 }
 
 static void
-interact(const std::map<int, FileNames>& map)
+interact(const std::map<std::string, int>& map)
 {
-  int i;
+  std::string i;
   std::cout << ">> ";
   while (std::cin >> i) {
     try {
-      std::set<std::string> filenames = map.at(i);
+      int filenames = map.at(i); //getting an error here
       std::cout << i << ": " << filenames << std::endl;
     }
     catch (std::out_of_range& err) {
