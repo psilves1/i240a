@@ -11,15 +11,17 @@
 bool wordCountCompare(WordCount a, WordCount b){
 
   //return true if first arg is less than second arg
+
   if(a.second ==  b.second){
     //    std::cout<< a.first<< "is at "<<  a.second <<  "\n and " << b.first << "is at" << b.second << std::endl;
     //    std::cout <<  "they were equal" << std::endl;
-    return (a.first.compare(b.first) > 0);
+    return (a.first.compare(b.first) < 0);
   }
 
   //  std::cout<< a.first<< "is at " << a.second <<  "\n and " << b.first << "is at" << b.second << std::endl;
   //std::cout << "they ran the second one" << std::endl;
   //std::cout << a. first <<  " <  " << b.second << "?" << std::endl;
+  //  std::cout << a.first << " = " << a.second << " and " << b.first << " = " << b.second << std::endl;
   return a.second > b.second;
 }
 
@@ -57,59 +59,65 @@ int main(int argc, char *argv[]){
 
   typedef int Count;
   //map to put the words in
-  std::map<std::string, Count> map;
+  std::unordered_map<std::string, Count> map;
   
   //TO DO
   //put this in a for loop so that you can read in multiple lines at a time
-  std::ifstream in(args.at(4));
-  while (in.good()) {
-    std::string w;
-    in >> w;
+  for(int i = 4; i < argc; i++){
+    std::ifstream in(args.at(i));
+    while (in.good()) {
+      std::string w;
+      in >> w;
 
     
-    //Checks if the word fits within our requirments
-    if((int)w.length() > MAX_WORD_LEN)
-      continue;
-    if((int)w.length() < MIN_WORD_LEN)
-      continue;
+      //Checks if the word fits within our requirments
+      if((int)w.length() > MAX_WORD_LEN)
+	continue;
+      if((int)w.length() < MIN_WORD_LEN)
+	continue;
 
     
-    //checks if w is in our map.
-    //If so, increament w counter by 1.
-    //If not, add it to the map    
-    if(map[w] == 0){
-      map[w] = 1;
-    }
-    else{
-      map[w] += 1;
-    }
+      //checks if w is in our map.
+      //If so, increament w counter by 1.
+      //If not, add it to the map    
+      if(map[w] == 0){
+	map[w] = 1;
+      }
+      else{
+	map[w] += 1;
+      }
 
-    /*
-    //Sort the map
-    //    typedef std::pair<std::string, Count> WordCount;
-    auto wordCounts =
+      /*
+      //Sort the map
+      //    typedef std::pair<std::string, Count> WordCount;
+      auto wordCounts =
       std::vector<WordCount>(map.begin(), map.end());
+      
+      std::sort(wordCounts.begin(), wordCounts.end(),
+      wordCountCompare);    
+      */
+    }
+      if (!in.eof()) {
+	std::cerr << "An error occured" << std::endl; //                                                                                              
+	return 0;
+	//might need to make this a better error message later                                                                                        
+      }
 
-    std::sort(wordCounts.begin(), wordCounts.end(),
-	 wordCountCompare);    
-    */
-  }
-
-  //Sort the map                                                                                                                                
-  //    typedef std::pair<std::string, Count> WordCount;                                                                                        
-  /*
-  std::cout << "Before: " << std::endl;
-  for(auto i = map.begin(); i != map.end(); i++){
-
-    //    if(numOfPrints > MAX_N_OUT)
-    //break;
     
-    std::cout << i->first << " : " << i->second << std::endl;
- }
-  */
+  }
+    //Sort the map                                                                                                                                
+    //    typedef std::pair<std::string, Count> WordCount;                                                                                        
+    /*
+      std::cout << "Before: " << std::endl;
+      for(auto i = map.begin(); i != map.end(); i++){
+      
+      //    if(numOfPrints > MAX_N_OUT)
+      //break;
+    
+      std::cout << i->first << " : " << i->second << std::endl;
+      }
+    */
   
-
-
   auto wordCounts =
     std::vector<WordCount>(map.begin(), map.end());
 
@@ -121,7 +129,7 @@ int main(int argc, char *argv[]){
   
   int numOfPrints = 0;
   //print out the words with their counts                                                                                                       
-  for(auto i = map.begin(); i != map.end(); i++){
+  for(auto i = wordCounts.begin(); i != wordCounts.end(); i++){
 
     numOfPrints++;
     
@@ -129,14 +137,6 @@ int main(int argc, char *argv[]){
       break;
     
     std::cout << i->first << " : " << i->second << std::endl;
-  }
-  
-  
-  
-  if (!in.eof()) {
-    std::cerr << "An error occured" << std::endl; // 
-    return 0;
-    //might need to make this a better error message later
   }
 
   
