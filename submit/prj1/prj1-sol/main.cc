@@ -26,14 +26,14 @@ int main(int argc, char *argv[]){
   }
 
 
-  std::ifstream in(fileName);
+  std::ifstream in(args.at(4));
   while (in.good()) {
     std::string w;
     in >> w;
     std::cout << w << std::endl;
   }
   if (!in.eof()) {
-    cout << "An error occured" << endl;
+    std::cout << "An error occured" << std::endl;
     return 0;
     //might need to make this a better error message later
   }
