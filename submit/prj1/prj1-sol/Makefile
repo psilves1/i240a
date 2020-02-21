@@ -6,7 +6,7 @@ CXXFLAGS = -g -Wall -std=c++17
 OFILES = \
   main.o
 
-TARGET = main
+TARGET = wordcounts
 
 all:		$(TARGET)
 

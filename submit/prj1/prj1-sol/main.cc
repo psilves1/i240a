@@ -103,7 +103,7 @@ int main(int argc, char *argv[]){
       */
     }
       if (!in.eof()) {
-	std::cerr << "An error occured" << std::endl; //                                                                                              
+	std::cerr << "Bad file input: No such file or directory exists" << std::endl; //                                                                                              
 	return 0;
 	//might need to make this a better error message later                                                                                        
       }
