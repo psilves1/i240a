@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 240: Project 1</title>
+    <link href="prj1/hl-fine_blue.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exams-quizzes/index.html">Exams &amp; Quizzes</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hws/index.html">Homeworks</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <section data-coord="prj1.umt:1:0"><h1 data-coord="prj1.umt:1:0">Project 1</h1><p data-coord="prj1.umt:3:0"><strong data-coord="prj1.umt:3:0">Due</strong>: Feb 21 by 11:59p
+</p><p data-coord="prj1.umt:5:0"><strong data-coord="prj1.umt:5:0">Important Reminder</strong>: As per the course <em data-coord="prj1.umt:5:110"><a href="../../misc/academic-honesty-statement/academic-honesty-policy.html" data-coord="prj1.umt:5:110">Academic Honesty Statement</a></em>,
+cheating of any kind will minimally result in your letter grade
+for the entire course being reduced by one level.
+</p><p data-coord="prj1.umt:9:0">This document first provides the aims of this project.  It then lists
+the requirements as explicitly as possible.  This is followed by a log
+which should help you understand the requirements.  Finally, it
+provides some hints as to how those requirements can be met.
+</p><section data-coord="prj1.umt:14:0"><h2 data-coord="prj1.umt:14:0">Aims</h2><p data-coord="prj1.umt:17:0">The aims of this project are as follows:
+</p><ul data-coord="prj1.umt:19:0"><li data-coord="prj1.umt:19:0"><p data-coord="prj1.umt:19:4">To give you some exposure to programming in C++.
+</p></li><li data-coord="prj1.umt:21:0"><p data-coord="prj1.umt:21:4">To get you to write a <samp data-coord="prj1.umt:21:26">Makefile</samp> from scratch.
+</p></li><li data-coord="prj1.umt:23:0"><p data-coord="prj1.umt:23:4">To allow you to familiarize yourself with the programming
+environment you will be using in this course.
+</p></li><li data-coord="prj1.umt:26:0"><p data-coord="prj1.umt:26:4">To give you exposure to the C++ standard library.
+</p></li></ul></section><section data-coord="prj1.umt:30:0"><h2 data-coord="prj1.umt:30:0">Requirements</h2><p data-coord="prj1.umt:34:0">You must push a <samp data-coord="prj1.umt:34:16">submit/prj1-sol</samp> directory to your <samp data-coord="prj1.umt:34:52">master</samp> branch in
+your github repository such that typing <samp data-coord="prj1.umt:34:111">make</samp> within that directory
+will build a <samp data-coord="prj1.umt:34:153">wordcounts</samp> executable with usage:
+</p><pre data-coord="prj1.umt:39:0">./wordcounts MAX_N_OUT MIN_WORD_LEN MAX_WORD_LEN FILE...
+</pre><p data-coord="prj1.umt:42:0">The program should output the most commonly occurring words in
+one-or-more files <samp data-coord="prj1.umt:42:81">FILE...</samp>.  The arguments are:
+</p><dl data-coord="prj1.umt:45:0"><dt data-coord="prj1.umt:45:2"> <samp data-coord="prj1.umt:45:1">MAX_N_OUT</samp> </dt><dd data-coord="prj1.umt:46:0"><p data-coord="prj1.umt:46:4">A positive integer specifying the maximum number of words
+to be output.
+</p></dd><dt data-coord="prj1.umt:49:2"> <samp data-coord="prj1.umt:49:1">MIN_WORD_LEN</samp> </dt><dd data-coord="prj1.umt:50:0"><p data-coord="prj1.umt:50:5">A positive integer specifying the minimum length of words
+to be output.
+</p></dd><dt data-coord="prj1.umt:53:2"> <samp data-coord="prj1.umt:53:1">MAX_WORD_LEN</samp> </dt><dd data-coord="prj1.umt:54:0"><p data-coord="prj1.umt:54:5">A positive integer specifying the maximum length of words
+to be output.  This must be greater than or equal to
+<samp data-coord="prj1.umt:54:126">MIN_WORD_LEN</samp>.
+</p></dd><dt data-coord="prj1.umt:58:2"> <samp data-coord="prj1.umt:58:1">FILE...</samp> </dt><dd data-coord="prj1.umt:59:0"><p data-coord="prj1.umt:59:4">The names of one-or-more files which will be the source
+of the words.
+</p></dd></dl><p data-coord="prj1.umt:62:0">A <strong data-coord="prj1.umt:62:2">word</strong> is a maximal sequence of contiguous non-whitespace characters
+to which the following sequence of transformations have been applied:
+</p><ol data-coord="prj1.umt:65:0"><li data-coord="prj1.umt:65:0"><p data-coord="prj1.umt:65:4">All non alphabetic characters are removed.
+</p></li><li data-coord="prj1.umt:67:0"><p data-coord="prj1.umt:67:4">All upper-case characters are replaced by their lower-case
+equivalents.
+</p></li></ol><p data-coord="prj1.umt:70:0">For example, both the words <samp data-coord="prj1.umt:70:28">Didn't</samp> and <samp data-coord="prj1.umt:70:41">didn't</samp> are both transformed
+to <samp data-coord="prj1.umt:70:74">didnt</samp>.
+</p><p data-coord="prj1.umt:73:0">The output of the program should consists of up to <samp data-coord="prj1.umt:73:51">MAX_N_OUT</samp> lines
+where each line contains:
+</p><ol data-coord="prj1.umt:76:0"><li data-coord="prj1.umt:76:0"><p data-coord="prj1.umt:76:4">A transformed word <em data-coord="prj1.umt:76:23">W</em>.
+</p></li><li data-coord="prj1.umt:78:0"><p data-coord="prj1.umt:78:4">A <samp data-coord="prj1.umt:78:6">:</samp> followed by a single space character.
+</p></li><li data-coord="prj1.umt:80:0"><p data-coord="prj1.umt:80:4">A count of the total number of words in the
+files <samp data-coord="prj1.umt:80:58">FILE...</samp> which transform to word <em data-coord="prj1.umt:80:92">W</em>.
+</p></li></ol><p data-coord="prj1.umt:83:0">The lines should be ordered in non-ascending order by the count.
+If two lines have the same count, then they should be ordered
+in descending order by the word (i.e. in dictionary order).
+</p><p data-coord="prj1.umt:87:0">Note that the <samp data-coord="prj1.umt:87:14">MIN_LENGTH</samp> and <samp data-coord="prj1.umt:87:31">MAX_LENGTH</samp> command-line arguments
+constrain the length of the words after the transformations.
+</p><p data-coord="prj1.umt:90:0">The program is also subject to the following non-functional requirements:
+</p><ul data-coord="prj1.umt:92:0"><li data-coord="prj1.umt:92:0"><p data-coord="prj1.umt:92:4">It should detect all errors and report them to standard error with
+informative messages.  The program may terminate after reporting
+its first error.
+</p></li><li data-coord="prj1.umt:96:0"><p data-coord="prj1.umt:96:4">It should be designed such that its running time should usually
+increase only linearly with the size of the files <samp data-coord="prj1.umt:96:122">FILE...</samp>.
+</p></li><li data-coord="prj1.umt:99:0"><p data-coord="prj1.umt:99:4">It may not use any libraries other than those available with a
+standard C++ 17 installation.
+</p></li><li data-coord="prj1.umt:102:0"><p data-coord="prj1.umt:102:4">The program should be written to use C++ (rather than C) library
+functions as far as possible.
+</p></li><li data-coord="prj1.umt:105:0"><p data-coord="prj1.umt:105:4">The program should compile without any warnings.
+</p></li></ul></section><section data-coord="prj1.umt:107:0"><h2 data-coord="prj1.umt:107:0">Sample Log</h2><p data-coord="prj1.umt:110:0">An edited sample log of the operation of the program is shown below:
+</p><pre>$ .<span class="hl opt">/</span>wordcounts 
+usage<span class="hl opt">:</span> .<span class="hl opt">/</span>wordcounts MAX_N_OUT MIN_WORD_LEN MAX_WORD_LEN FILE...
+$ .<span class="hl opt">/</span>wordcounts <span class="hl num">2 3 4</span>x ~<span class="hl opt">/</span>cs240<span class="hl opt">/</span>labs<span class="hl opt">/</span>lab<span class="hl num">0</span><span class="hl opt">/</span>lab0.umt
+bad integer value <span class="hl str">&quot;4x&quot;</span> <span class="hl kwa">for</span> MAX_WORD_LEN
+$ .<span class="hl opt">/</span>wordcounts <span class="hl num">2 4 3</span> ~<span class="hl opt">/</span>cs240<span class="hl opt">/</span>labs<span class="hl opt">/</span>lab<span class="hl num">0</span><span class="hl opt">/</span>lab0.umt
+MIN_WORD_LEN <span class="hl num">4</span> is greater than MAX_WORD_LEN <span class="hl num">3</span>
+$ .<span class="hl opt">/</span>wordcounts <span class="hl num">10 5 5</span> ~<span class="hl opt">/</span>cs240<span class="hl opt">/</span>labs<span class="hl opt">/</span>lab<span class="hl num">0</span><span class="hl opt">/</span>lab0.umt
+using<span class="hl opt">:</span> <span class="hl num">14</span>
+shell<span class="hl opt">:</span> <span class="hl num">10</span>
+<span class="hl kwc">which</span><span class="hl opt">:</span> <span class="hl num">10</span>
+clone<span class="hl opt">:</span> <span class="hl num">8</span>
+files<span class="hl opt">:</span> <span class="hl num">8</span>
+start<span class="hl opt">:</span> <span class="hl num">8</span>
+email<span class="hl opt">:</span> <span class="hl num">6</span>
+login<span class="hl opt">:</span> <span class="hl num">6</span>
+where<span class="hl opt">:</span> <span class="hl num">6</span>
+above<span class="hl opt">:</span> <span class="hl num">5</span>
+$ .<span class="hl opt">/</span>wordcounts <span class="hl num">10 5 6</span> ~<span class="hl opt">/</span>cs240<span class="hl opt">/</span>labs<span class="hl opt">/</span>lab<span class="hl num">0</span><span class="hl opt">/</span>lab0.umt
+github<span class="hl opt">:</span> <span class="hl num">34</span>
+should<span class="hl opt">:</span> <span class="hl num">19</span>
+using<span class="hl opt">:</span> <span class="hl num">14</span>
+branch<span class="hl opt">:</span> <span class="hl num">13</span>
+course<span class="hl opt">:</span> <span class="hl num">13</span>
+create<span class="hl opt">:</span> <span class="hl num">13</span>
+shell<span class="hl opt">:</span> <span class="hl num">10</span>
+<span class="hl kwc">which</span><span class="hl opt">:</span> <span class="hl num">10</span>
+within<span class="hl opt">:</span> <span class="hl num">9</span>
+access<span class="hl opt">:</span> <span class="hl num">8</span>
+$ .<span class="hl opt">/</span>wordcounts <span class="hl num">10 5 6</span> ~<span class="hl opt">/</span>cs240<span class="hl opt">/</span>labs<span class="hl opt">/</span>lab<span class="hl num">0</span><span class="hl opt">/</span>lab0.um
+cannot <span class="hl kwb">read</span> <span class="hl opt">/</span>home<span class="hl opt">/</span>umrigar<span class="hl opt">/</span>cs240<span class="hl opt">/</span>labs<span class="hl opt">/</span>lab<span class="hl num">0</span><span class="hl opt">/</span>lab0.um<span class="hl opt">:</span>
+  No such <span class="hl kwc">file</span> or directory
+$</pre></section><section data-coord="prj1.umt:149:0"><h2 data-coord="prj1.umt:149:0">Hints</h2><p data-coord="prj1.umt:152:0">Three datatypes provided by the C++ library may prove useful:
+</p><dl data-coord="prj1.umt:154:0"><dt data-coord="prj1.umt:154:2"> <samp data-coord="prj1.umt:154:1">std:string</samp> </dt><dd data-coord="prj1.umt:155:0"><p data-coord="prj1.umt:155:4">C's <samp data-coord="prj1.umt:155:8">char *</samp> strings are extremely limited.  <samp data-coord="prj1.umt:155:49">std::string</samp> from
+the C++ library provides string which can grow dynamically (using
+<samp data-coord="prj1.umt:155:142">push_back()</samp>) as well as supporting concatenation using
+a overloaded <samp data-coord="prj1.umt:155:216">+</samp> operator.  Additionally, they can be
+constructed easily from <samp data-coord="prj1.umt:155:285">char *</samp> literals explicitly as in
+<samp data-coord="prj1.umt:155:324">std::string("hello")</samp> or implicitly when a <samp data-coord="prj1.umt:155:368">char *</samp> is
+used in a context where a <samp data-coord="prj1.umt:155:410">std::string</samp> is expected.  Hence
+it is possible to build up a dynamic message using something
+like <code><span class="hl kwc">std</span><span class="hl opt">::</span><span class="hl kwd">string</span><span class="hl opt">(</span><span class="hl str">&quot;file</span> <span class="hl esc">\&quot;</span><span class="hl str">&quot;</span><span class="hl opt">) +</span> fileName <span class="hl opt">+</span> <span class="hl str">&quot;</span><span class="hl esc">\&quot;</span> <span class="hl str">not found&quot;</span></code>.
+</p></dd><dt data-coord="prj1.umt:165:2"> <samp data-coord="prj1.umt:165:1">std:vector&lt;T&gt;</samp> </dt><dd data-coord="prj1.umt:166:0"><p data-coord="prj1.umt:166:4">C does not support arrays whose size can change dynamically.  C++'s
+<samp data-coord="prj1.umt:166:76">std::vector</samp> meets that need and allows storing sequences of any
+type <samp data-coord="prj1.umt:166:151">T</samp> while provided array-like behavior using an overloaded
+<samp data-coord="prj1.umt:166:214">[]</samp> operator.
+</p></dd><dt data-coord="prj1.umt:171:2"> <samp data-coord="prj1.umt:171:1">std:unordered_map&lt;K, V&gt;</samp> </dt><dd data-coord="prj1.umt:172:0"><p data-coord="prj1.umt:172:4">This implements a mapping from keys having type <samp data-coord="prj1.umt:172:52">K</samp> to values
+having type <samp data-coord="prj1.umt:172:82">V</samp>.  For example, it can maintain a mapping from
+words to their number of occurrences.  Again, the <samp data-coord="prj1.umt:172:186">[]</samp> operator
+is overloaded to allow code like <samp data-coord="prj1.umt:172:237">map[word] += 1</samp>.
+</p></dd></dl><p data-coord="prj1.umt:177:0">All three of the above datatypes manage their own memory.
+</p><p data-coord="prj1.umt:179:0">The map and vector collections can be created by providing iterators
+over other collections specified using a inclusive starting "pointer"
+(often <samp data-coord="prj1.umt:179:147">begin()</samp>) and exclusive ending "pointer" (often <samp data-coord="prj1.umt:179:197">end()</samp>).
+For example, a vector can be created from <samp data-coord="prj1.umt:179:249">main()</samp>'s <samp data-coord="prj1.umt:179:260">argv[]</samp> array
+using:
+</p><pre><span class="hl kwc">std</span><span class="hl opt">::</span>vector<span class="hl opt">&lt;</span><span class="hl kwc">std</span><span class="hl opt">::</span>string<span class="hl opt">&gt;(</span>argv<span class="hl opt">, &amp;</span>argv<span class="hl opt">[</span>argc<span class="hl opt">])</span></pre><p data-coord="prj1.umt:189:0">and from a map using:
+</p><pre><span class="hl kwc">std</span><span class="hl opt">::</span>vector<span class="hl opt">&lt;</span><span class="hl kwc">std</span><span class="hl opt">::</span>Pair<span class="hl opt">&lt;...&gt;&gt;(</span>map<span class="hl opt">.</span><span class="hl kwd">begin</span><span class="hl opt">(),</span> map<span class="hl opt">.</span><span class="hl kwd">end</span><span class="hl opt">())</span></pre><p data-coord="prj1.umt:195:0">where the type of the <samp data-coord="prj1.umt:195:22">Pair</samp> depends on the type of the <samp data-coord="prj1.umt:195:56">map</samp>.
+</p><p data-coord="prj1.umt:197:0">The program can be organized as follows:
+</p><ol data-coord="prj1.umt:199:0"><li data-coord="prj1.umt:199:0"><p data-coord="prj1.umt:199:4">Convert appropriate command-line arguments from strings to
+integers, terminating with an error message if they are in error.
+</p></li><li data-coord="prj1.umt:202:0"><p data-coord="prj1.umt:202:4">For each file name specified on the command line read in the
+contained words.  As each word is read in, transform it
+and enter the transformed word into a map so as to track
+its count.
+</p></li><li data-coord="prj1.umt:207:0"><p data-coord="prj1.umt:207:4">Once all the words have been read in, extract all the word-count
+pairs from the map into a vector.  Sort the vector using the
+required ordering.  Report up to <samp data-coord="prj1.umt:207:171">MAX_OUT_N</samp> word-count pairs.
+</p></li></ol><p data-coord="prj1.umt:213:0">The following steps give a rough idea of how you can develop your
+program.  It provides fragments of code but you will need to search
+the web to put everything together.
+</p><ol data-coord="prj1.umt:217:0"><li data-coord="prj1.umt:217:0"><p data-coord="prj1.umt:217:4">Use the procedure covered in <em data-coord="prj1.umt:217:62"><a href="../../labs/lab0/lab0.html" data-coord="prj1.umt:217:62">Lab 0</a></em>
+to create a new <samp data-coord="prj1.umt:217:90">prj1-sol</samp> branch in your <samp data-coord="prj1.umt:217:116">i240?</samp> github clone and
+set up a new <samp data-coord="prj1.umt:217:158">submit/prj1-sol</samp> directory.
+</p></li><li data-coord="prj1.umt:221:0"><p data-coord="prj1.umt:221:4">Use what you learnt in <em data-coord="prj1.umt:221:56"><a href="../../labs/lab1/lab1.html" data-coord="prj1.umt:221:56">Lab 1</a></em> to
+write a <samp data-coord="prj1.umt:221:79">Makefile</samp> to build your program.  Depending on how
+you choose to organize your program, it may be quite trivial.  You
+should use this <samp data-coord="prj1.umt:221:222">Makefile</samp> to recompile and test your code after
+each step below.
+</p></li><li data-coord="prj1.umt:227:0"><p data-coord="prj1.umt:227:4">Start by writing a <samp data-coord="prj1.umt:227:23">main()</samp> function.  It takes 2 arguments <samp data-coord="prj1.umt:227:64">int
+    argc</samp> and a <samp data-coord="prj1.umt:227:85">char *argv[]</samp> array referencing the actual <samp data-coord="prj1.umt:227:129">argc</samp>
+command-line arguments to the program (the first argument
+corresponds to the program invocation).
+</p><p data-coord="prj1.umt:232:4">You can convert from a C-style array of <samp data-coord="prj1.umt:232:44">char *</samp> to a
+C++ <samp data-coord="prj1.umt:232:66">std::vector&lt;std::string&gt;</samp> using an iterator
+over the <samp data-coord="prj1.umt:232:124">argv[]</samp> array:
+</p><pre>    <span class="hl kwc">auto</span> args <span class="hl opt">=</span> <span class="hl kwc">std</span><span class="hl opt">::</span>vector<span class="hl opt">&lt;</span><span class="hl kwc">std</span><span class="hl opt">::</span>string<span class="hl opt">&gt;(&amp;</span>argv<span class="hl opt">[</span><span class="hl num">0</span><span class="hl opt">], &amp;</span>argv<span class="hl opt">[</span>argc<span class="hl opt">]);</span></pre></li><li data-coord="prj1.umt:240:0"><p data-coord="prj1.umt:240:4">Verify that the <samp data-coord="prj1.umt:240:20">MAX_N_OUT</samp>, <samp data-coord="prj1.umt:240:33">MIN_WORD_LEN</samp>, <samp data-coord="prj1.umt:240:49">MAX_WORD_LEN</samp> are
+correct.  You can convert from a <samp data-coord="prj1.umt:240:105">std::string</samp> <samp data-coord="prj1.umt:240:119">arg</samp> to an integer
+using <code><span class="hl kwc">std</span><span class="hl opt">::</span><span class="hl kwd">stoi</span><span class="hl opt">(</span>arg<span class="hl opt">,</span> endIndex<span class="hl opt">)</span></code> and verify that <code>endIndex <span class="hl opt">==</span>
+    arg<span class="hl opt">.</span><span class="hl kwd">length</span><span class="hl opt">()</span></code> to ensure that <samp data-coord="prj1.umt:240:240">arg</samp> is an integer.
+</p></li><li data-coord="prj1.umt:245:0"><p data-coord="prj1.umt:245:4">Write yourself a little test program to output the words from a
+file:
+</p><ol data-coord="prj1.umt:248:0"><li data-coord="prj1.umt:248:0"><p data-coord="prj1.umt:248:9">Create a <samp data-coord="prj1.umt:248:18">std::ifstream in(fileName)</samp>.  Then
+</p></li><li data-coord="prj1.umt:250:0"><p data-coord="prj1.umt:250:9">While the state of the input stream <samp data-coord="prj1.umt:250:45">in</samp> is good (using
+<samp data-coord="prj1.umt:250:74">in.good()</samp>), you can read the next non-blank word into a
+<samp data-coord="prj1.umt:250:141">std::string</samp> using <samp data-coord="prj1.umt:250:161">&gt;&gt;</samp>.
+</p></li><li data-coord="prj1.umt:254:0"><p data-coord="prj1.umt:254:9">When the state of <samp data-coord="prj1.umt:254:27">in</samp> is no longer good, verify that
+it is indeed at end-of-file.  If not, report an error.
+</p></li></ol><p data-coord="prj1.umt:257:4">Something along the lines of:
+</p><pre>    <span class="hl kwc">std</span><span class="hl opt">::</span>ifstream <span class="hl kwd">in</span><span class="hl opt">(</span>fileName<span class="hl opt">);</span>
+    <span class="hl kwa">while</span> <span class="hl opt">(</span>in<span class="hl opt">.</span><span class="hl kwd">good</span><span class="hl opt">()) {</span>
+      <span class="hl kwc">std</span><span class="hl opt">::</span>string w<span class="hl opt">;</span>
+      in <span class="hl opt">&gt;&gt;</span> w<span class="hl opt">;</span>
+      <span class="hl kwc">std</span><span class="hl opt">::</span>cout <span class="hl opt">&lt;&lt;</span> w <span class="hl opt">&lt;&lt;</span> <span class="hl kwc">std</span><span class="hl opt">::</span>endl<span class="hl opt">;</span>
+    <span class="hl opt">}</span>
+    <span class="hl kwa">if</span> <span class="hl opt">(!</span>in<span class="hl opt">.</span><span class="hl kwd">eof</span><span class="hl opt">()) {</span>
+      <span class="hl slc">//report error</span>
+    <span class="hl opt">}</span></pre><p data-coord="prj1.umt:271:4">An alternative to the above which does not use the <samp data-coord="prj1.umt:271:55">good()</samp> method:
+</p><pre>    <span class="hl kwc">std</span><span class="hl opt">::</span>ifstream <span class="hl kwd">in</span><span class="hl opt">(</span>fileName<span class="hl opt">);</span> <span class="hl slc">//open file</span>
+    <span class="hl kwa">if</span> <span class="hl opt">(!</span>in<span class="hl opt">) {</span>
+      <span class="hl slc">//report error;</span>
+    <span class="hl opt">}</span>
+    <span class="hl kwc">std</span><span class="hl opt">::</span>string w<span class="hl opt">;</span>
+    <span class="hl kwa">while</span> <span class="hl opt">(</span>in <span class="hl opt">&gt;&gt;</span> w<span class="hl opt">) {</span>
+      <span class="hl kwc">std</span><span class="hl opt">::</span>cout <span class="hl opt">&lt;&lt;</span> w <span class="hl opt">&lt;&lt;</span> <span class="hl kwc">std</span><span class="hl opt">::</span>endl<span class="hl opt">;</span>
+    <span class="hl opt">}</span>
+    <span class="hl kwa">if</span> <span class="hl opt">(!</span>in<span class="hl opt">.</span><span class="hl kwd">eof</span><span class="hl opt">()) {</span>
+      <span class="hl slc">//report error;</span>
+    <span class="hl opt">}</span></pre></li><li data-coord="prj1.umt:287:0"><p data-coord="prj1.umt:287:4">Incorporate the above into your program, but instead of outputting
+each word transform it as per the requirements.  Then if the
+transformed word meets the length requirements, enter it in to a
+map.
+</p><pre>    <span class="hl kwc">std</span><span class="hl opt">::</span>unordered_map<span class="hl opt">&lt;</span><span class="hl kwc">std</span><span class="hl opt">::</span>string<span class="hl opt">,</span> Count<span class="hl opt">&gt;</span> map<span class="hl opt">;</span>
+
+    <span class="hl opt">...</span>
+    Count<span class="hl opt">&amp;</span> count <span class="hl opt">=</span> map<span class="hl opt">[</span>transformedWord<span class="hl opt">];</span>
+    count <span class="hl opt">+=</span> <span class="hl num">1</span><span class="hl opt">;</span></pre><p data-coord="prj1.umt:300:4">where <samp data-coord="prj1.umt:300:10">Count</samp> is a suitable integral <samp data-coord="prj1.umt:300:41">typedef</samp>.
+</p><p data-coord="prj1.umt:302:4">Once all the files have been read, the map will contain
+a count of all the words which meet the length requirements.
+</p></li><li data-coord="prj1.umt:305:0"><p data-coord="prj1.umt:305:4">You need to sort the entries in the map, but a map is
+not directly amenable to sorting.  Instead you need to
+extract the key-value pairs from the map into a
+<samp data-coord="prj1.umt:305:173">vector</samp> using something like:
+</p><pre>    <span class="hl kwc">typedef std</span><span class="hl opt">::</span>pair<span class="hl opt">&lt;</span><span class="hl kwc">std</span><span class="hl opt">::</span>string<span class="hl opt">,</span> Count<span class="hl opt">&gt;</span> WordCount<span class="hl opt">;</span>
+    <span class="hl kwc">auto</span> wordCounts <span class="hl opt">=</span>
+      <span class="hl kwc">std</span><span class="hl opt">::</span>vector<span class="hl opt">&lt;</span>WordCount<span class="hl opt">&gt;(</span>map<span class="hl opt">.</span><span class="hl kwd">begin</span><span class="hl opt">(),</span> map<span class="hl opt">.</span><span class="hl kwd">end</span><span class="hl opt">());</span></pre><p data-coord="prj1.umt:316:4">which can now be sorted using:
+</p><pre>    <span class="hl kwd">sort</span><span class="hl opt">(</span>wordCounts<span class="hl opt">.</span><span class="hl kwd">begin</span><span class="hl opt">(),</span> wordCounts<span class="hl opt">.</span><span class="hl kwd">end</span><span class="hl opt">(),</span>
+         wordCountCompare<span class="hl opt">)</span></pre><p data-coord="prj1.umt:323:4">where <samp data-coord="prj1.umt:323:10">wordCountCompare()</samp> is a suitable comparison
+function which returns <code><span class="hl kwa">true</span></code> iff its two <samp data-coord="prj1.umt:323:103">WordCount</samp>
+arguments meet the ordering specified for the project.
+</p></li><li data-coord="prj1.umt:327:0"><p data-coord="prj1.umt:327:4">It is now a simple matter to output up to the first <samp data-coord="prj1.umt:327:56">MAX_N_OUT</samp>
+pairs from these sorted <samp data-coord="prj1.umt:327:96">wordCounts</samp>.
+</p></li><li data-coord="prj1.umt:330:0"><p data-coord="prj1.umt:330:4">Iterate until you meet all requirements.
+</p></li></ol><p data-coord="prj1.umt:332:0">It is a good idea to commit and push your project periodically
+whenever you have made significant changes.  When it is complete
+please follow the procedure covered in <em data-coord="prj1.umt:332:196"><a href="../../labs/lab0/lab0.html" data-coord="prj1.umt:332:196">Lab 0</a></em> to merge your <samp data-coord="prj1.umt:332:218">prj1-sol</samp> branch into your <samp data-coord="prj1.umt:332:246">master</samp> branch and
+submit your project to the TA via github.
+</p></section></section>
+    </div> <!-- #content -->
+  </body>
+</html>
