@@ -9,9 +9,7 @@
 #include "main.h"
 
 bool wordCountCompare(WordCount a, WordCount b){
-
-  //return true if first arg is less than second arg
-
+  
   if(a.second ==  b.second){
     //    std::cout<< a.first<< "is at "<<  a.second <<  "\n and " << b.first << "is at" << b.second << std::endl;
     //    std::cout <<  "they were equal" << std::endl;
@@ -29,7 +27,14 @@ int main(int argc, char *argv[]){
 
   //ADD A USAGE MESSAGE
   //if argc < some num -> print usage message
+  //return true if first arg is less than second arg                                                                                              
+  if(argc < 5){
+    std::cerr << "usage: ./wordcounts MAX_N_OUT MIN_WORD_LEN MAX_WORD_LEN FILE..." << std::endl;
+    return 0;
+  }
 
+
+  
   auto args = std::vector<std::string>(&argv[0], &argv[argc]);
 
   std::string::size_type endIndex;
@@ -53,7 +58,7 @@ int main(int argc, char *argv[]){
 
   //checks if min is greater than max
   if(MIN_WORD_LEN > MAX_WORD_LEN){
-    std::cout << "MIN_WORD_LEN is great than MAX_WORD_LEN" << std::endl;
+    std::cout << "MIN_WORD_LEN is greater than MAX_WORD_LEN" << std::endl;
     return 0;
   }
 

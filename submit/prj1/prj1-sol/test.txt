@@ -1,6 +1,8 @@
-word
-word2
-word2
-word2
-word
-word
+apple
+apple
+orange
+bananna
+amazon
+amazon
+orange
+orange
