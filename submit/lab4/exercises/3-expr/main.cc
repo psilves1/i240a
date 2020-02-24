@@ -12,6 +12,8 @@ main(int argc, char* argv[])
     std::exit(1);
   }
   for (auto i = 1; i < argc; i++) {
-    std::cout << *parse(argv[i]) << std::endl;
+    //    std::cout << *parse(argv[i]) << std::endl;
+    ExprPtr ptr = parse(argv[i]);
+    std::cout << *ptr << " = " << ptr->eval() << std::endl;
   }
 }

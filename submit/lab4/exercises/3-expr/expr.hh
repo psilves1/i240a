@@ -8,6 +8,8 @@
 
 
 class Expr : public ToString {
+public:
+  virtual int eval() const = 0;
 };
 
 //ExprPtr is an alias for a smart shared ptr to an Expr.
@@ -20,7 +22,7 @@ private:
   enum class Private { TAG };
 public:
   const int value;
-
+  
   /** Factory function */
   static ExprPtr make(int val) {
     return std::make_shared<IntExpr>(val, Private::TAG);
@@ -28,7 +30,8 @@ public:
 
   
   std::string toString() const;
-
+  int eval () const;
+  
   //use Private to ensure this constructor cannot be called from outside
   //this class even though it is public
   IntExpr(int val, Private x) : value(val) { }
@@ -52,7 +55,7 @@ public:
   }
 
   std::string toString() const;
-
+  int eval() const;
   //use Private to ensure this constructor cannot be called from outside
   //this class even though it is public
   AddExpr(ExprPtr& left, ExprPtr& right, Private x) :
@@ -74,7 +77,7 @@ public:
   }
 
   std::string toString() const;
-
+  int eval() const;
   //use Private to ensure this constructor cannot be called from outside
   //this class even though it is public
   SubExpr(ExprPtr& left, ExprPtr& right, Private x) :
@@ -96,7 +99,8 @@ public:
   }
 
   std::string toString() const;
-
+  int eval() const;
+  
   //use Private to ensure this constructor cannot be called from outside
   //this class even though it is public
   MulExpr(ExprPtr& left, ExprPtr& right, Private x) :
@@ -117,7 +121,8 @@ public:
   }
 
   std::string toString() const;
-
+  int eval() const;
+  
   //use Private to ensure this constructor cannot be called from outside
   //this class even though it is public
   DivExpr(ExprPtr& left, ExprPtr& right, Private x) :
