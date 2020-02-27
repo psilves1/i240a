@@ -10,6 +10,7 @@
 class Expr : public ToString {
 public:
   virtual int eval() const = 0;
+  virtual std::string dcCode() const = 0;
 };
 
 //ExprPtr is an alias for a smart shared ptr to an Expr.
@@ -28,6 +29,9 @@ public:
     return std::make_shared<IntExpr>(val, Private::TAG);
   }
 
+  std::string dcCode() const {
+    return std::to_string(value); // supposed to return string version of int
+  }  
   
   std::string toString() const;
 
@@ -53,6 +57,10 @@ public:
   /** Factory function */
   static ExprPtr make(ExprPtr left, ExprPtr right) {
     return std::make_shared<AddExpr>(left, right, Private::TAG);
+  }
+
+  std::string dcCode () const {
+    return left->dcCode() + " " + right->dcCode() + " + ";
   }
 
   std::string toString() const;
@@ -87,6 +95,9 @@ public:
   SubExpr(ExprPtr& left, ExprPtr& right, Private x) :
     left(left), right(right) {
   }
+  std::string dcCode () const {
+    return left->dcCode() + " " + right->dcCode() + " - ";
+  }
 
   int eval() const { return left->eval() - right->eval(); }
   
@@ -103,6 +114,10 @@ public:
   /** Factory function */
   static ExprPtr make(ExprPtr left, ExprPtr right) {
     return std::make_shared<MulExpr>(left, right, Private::TAG);
+  }
+
+  std::string dcCode () const {
+    return left->dcCode() + " " + right->dcCode() + " * ";
   }
 
   std::string toString() const;
@@ -127,6 +142,10 @@ public:
   /** Factory function */
   static ExprPtr make(ExprPtr left, ExprPtr right) {
     return std::make_shared<DivExpr>(left, right, Private::TAG);
+  }
+
+  std::string dcCode () const {
+    return left->dcCode() + " " + right->dcCode() + " / ";
   }
 
   std::string toString() const;

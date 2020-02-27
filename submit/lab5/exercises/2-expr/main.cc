@@ -13,6 +13,6 @@ main(int argc, char* argv[])
   }
   for (auto i = 1; i < argc; i++) {
     ExprPtr exprP = parse(argv[i]);
-    std::cout << *exprP << " = " << exprP->eval() << std::endl;
+    std::cout << exprP->dcCode() << " p c"<< std::endl;
   }
 }
