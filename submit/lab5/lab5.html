@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 240: Lab 5</title>
+    <link href="lab5/hl-fine_blue.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exams-quizzes/index.html">Exams &amp; Quizzes</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hws/index.html">Homeworks</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <section data-coord="lab5.umt:1:0"><h1 data-coord="lab5.umt:1:0">Lab 5</h1><p data-coord="lab5.umt:3:0"><strong data-coord="lab5.umt:3:0">Date</strong>: Feb 27, 2020
+</p><p data-coord="lab5.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><p data-coord="lab5.umt:9:0">In the listings which follow, comments are any text extending from 
+a <samp data-coord="lab5.umt:9:70">#</samp> character to end-of-line.
+</p><section data-coord="lab5.umt:12:0"><h2 data-coord="lab5.umt:12:0">Aims</h2><p data-coord="lab5.umt:15:0">The aim of this lab is to give you more exposure to object-oriented
+programming in C++.  After completing this lab, you should have some
+familiarity with the following topics:
+</p><ul data-coord="lab5.umt:19:0"><li data-coord="lab5.umt:19:0"><p data-coord="lab5.umt:19:4">The use of <samp data-coord="lab5.umt:19:15">virtual</samp> functions in C++.
+</p></li><li data-coord="lab5.umt:21:0"><p data-coord="lab5.umt:21:4">The use of stack machines for evaluating arithmetic expressions.
+</p></li></ul></section><section data-coord="lab5.umt:23:0"><h2 data-coord="lab5.umt:23:0">Exercises</h2><p data-coord="lab5.umt:27:0">This lab has two exercises.  The first is a very simple illustration
+of object-oriented programming in C++.  The second exercise continues
+the final exercise from your <em data-coord="lab5.umt:27:189"><a href="../lab4/lab4.html" data-coord="lab5.umt:27:189">previous lab</a></em>.
+</p><p data-coord="lab5.umt:31:0">The provided <a href="exercises/Makefile" data-coord="lab5.umt:31:35">Makefile</a> will build an executable
+called <samp data-coord="lab5.umt:31:76">main</samp> in the current directory (which is usually a directory
+for the individual exercises).  It assumes that there is a <samp data-coord="lab5.umt:31:197">main.cc</samp>
+and will build the <samp data-coord="lab5.umt:31:226">main</samp> executable from all the <samp data-coord="lab5.umt:31:257">*.cc</samp> files in the
+directory.  It automatically tracks dependencies.  It also generates a
+<samp data-coord="lab5.umt:31:348">.gitignore</samp> file so that useless files do not get committed to github.
+</p><section data-coord="lab5.umt:39:0"><h3 data-coord="lab5.umt:39:0">Starting up</h3><p data-coord="lab5.umt:42:0">Follow the <em data-coord="lab5.umt:42:44"><a href="../submission/submission.html" data-coord="lab5.umt:42:44">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="lab5.umt:42:104">lab5</samp> branch and a new
+<samp data-coord="lab5.umt:42:128">submit/lab5</samp> directory.  Start a <samp data-coord="lab5.umt:42:162">script</samp> session to log
+your interaction into a <samp data-coord="lab5.umt:42:210">lab5.LOG</samp> file.
+</p><p data-coord="lab5.umt:47:0">Copy all the lab5 exercises into your <samp data-coord="lab5.umt:47:38">submit/lab5</samp> directory by
+copying the contents of the <samp data-coord="lab5.umt:47:93">~/cs240/labs/lab5/exercises</samp>:
+</p><pre data-coord="lab5.umt:51:0">$ cd ~/i240?/submit/lab5
+$ cp -r ~/cs240/labs/lab5/exercises .
+</pre></section><section data-coord="lab5.umt:56:0"><h3 data-coord="lab5.umt:56:0">Exercise 1: Using Virtual Functions</h3><p data-coord="lab5.umt:59:0">Change over to the <em data-coord="lab5.umt:59:43"><a href="./exercises/1-animal" data-coord="lab5.umt:59:43">&lt;./exercises/1-animal&gt;</a></em> directory.
+</p><pre data-coord="lab5.umt:62:0">$ cd exercises/1-animal
+$ ls -l
+</pre><p data-coord="lab5.umt:66:0">You should see that the directory contains a <samp data-coord="lab5.umt:66:45">animal.hh</samp> file which
+implements simple classes giving a taxonomy of animals.
+The <samp data-coord="lab5.umt:66:128">Animal</samp> class is abstract because it contains a <strong data-coord="lab5.umt:66:177">pure
+virtual function</strong> <samp data-coord="lab5.umt:66:201">says()</samp>.  Hence it cannot be instantiated.
+</p><p data-coord="lab5.umt:71:0">All of our <samp data-coord="lab5.umt:71:11">Animal</samp>'s have <samp data-coord="lab5.umt:71:27">name</samp>'s and that is reflected in
+the fact that an <samp data-coord="lab5.umt:71:78">Animal</samp> is always created with a <samp data-coord="lab5.umt:71:112">name</samp> field.
+We have <samp data-coord="lab5.umt:71:134">Dog</samp>, <samp data-coord="lab5.umt:71:141">Cat</samp> and <samp data-coord="lab5.umt:71:151">Cow</samp> as sub-classes of <samp data-coord="lab5.umt:71:175">Animal</samp>.  Their
+constructors call the <samp data-coord="lab5.umt:71:214">Animal</samp> constructor in their initialization
+lists.
+</p><p data-coord="lab5.umt:77:0">Each <samp data-coord="lab5.umt:77:5">Animal</samp> sub-class provides an implementation for the <samp data-coord="lab5.umt:77:59">says()</samp>
+method.  Since no other methods remain unimplemented, the <samp data-coord="lab5.umt:77:126">Animal</samp>
+sub-classes are concrete and can be instantiated.
+</p><p data-coord="lab5.umt:81:0">Simply type <samp data-coord="lab5.umt:81:12">make -f ../Makefile</samp> in the <samp data-coord="lab5.umt:81:41">1-animal</samp> directory to build
+the program. The <samp data-coord="lab5.umt:81:88">-f</samp> option tells it to use a <samp data-coord="lab5.umt:81:118">Makefile</samp> other than
+that in the current directory; in this case, we are using a <samp data-coord="lab5.umt:81:200">Makefile</samp>
+from the parent directory.
+</p><p data-coord="lab5.umt:86:0">The compilation should fail with an error.  Figure out why and
+fix the problem.
+</p><p data-coord="lab5.umt:89:0">Once you have fixed the problem, the compilation should succeed with
+building a <samp data-coord="lab5.umt:89:80">main</samp> executable.  It should run successfully and have
+each animal make its trademark sounds.
+</p><p data-coord="lab5.umt:93:0">Dogs eat meat, cats eat fish and cows eat grass.  Add an <samp data-coord="lab5.umt:93:57">eats()</samp>
+method to all the animal classes which returns the kind of food
+each animal eats.  Then modify <samp data-coord="lab5.umt:93:161">main()</samp> so as to have it output
+what each animal eats, rather than what each animal says.
+</p></section><section data-coord="lab5.umt:98:0"><h3 data-coord="lab5.umt:98:0">Exercise 2: Extending Expressions</h3><p data-coord="lab5.umt:101:0">The <em data-coord="lab5.umt:101:26"><a href="./exercises/2-expr" data-coord="lab5.umt:101:26">&lt;./exercises/2-expr&gt;</a></em> directory contains a solution to
+the last exercise in the previous lab.
+</p><p data-coord="lab5.umt:104:0">Compile the program using the <samp data-coord="lab5.umt:104:30">Makefile</samp> in the parent directory.
+When you run the program, it should produce the output required
+for the previous lab.
+</p><p data-coord="lab5.umt:108:0">A stack machine is one where all memory is accessed as a stack using
+instructions which operate only on the stack.  For example, the
+<em data-coord="lab5.umt:108:187"><a href="https://en.wikipedia.org/wiki/Java_virtual_machine" data-coord="lab5.umt:108:187">Java Virtual
+Machine</a></em> used for running Java is organized as a stack machine.
+</p><p data-coord="lab5.umt:113:0">The <a href="https://linux.die.net/man/1/dc" data-coord="lab5.umt:113:38">dc(1)</a> program is a basic stack
+machine.  A sample session with <samp data-coord="lab5.umt:113:101">dc</samp> is shown below:
+</p><pre data-coord="lab5.umt:117:0">$ dc
+1 p c
+1
+f
+1 2 3 * + p c
+7
+4 5 * 8 4 / + p c
+22
+$
+</pre><p data-coord="lab5.umt:128:0">The above input to <samp data-coord="lab5.umt:128:19">dc</samp> contains the following commands:
+</p><dl data-coord="lab5.umt:130:0"><dt data-coord="lab5.umt:130:2"> integers </dt><dd data-coord="lab5.umt:131:0"><p data-coord="lab5.umt:131:4">Pushes the value of the integer onto the top of the <samp data-coord="lab5.umt:131:56">dc</samp> stack.
+</p></dd><dt data-coord="lab5.umt:133:2"> operators <samp data-coord="lab5.umt:133:11">+</samp>, <samp data-coord="lab5.umt:133:16">-</samp>, <samp data-coord="lab5.umt:133:21">*</samp>, <samp data-coord="lab5.umt:133:26">/</samp> </dt><dd data-coord="lab5.umt:134:0"><p data-coord="lab5.umt:134:4">Pop the top two elements from the stack and push onto the stack
+the result of applying the operator to the two operands popped off
+the stack.
+</p></dd><dt data-coord="lab5.umt:138:2"> <samp data-coord="lab5.umt:138:1">p</samp> </dt><dd data-coord="lab5.umt:139:0"><p data-coord="lab5.umt:139:4">Print the value on top of the stack followed by a newline.
+</p></dd><dt data-coord="lab5.umt:141:2"> <samp data-coord="lab5.umt:141:1">c</samp> </dt><dd data-coord="lab5.umt:142:0"><p data-coord="lab5.umt:142:4">Clear the stack.
+</p></dd></dl><p data-coord="lab5.umt:144:0">Make additions to the expression classes to output code for <samp data-coord="lab5.umt:144:60">dc</samp>.
+Specifically, add a method <samp data-coord="lab5.umt:144:93">std::string dcCode()</samp> to each expression
+class to produce <samp data-coord="lab5.umt:144:152">dc</samp> code for that expression.  This is fairly
+straightforward:
+</p><ul data-coord="lab5.umt:149:0"><li data-coord="lab5.umt:149:0"><p data-coord="lab5.umt:149:4">The <samp data-coord="lab5.umt:149:8">dc</samp> code for an <samp data-coord="lab5.umt:149:25">IntExpr</samp> is simply the value of
+the contained integer.
+</p></li><li data-coord="lab5.umt:152:0"><p data-coord="lab5.umt:152:4">The <samp data-coord="lab5.umt:152:8">dc</samp> code for an <samp data-coord="lab5.umt:152:25">AddExpr</samp>, <samp data-coord="lab5.umt:152:36">SubExpr</samp>, <samp data-coord="lab5.umt:152:47">MulExpr</samp>,
+<samp data-coord="lab5.umt:152:62">DivExpr</samp> is the concatenation of the <samp data-coord="lab5.umt:152:100">dc</samp> code for
+the left operand, the <samp data-coord="lab5.umt:152:140">dc</samp> code for the right operand
+followed by the appropriate operator <samp data-coord="lab5.umt:152:213">+</samp>, <samp data-coord="lab5.umt:152:218">-</samp>, <samp data-coord="lab5.umt:152:223">*</samp>
+or <samp data-coord="lab5.umt:152:234">/</samp> respectively.
+</p></li><li data-coord="lab5.umt:158:0"><p data-coord="lab5.umt:158:4">The <samp data-coord="lab5.umt:158:8">dc</samp> code for the top-level expression should be followed
+by <samp data-coord="lab5.umt:158:73">p</samp> to have <samp data-coord="lab5.umt:158:85">dc</samp> print the value on top of its stack, followed
+by a <samp data-coord="lab5.umt:158:145">c</samp> to have <samp data-coord="lab5.umt:158:157">dc</samp> clear out its stack.
+</p></li></ul><p data-coord="lab5.umt:162:0">Modify the <samp data-coord="lab5.umt:162:11">main()</samp> program to have it output <strong data-coord="lab5.umt:162:46">only</strong> lines
+containing the <samp data-coord="lab5.umt:162:74">dc</samp> code for each expression argument.
+</p><p data-coord="lab5.umt:165:0">So for example, running the modified program on the last example
+given in the previous lab should result in the following:
+</p><pre>$ .<span class="hl opt">/</span>main  <span class="hl str">&quot;+ + + / 22  6 * 5 3 - 2 5 * 3 5&quot;</span>
+<span class="hl num">22 6</span> <span class="hl opt">/</span> <span class="hl num">5 3</span> <span class="hl opt">* +</span> <span class="hl num">2 5</span> <span class="hl opt">- +</span> <span class="hl num">3 5</span> <span class="hl opt">* +</span> p c
+$</pre><p data-coord="lab5.umt:175:0">Of course, we can pipe the <samp data-coord="lab5.umt:175:27">dc</samp> code generated by our program into
+<samp data-coord="lab5.umt:175:67">dc</samp>:
+</p><pre>.<span class="hl opt">/</span>main <span class="hl str">&quot;- 3 2&quot;</span> <span class="hl str">&quot;* + 1 2 5&quot;</span> | <span class="hl kwc">dc</span>
+<span class="hl num">1</span>
+<span class="hl num">15</span>
+$ .<span class="hl opt">/</span>main  <span class="hl str">&quot;+ + + / 22  6 * 5 3 - 2 5 * 3 5&quot;</span> | <span class="hl kwc">dc</span>
+<span class="hl num">30</span>
+$</pre></section><section data-coord="lab5.umt:189:0"><h3 data-coord="lab5.umt:189:0">Winding Up</h3><p data-coord="lab5.umt:192:0">Follow the <em data-coord="lab5.umt:192:44"><a href="../submission/submission.html" data-coord="lab5.umt:192:44">provided directions</a></em> for
+winding up this lab. Terminate your <samp data-coord="lab5.umt:192:106">script</samp> session producing the log
+file <samp data-coord="lab5.umt:192:146">lab5.LOG</samp> in your <samp data-coord="lab5.umt:192:165">lab5</samp> directory.  Add all your files to
+git and commit.  Then merge your <samp data-coord="lab5.umt:192:239">lab5</samp> branch into the <samp data-coord="lab5.umt:192:262">master</samp>
+branch and commit your changes.
+</p></section></section><section data-coord="lab5.umt:198:0"><h2 data-coord="lab5.umt:198:0">References</h2><p data-coord="lab5.umt:201:0">The following are links to reference material.  Look around for
+tutorial material with which you may be more comfortable.
+</p><p data-coord="lab5.umt:204:0">Online <em data-coord="lab5.umt:204:41"><a href="https://en.cppreference.com/w/" data-coord="lab5.umt:204:41">&lt;https://en.cppreference.com/w/&gt;</a></em>.
+</p><p data-coord="lab5.umt:206:0"><a href="https://en.wikipedia.org/wiki/Virtual_function" data-coord="lab5.umt:206:50">Wikipedia</a> article
+on <em data-coord="lab5.umt:206:71">Virtual Functions</em>.
+</p><p data-coord="lab5.umt:209:0"><em data-coord="lab5.umt:209:54"><a href="https://en.cppreference.com/w/cpp/language/virtual" data-coord="lab5.umt:209:54">Virtual functions</a></em>.
+</p></section></section>
+    </div> <!-- #content -->
+  </body>
+</html>
