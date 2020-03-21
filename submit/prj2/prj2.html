@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 240: Project 2</title>
+    <link href="prj2/hl-fine_blue.css" rel="stylesheet"/><link href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" 
+       rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" async=""></script>    
+
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exams-quizzes/index.html">Exams &amp; Quizzes</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hws/index.html">Homeworks</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <section data-coord="prj2.umt:1:0"><h1 data-coord="prj2.umt:1:0">Project 2</h1><p data-coord="prj2.umt:3:0"><strong data-coord="prj2.umt:3:0">Due</strong>: Mar 14 by 11:59p
+</p><p data-coord="prj2.umt:5:0"><strong data-coord="prj2.umt:5:0">Important Reminder</strong>: As per the course <em data-coord="prj2.umt:5:110"><a href="../../misc/academic-honesty-statement/academic-honesty-policy.html" data-coord="prj2.umt:5:110">Academic Honesty Statement</a></em>,
+cheating of any kind will minimally result in your letter grade
+for the entire course being reduced by one level.
+</p><p data-coord="prj2.umt:9:0">This document first provides the aims of this project.  It then lists
+the requirements as explicitly as possible.  This is followed by a log
+which should help you understand the requirements.  Finally, it
+provides some hints as to how those requirements can be met.
+</p><section data-coord="prj2.umt:14:0"><h2 data-coord="prj2.umt:14:0">Aims</h2><p data-coord="prj2.umt:17:0">The aims of this project are as follows:
+</p><ul data-coord="prj2.umt:19:0"><li data-coord="prj2.umt:19:0"><p data-coord="prj2.umt:19:4">To give you some exposure to C++ smart pointers.
+</p></li><li data-coord="prj2.umt:21:0"><p data-coord="prj2.umt:21:4">To implement a doubly-linked list.
+</p></li><li data-coord="prj2.umt:23:0"><p data-coord="prj2.umt:23:4">To give you further exposure to the C++ standard library.
+</p></li></ul></section><section data-coord="prj2.umt:25:0"><h2 data-coord="prj2.umt:25:0">Background</h2><p data-coord="prj2.umt:28:0">A problem with the <samp data-coord="prj2.umt:28:19">List</samp> ADT's from the textbook is that the current
+position <samp data-coord="prj2.umt:28:79">curr</samp> in the list is stored within the list object. In fact,
+this is identified as a problem in an
+<em data-coord="prj2.umt:28:261"><a href="https://opendsa-server.cs.vt.edu/ODSA/Books/Everything/html/DesignAltList.html" data-coord="prj2.umt:28:261">alternate version</a></em> of the textbook.  The issue is that storing the
+position within the list makes it difficult to have multiple
+traversals over the list extant at one time.
+</p><p data-coord="prj2.umt:36:0">This project requires you to build a sequence ADT where insertions and
+removals are only allowed at the beginning and end of the
+sequence. Additionally, the ADT provides operations for obtaining an
+<a href="https://en.wikipedia.org/wiki/Iterator" data-coord="prj2.umt:36:240">iterator</a> positioned at the
+start or end of the list.  The iterator ADT is a <strong data-coord="prj2.umt:36:316">constant</strong> iterator
+in that it only allows reading the sequence contents and does not
+allow any modifications to the underlying elements.
+</p><p data-coord="prj2.umt:44:0">So the sequence ADT supports <samp data-coord="prj2.umt:44:29">unshift()</samp> and <samp data-coord="prj2.umt:44:45">shift()</samp> operations
+for operating at the start of the sequence, <samp data-coord="prj2.umt:44:110">push()</samp> and <samp data-coord="prj2.umt:44:123">pop()</samp>
+for operating at the end of the sequence (these names are also
+used by many popular scripting languages like Ruby, Perl and
+JavaScript).  It also supports <samp data-coord="prj2.umt:44:286">clear()</samp> and <samp data-coord="prj2.umt:44:300">size()</samp> operations.
+Finally, it supports a <samp data-coord="prj2.umt:44:344">cbegin()</samp> and <samp data-coord="prj2.umt:44:359">cend()</samp> operations to obtain
+the iterators (these names are also used by the STL, the <samp data-coord="prj2.umt:44:446">c</samp> stands
+for <code><span class="hl kwb">const</span></code>).
+</p><p data-coord="prj2.umt:53:0">The iterator ADT uses operator overloading to make the iterator looks
+like a pointer with operator <samp data-coord="prj2.umt:53:99">*</samp> returning the current element indexed
+by the iterator and <samp data-coord="prj2.umt:53:161">-&gt;</samp> returning a pointer to the current element.
+It supports the pre-increment <samp data-coord="prj2.umt:53:240">++</samp> and pre-decrement <samp data-coord="prj2.umt:53:263">--</samp> operations
+(it does not support the post-increment and post-decrement
+operations).  It also supports an operator which converts the
+iterator to a boolean, return true iff the iterator is indexing
+an element in the underlying sequence.
+</p><p data-coord="prj2.umt:62:0">You are being provided with an implementation of the sequence ADT
+which uses a fixed size array. You are required to provide an
+implementation which uses a doubly-linked list. Additionally, you are
+required to implement a driver program which requires concurrent
+forward and backward iteration over a sequence.
+</p></section><section data-coord="prj2.umt:69:0"><h2 data-coord="prj2.umt:69:0">Requirements</h2><p data-coord="prj2.umt:73:0">You must push a <samp data-coord="prj2.umt:73:16">submit/prj2-sol</samp> directory to your <samp data-coord="prj2.umt:73:52">master</samp> branch in
+your github repository.  This directory must contain an implementation
+<samp data-coord="prj2.umt:73:142">DLinkSeq</samp> of the abstract class <samp data-coord="prj2.umt:73:175">Seq</samp> described in
+<a href="./prj2-sol/seq.hh" data-coord="prj2.umt:73:215">seq.hh</a> which uses a doubly-linked list. Typing
+<samp data-coord="prj2.umt:73:262">make</samp> within that directory should build a <samp data-coord="prj2.umt:73:306">nums</samp> executable with
+usage:
+</p><pre data-coord="prj2.umt:81:0">./nums [-a] INTS_FILE_PATH
+</pre><p data-coord="prj2.umt:84:0">If the <samp data-coord="prj2.umt:84:7">-a</samp> option, the program should use an <samp data-coord="prj2.umt:84:46">ArraySeq</samp> implementation
+of the <samp data-coord="prj2.umt:84:79">Seq</samp> abstract class; otherwise it should used a <samp data-coord="prj2.umt:84:128">DLinkSeq</samp>
+implementation.
+</p><p data-coord="prj2.umt:88:0">The program should read whitespace delimited integers \(i_0, i_1,
+\ldots, i_{n-2}, i_{n-1}\), from <samp data-coord="prj2.umt:88:98">INTS_FILE_PATH</samp>, entering them into
+the specified <samp data-coord="prj2.umt:88:149">Seq</samp> container. When end-of-file is encountered, the
+program should use concurrent forward and backward iterators from the
+<samp data-coord="prj2.umt:88:273">Seq</samp> interface to output the accumulated integers, one per line:
+</p>\[i_0, i_{n-1}, i_1, i_{n-2}, i_2, i_{n-3} \ldots,
+i_{n-3}, i_2, i_{n-2}, i_1, i_{n-1}, i_0
+\]<p data-coord="prj2.umt:100:0">i.e. the output should be the first integer, the last integer, the second
+integer, the second-last integer, \(\ldots\), the last integer, the first
+integer.
+</p><p data-coord="prj2.umt:104:0">Note that \(n\) can be any non-negative integer.  It may be the case
+that it is greater than the capacity of the chosen sequence container
+in which case the program can terminate ungracefully.
+</p><p data-coord="prj2.umt:108:0">Non-functional requirements:
+</p><ul data-coord="prj2.umt:110:0"><li data-coord="prj2.umt:110:0"><p data-coord="prj2.umt:110:4">The program should check all command-line arguments and terminate
+gracefully if they are in error.
+</p></li><li data-coord="prj2.umt:113:0"><p data-coord="prj2.umt:113:4">If API assumptions are violated, the program may terminate
+ungracefully, possibly leaking memory.
+</p></li><li data-coord="prj2.umt:116:0"><p data-coord="prj2.umt:116:4">The program should not leak memory on normal termination.
+</p></li></ul></section><section data-coord="prj2.umt:118:0"><h2 data-coord="prj2.umt:118:0">Sample Log</h2><p data-coord="prj2.umt:121:0">An edited sample log of the operation of the program is shown below:
+</p><pre>$ .<span class="hl opt">/</span>nums
+usage<span class="hl opt">:</span> .<span class="hl opt">/</span>nums <span class="hl opt">[</span><span class="hl kwb">-a</span><span class="hl opt">]</span> INTS_FILE_PATH 
+$ .<span class="hl opt">/</span>nums <span class="hl kwb">-x</span> xx
+usage<span class="hl opt">:</span> .<span class="hl opt">/</span>nums <span class="hl opt">[</span><span class="hl kwb">-a</span><span class="hl opt">]</span> INTS_FILE_PATH 
+$ .<span class="hl opt">/</span>nums  xx
+cannot <span class="hl kwb">read</span> xx<span class="hl opt">:</span> No such <span class="hl kwc">file</span> or directory
+$ <span class="hl kwc">cat</span> extras<span class="hl opt">/</span><span class="hl kwb">test</span>.data
+<span class="hl num">1</span>
+<span class="hl num">2</span>
+<span class="hl num">3</span>
+<span class="hl num">4</span>
+<span class="hl num">5</span>
+<span class="hl num">6</span>
+$ .<span class="hl opt">/</span>nums extras<span class="hl opt">/</span><span class="hl kwb">test</span>.data
+<span class="hl num">1</span>
+<span class="hl num">6</span>
+<span class="hl num">2</span>
+<span class="hl num">5</span>
+<span class="hl num">3</span>
+<span class="hl num">4</span>
+<span class="hl num">4</span>
+<span class="hl num">3</span>
+<span class="hl num">5</span>
+<span class="hl num">2</span>
+<span class="hl num">6</span>
+<span class="hl num">1</span>
+$ .<span class="hl opt">/</span>nums <span class="hl kwb">-a</span> extras<span class="hl opt">/</span><span class="hl kwb">test</span>.data
+<span class="hl num">1</span>
+<span class="hl num">6</span>
+...
+<span class="hl slc">#same output as above</span>
+...
+<span class="hl num">6</span>
+<span class="hl num">1</span>
+$ .<span class="hl opt">/</span>nums extras<span class="hl opt">/</span>overflow-array.data 
+<span class="hl num">1</span>
+<span class="hl num">9</span>
+<span class="hl num">2</span>
+<span class="hl num">8</span>
+<span class="hl num">3</span>
+<span class="hl num">7</span>
+<span class="hl num">4</span>
+<span class="hl num">6</span>
+<span class="hl num">5</span>
+<span class="hl num">5</span>
+<span class="hl num">6</span>
+<span class="hl num">4</span>
+<span class="hl num">7</span>
+<span class="hl num">3</span>
+<span class="hl num">8</span>
+<span class="hl num">2</span>
+<span class="hl num">9</span>
+<span class="hl num">1</span>
+
+<span class="hl slc">#overflows since the ArraySeq has a max capacity of 8.</span>
+$ .<span class="hl opt">/</span>nums <span class="hl kwb">-a</span> extras<span class="hl opt">/</span>overflow-array.data 
+nums<span class="hl opt">:</span> arrayseq.hh<span class="hl opt">:</span><span class="hl num">54</span><span class="hl opt">:</span> ...<span class="hl opt">:</span> Assertion ... failed.
+Aborted <span class="hl opt">(</span>core dumped<span class="hl opt">)</span>
+$</pre></section><section data-coord="prj2.umt:186:0"><h2 data-coord="prj2.umt:186:0">Provided Files</h2><p data-coord="prj2.umt:189:0">You are being provided with the following files.  The files in the
+<a href="prj2-sol" data-coord="prj2.umt:189:79">prj2-sol</a> directory <strong data-coord="prj2.umt:189:98">must</strong> be submitted along with your
+project, whether you modify them or not; the files in the <a href="extras" data-coord="prj2.umt:189:202">extras</a> directory need not be submitted.
+</p><dl data-coord="prj2.umt:194:0"><dt data-coord="prj2.umt:194:2"> <a href="prj2-sol/seq.hh" data-coord="prj2.umt:194:20">seq.hh</a> </dt><dd data-coord="prj2.umt:195:0"><p data-coord="prj2.umt:195:4">The <samp data-coord="prj2.umt:195:8">Seq</samp> abstract class you need to implement using a doubly-linked
+list.  You <strong data-coord="prj2.umt:195:88">must not</strong> modify this file.
+</p></dd><dt data-coord="prj2.umt:198:2"> <a href="prj2-sol/arrayseq.hh" data-coord="prj2.umt:198:25">arrayseq.hh</a> </dt><dd data-coord="prj2.umt:199:0"><p data-coord="prj2.umt:199:4">An implementation of the <samp data-coord="prj2.umt:199:29">Seq</samp> abstract class using a fixed-size
+array.  You should not need to modify this file.
+</p></dd><dt data-coord="prj2.umt:202:2"> <a href="./prj2-sol/README" data-coord="prj2.umt:202:22">README</a></dt><dd data-coord="prj2.umt:203:0"><p data-coord="prj2.umt:203:4">A README file which must be submitted along with your project.
+It contains an initial header which you must complete (replace
+the dummy entries with your name, B-number and email address at
+which you would like to receive project-related email).  After
+the header you may include any content which you would like read
+during the grading of your project.
+</p></dd><dt data-coord="prj2.umt:210:2"> <a href="./extras/test.data" data-coord="prj2.umt:210:23">test.data</a> and <a href="./extras/overflow-array.data" data-coord="prj2.umt:210:69">overflow-array.data</a> </dt><dd data-coord="prj2.umt:211:0"><p data-coord="prj2.umt:211:4">Test files for the <samp data-coord="prj2.umt:211:23">nums</samp> program.  The second file overflows the
+array used when the <samp data-coord="prj2.umt:211:94">-a</samp> option is specified and the <samp data-coord="prj2.umt:211:127">ArraySeq</samp> is
+created using the default size.
+</p></dd><dt data-coord="prj2.umt:215:2"> <a href="./extras/seq-test.cc" data-coord="prj2.umt:215:25">seq-test.cc,</a> <a href="./extras/command.hh" data-coord="prj2.umt:215:61">command.hh</a> and <a href="./extras/command.cc" data-coord="prj2.umt:215:99">command.cc</a> </dt><dd data-coord="prj2.umt:216:0"><p data-coord="prj2.umt:216:4">A driver program which can be used for testing both the
+provided <samp data-coord="prj2.umt:216:73">ArraySeq</samp> and the <samp data-coord="prj2.umt:216:92">DLinkSeq</samp> you are required to
+write.  This program must be linked with with provider classes
+<samp data-coord="prj2.umt:216:194">ArraySeq</samp> and <samp data-coord="prj2.umt:216:209">DLinkSeq</samp>.
+</p></dd></dl><p data-coord="prj2.umt:221:0">An annotated edited log of using <samp data-coord="prj2.umt:221:33">seq-test</samp> is shown below:
+</p><pre><span class="hl slc">#output usage message</span>
+$ .<span class="hl opt">/</span>seq-test 
+usage<span class="hl opt">:</span> .<span class="hl opt">/</span>seq-test ArraySeq|DLinkSeq
+
+<span class="hl slc"># run program again using ArraySeq implementation of Seq</span>
+$ .<span class="hl opt">/</span>seq-test ArraySeq
+<span class="hl opt">[</span>REPEAT<span class="hl opt">]</span> COMMAND <span class="hl opt">[</span>VALUE<span class="hl opt">]</span>
+COMMAND is one of <span class="hl kwc">clear</span>|unshift|<span class="hl kwb">shift</span>|push|pop|<span class="hl kwb">help</span>
+<span class="hl opt">&gt;&gt;</span> push <span class="hl num">3</span>
+<span class="hl opt">[</span> <span class="hl num">3</span> <span class="hl opt">]</span>
+
+<span class="hl slc"># use repeat count of 3 to unshift 3 5&apos;s</span>
+<span class="hl opt">&gt;&gt;</span> <span class="hl num">3</span> unshift <span class="hl num">5</span>
+<span class="hl opt">[</span> <span class="hl num">5 5 5 3</span> <span class="hl opt">]</span>
+<span class="hl opt">&gt;&gt;</span> pop
+<span class="hl num">3</span>
+<span class="hl opt">[</span> <span class="hl num">5 5 5</span> <span class="hl opt">]</span>
+<span class="hl opt">&gt;&gt;</span> <span class="hl kwb">shift</span>
+<span class="hl num">5</span>
+<span class="hl opt">[</span> <span class="hl num">5 5</span> <span class="hl opt">]</span>
+<span class="hl opt">&gt;&gt;</span> <span class="hl num">2</span> pop
+<span class="hl num">5</span>
+<span class="hl num">5</span>
+<span class="hl opt">[ ]</span>
+
+<span class="hl slc">#pop from an empty Seq fails with an error</span>
+<span class="hl opt">&gt;&gt;</span> pop
+seq-test<span class="hl opt">:</span> arrayseq ...Assertion ... <span class="hl str">&quot;pop on empty array seq&quot;</span><span class="hl str">&apos; failed.</span>
+<span class="hl str">Aborted (core dumped)</span></pre><pre><span class="hl slc"># run program again using DLinkSeq implementation of Seq</span>
+$ .<span class="hl opt">/</span>seq-test DLinkSeq
+<span class="hl opt">[</span>REPEAT<span class="hl opt">]</span> COMMAND <span class="hl opt">[</span>VALUE<span class="hl opt">]</span>
+COMMAND is one of <span class="hl kwc">clear</span>|unshift|<span class="hl kwb">shift</span>|push|pop|<span class="hl kwb">help</span>
+<span class="hl opt">&gt;&gt;</span> <span class="hl num">4</span> push <span class="hl num">22</span>
+<span class="hl opt">[</span> <span class="hl num">22 22 22 22</span> <span class="hl opt">]</span>
+<span class="hl opt">&gt;&gt;</span> pop
+<span class="hl num">22</span>
+<span class="hl opt">[</span> <span class="hl num">22 22 22</span> <span class="hl opt">]</span>
+<span class="hl opt">&gt;&gt;</span> <span class="hl num">2</span> unshift <span class="hl num">6</span>
+<span class="hl opt">[</span> <span class="hl num">6 6 22 22 22</span> <span class="hl opt">]</span>
+<span class="hl opt">&gt;&gt;</span> <span class="hl num">3</span> <span class="hl kwb">shift</span> 
+<span class="hl num">6</span>
+<span class="hl num">6</span>
+<span class="hl num">22</span>
+<span class="hl opt">[</span> <span class="hl num">22 22</span> <span class="hl opt">]</span>
+<span class="hl opt">&gt;&gt;</span> <span class="hl num">2</span> pop
+<span class="hl num">22</span>
+<span class="hl num">22</span>
+<span class="hl opt">[ ]</span>
+
+<span class="hl slc">#shift from an empty Seq fails with an error</span>
+<span class="hl opt">&gt;&gt;</span> <span class="hl kwb">shift</span>
+seq-test<span class="hl opt">:</span> dlinkseq ... Assertion ... <span class="hl str">&quot;shift() on empty dlist&quot;</span><span class="hl str">&apos; failed.</span>
+<span class="hl str">Aborted (core dumped)</span>
+<span class="hl str">$</span></pre></section><section data-coord="prj2.umt:286:0"><h2 data-coord="prj2.umt:286:0">Hints</h2><p data-coord="prj2.umt:289:0">The following steps are not prescriptive in that you may choose to
+ignore them as long as you meet all project requirements.
+</p><ol data-coord="prj2.umt:292:0"><li data-coord="prj2.umt:292:0"><p data-coord="prj2.umt:292:4">Study the code you have been provided:
+</p><ol data-coord="prj2.umt:294:0"><li data-coord="prj2.umt:294:0"><p data-coord="prj2.umt:294:8">Look at the implementation of the <samp data-coord="prj2.umt:294:42">&lt;&lt;</samp> operator in
+<a href="prj2-sol/seq.hh" data-coord="prj2.umt:294:86">seq.hh</a> which shows how the
+iterators are used.
+</p></li><li data-coord="prj2.umt:298:0"><p data-coord="prj2.umt:298:8">Understand the
+code in <a href="prj2-sol/arrayseq.hh" data-coord="prj2.umt:298:63">arrayseq.hh</a> thoroughly
+as it will give you some idea of how trivially an iterator
+can be implemented.
+</p></li><li data-coord="prj2.umt:303:0"><p data-coord="prj2.umt:303:8">Finally, look at the code in <a href="extras/seq-test.cc" data-coord="prj2.umt:303:59">seq-test.cc</a>
+sufficiently to understand how a reference to the sequence
+is extracted from the smart pointer returned by <samp data-coord="prj2.umt:303:187">make()</samp>.
+</p></li></ol></li><li data-coord="prj2.umt:308:0"><p data-coord="prj2.umt:308:4">Make sure your <samp data-coord="prj2.umt:308:19">cs240</samp> repository is up-to-date:
+</p><pre>    $ <span class="hl kwb">cd</span> ~<span class="hl opt">/</span>cs240
+    $ git pull</pre></li><li data-coord="prj2.umt:316:0"><p data-coord="prj2.umt:316:4">Start a new <samp data-coord="prj2.umt:316:16">prj2-sol</samp> branch in your <samp data-coord="prj2.umt:316:42">i240?</samp> project:
+</p><pre>    $ <span class="hl kwb">cd</span> ~<span class="hl opt">/</span>i240?
+    $ git checkout master
+    $ git pull <span class="hl slc">#should not get any updates</span>
+    $ git checkout <span class="hl kwb">-b</span> prj2-sol
+    $</pre></li><li data-coord="prj2.umt:327:0"><p data-coord="prj2.umt:327:4">Recursively copy over the files you have been provided with:
+</p><pre>    <span class="hl slc"># assumes your i240? directory is in your prj2-sol branch</span>
+    $ <span class="hl kwb">cd</span> ~<span class="hl opt">/</span>i240?<span class="hl opt">/</span>submit
+    $ <span class="hl kwc">cp</span> <span class="hl kwb">-pr</span> ~<span class="hl opt">/</span>cs240<span class="hl opt">/</span>projects<span class="hl opt">/</span>prj<span class="hl num">2</span><span class="hl opt">/</span>prj2-sol .
+    $ <span class="hl kwb">cd</span> prj2-sol</pre><pre>    <span class="hl slc"># assumes prj2-sol branch and ~/i240?/submit/prj2-sol dir</span>
+    $ <span class="hl kwc">cp</span> <span class="hl kwb">-p</span> ~<span class="hl opt">/</span>cs240<span class="hl opt">/</span>projects<span class="hl opt">/</span>prj<span class="hl num">2</span><span class="hl opt">/</span>extras<span class="hl opt">/*</span> .
+    $ </pre></li><li data-coord="prj2.umt:345:0"><p data-coord="prj2.umt:345:4">Commit and push your files to github:
+</p><pre>    <span class="hl slc"># assumes prj2-sol branch and ~/i240?/submit/prj2-sol dir</span>
+    $ git add .
+    $ git commit <span class="hl kwb">-a -m</span> <span class="hl str">&apos;started prj2&apos;</span>
+    $ git push <span class="hl kwb">-u</span> origin prj2-sol <span class="hl slc">#push changes,</span>
+                                  <span class="hl slc">#creating remote branch</span></pre></li><li data-coord="prj2.umt:356:0"><p data-coord="prj2.umt:356:4">Create a <samp data-coord="prj2.umt:356:13">Makefile</samp> set up to build a <samp data-coord="prj2.umt:356:42">seq-test</samp> executable from
+the files you currently have in your <samp data-coord="prj2.umt:356:110">prj2-sol</samp> directory. Note
+that you should comment out references to <samp data-coord="prj2.umt:356:183">DLinkSeq</samp> and
+<samp data-coord="prj2.umt:356:202">dlinkseq.hh</samp> in <samp data-coord="prj2.umt:356:219">seq-test</samp>.  Make sure you provide a <samp data-coord="prj2.umt:356:256">clean</samp> target
+which minimally cleans out all executables and object files.
+</p></li><li data-coord="prj2.umt:362:0"><p data-coord="prj2.umt:362:4">Use your <samp data-coord="prj2.umt:362:13">Makefile</samp> to compile the <samp data-coord="prj2.umt:362:39">seq-test</samp> executable.  You should
+be able to run it using the <samp data-coord="prj2.umt:362:106">ArraySeq</samp> implementation of <samp data-coord="prj2.umt:362:135">Seq</samp>.
+</p></li><li data-coord="prj2.umt:365:0"><p data-coord="prj2.umt:365:4">Start working on your <samp data-coord="prj2.umt:365:26">nums</samp> executable:
+</p><ol data-coord="prj2.umt:367:0"><li data-coord="prj2.umt:367:0"><p data-coord="prj2.umt:367:8">Create a <samp data-coord="prj2.umt:367:17">nums.cc</samp> with a do-nothing <samp data-coord="prj2.umt:367:45">main()</samp>.
+</p></li><li data-coord="prj2.umt:369:0"><p data-coord="prj2.umt:369:8">Modify your <samp data-coord="prj2.umt:369:20">Makefile</samp> to build a <samp data-coord="prj2.umt:369:42">nums</samp> executable,
+linked in with the <samp data-coord="prj2.umt:369:88">ArraySeq</samp> code.  Verify that
+your <samp data-coord="prj2.umt:369:124">Makefile</samp> works.
+</p></li><li data-coord="prj2.umt:373:0"><p data-coord="prj2.umt:373:8">Set up validation for the command line arguments for
+<samp data-coord="prj2.umt:373:69">main()</samp>; simply check the number of arguments and
+verify that if there is an option specified then
+it is <samp data-coord="prj2.umt:373:177">-a</samp>.
+</p></li><li data-coord="prj2.umt:378:0"><p data-coord="prj2.umt:378:8">Set up a <samp data-coord="prj2.umt:378:17">using</samp> declaration for the type <samp data-coord="prj2.umt:378:50">TestType</samp> of
+objects you will be storing in your sequences: some flavor of
+integer.
+</p></li><li data-coord="prj2.umt:382:0"><p data-coord="prj2.umt:382:8">Write a function to read integers from the file specified on
+the command-line.  You can do so by simply using <samp data-coord="prj2.umt:382:126">in &gt;&gt; i</samp>
+where <samp data-coord="prj2.umt:382:150">in</samp> is an <samp data-coord="prj2.umt:382:161">istream</samp> on the file and <samp data-coord="prj2.umt:382:187">i</samp> is a suitably
+declared integer variable.  For now, simply write out the data
+on to the terminal.
+</p></li><li data-coord="prj2.umt:388:0"><p data-coord="prj2.umt:388:8">Create a <samp data-coord="prj2.umt:388:17">Seq&lt;TestType&gt;</samp> using the <samp data-coord="prj2.umt:388:43">ArraySeq</samp>.  Note that
+<samp data-coord="prj2.umt:388:74">ArraySeq::make()</samp> returns a <samp data-coord="prj2.umt:388:103">unique_ptr</samp> to an array
+sequence (this has been typedef'd to a <samp data-coord="prj2.umt:388:175">SeqPtr</samp>).  You can get
+the raw pointer to a <samp data-coord="prj2.umt:388:228">Seq</samp> by using a <samp data-coord="prj2.umt:388:245">get()</samp> on the value
+returned by the <samp data-coord="prj2.umt:388:283">make()</samp>. Write code to perform the extraction
+of the raw pointer and verify that it does indeed compile.
+</p></li><li data-coord="prj2.umt:395:0"><p data-coord="prj2.umt:395:8">Now pass the raw sequence pointer over to the function reading
+the data from the file.  Instead of having the function print
+out the data, have it squirrel away the data into the sequence.
+</p></li><li data-coord="prj2.umt:399:0"><p data-coord="prj2.umt:399:8">Now write a function to output the data from the sequence.
+You should use <samp data-coord="prj2.umt:399:90">cbegin()</samp> and <samp data-coord="prj2.umt:399:105">cend()</samp> to obtain iterators
+positioned at the start and end of the sequence.  Once again,
+those functions return a <samp data-coord="prj2.umt:399:237">unique_ptr</samp> <samp data-coord="prj2.umt:399:250">ConstIterPtr</samp> which
+wrap the underlying the iterator pointers.  Get hold of the
+<samp data-coord="prj2.umt:399:347">ConstIter</samp> iterator pointers by simply dereferencing the
+smart pointers using a <samp data-coord="prj2.umt:399:436">*</samp> dereference operator.
+</p><p data-coord="prj2.umt:407:8">Your code to output the data should now be straightforward: as
+long as both iterators are not exhausted, output the
+underlying data and increment/decrement each iterator suitably.
+</p></li><li data-coord="prj2.umt:411:0"><p data-coord="prj2.umt:411:8">Clean up your code in <samp data-coord="prj2.umt:411:30">nums.cc</samp>.  If you have not already done
+so hook up the <samp data-coord="prj2.umt:411:94">-a</samp> option to use the <samp data-coord="prj2.umt:411:117">ArraySeq</samp>.  Make any
+other changes you feel are necessary.  Use valgrind to
+verify that it does not leak any memory.
+</p></li></ol><p data-coord="prj2.umt:416:4">You now have a handle on how to use iterators and smart pointers.
+</p></li><li data-coord="prj2.umt:418:0"><p data-coord="prj2.umt:418:4">Start working on your <samp data-coord="prj2.umt:418:26">DLinkSeq</samp> implementation.  You can use the
+code from the textbook or discussed in class as a starting point
+as well as using the code provided in <samp data-coord="prj2.umt:418:181">arrayseq.hh</samp> for aspects
+specific to this project.  Obviously, you will not be maintaining
+the current position in the list so you will not need a field like
+<samp data-coord="prj2.umt:418:352">curr</samp>.  Don't bother attempting to manage your own free-list,
+simply use <samp data-coord="prj2.umt:418:430">new</samp> and <samp data-coord="prj2.umt:418:440">delete</samp> for each list node.  Have your class
+inherit from <samp data-coord="prj2.umt:418:503">Seq</samp> and use two separate <samp data-coord="prj2.umt:418:530">head</samp> and <samp data-coord="prj2.umt:418:541">tail</samp> dummy
+header nodes set up to point to each other like the code in the
+textbook.
+</p><ol data-coord="prj2.umt:429:0"><li data-coord="prj2.umt:429:0"><p data-coord="prj2.umt:429:8">Set up your class with sufficient dummy code inserted for the
+operations in the <samp data-coord="prj2.umt:429:96">Seq</samp> interface so that you can compile the
+code.  For example, you can set up your <samp data-coord="prj2.umt:429:188">unshift()</samp> and
+<samp data-coord="prj2.umt:429:212">push()</samp> as NOPs, <samp data-coord="prj2.umt:429:230">shift()</samp> and <samp data-coord="prj2.umt:429:244">unshift()</samp> to return some
+fixed dummy value and have your iterator always exhausted (i.e. the
+<code><span class="hl kwb">bool</span></code> operator always returns <code><span class="hl kwa">false</span></code>).  Modify your
+<samp data-coord="prj2.umt:429:419">nums.cc</samp> to hook in your <samp data-coord="prj2.umt:429:445">DLinkSeq</samp> when <samp data-coord="prj2.umt:429:461">-a</samp> is not
+specified.  Uncomment the lines in <samp data-coord="prj2.umt:429:516">seq-test.cc</samp> you had
+commented out earlier to hook in your code.  Set up your
+<samp data-coord="prj2.umt:429:611">Makefile</samp> to build both executables.
+</p></li><li data-coord="prj2.umt:440:0"><p data-coord="prj2.umt:440:8">Start work on the <samp data-coord="prj2.umt:440:26">Seq</samp> <samp data-coord="prj2.umt:440:32">unshift()</samp> and <samp data-coord="prj2.umt:440:48">push()</samp> operations,
+using the textbook <samp data-coord="prj2.umt:440:96">insert()</samp> and <samp data-coord="prj2.umt:440:111">append()</samp> code as starting
+points.  Note that the code for <samp data-coord="prj2.umt:440:179">unshift()</samp> and <samp data-coord="prj2.umt:440:195">push()</samp> will
+be duals in that one can get the code for one from the code
+for the other by doing things like interchanging variables
+like <samp data-coord="prj2.umt:440:357">head</samp> and <samp data-coord="prj2.umt:440:368">tail</samp> or <samp data-coord="prj2.umt:440:378">next</samp> and <samp data-coord="prj2.umt:440:389">prev</samp>.
+</p><p data-coord="prj2.umt:447:8">While writing the code above, you should be compiling
+periodically to get basic sanity checks on your code.
+</p><p data-coord="prj2.umt:450:8">Once you have completed your code, Run the executable, and
+verify that adding the data to your dlink sequence does not
+cause any exceptions.  If you do get exceptions, debug using
+gdb.  Even if you do not get any exceptions, you may want to
+use gdb to verify that the data is being entered into the
+sequence.
+</p></li><li data-coord="prj2.umt:457:0"><p data-coord="prj2.umt:457:8">Now implement your iterator.  It should basically consist of a
+pointer to the list nodes.  You will initialize this pointer
+to point to the first or last element of the list depending on
+whether or not the iterator is created by <samp data-coord="prj2.umt:457:261">cbegin()</samp> or <samp data-coord="prj2.umt:457:275">cend()</samp>
+(if you have set up your linked list correctly, this will do
+the right thing automatically when the list is empty). The
+iterator is exhausted if the pointer is pointing to one of
+the header nodes.  The increment/decrement operations should
+simply involve stepping the pointer within the linked list
+and returning <samp data-coord="prj2.umt:457:603">*this</samp>.
+</p></li><li data-coord="prj2.umt:468:0"><p data-coord="prj2.umt:468:8">Once you have implemented your iterator, you should be able
+to run your <samp data-coord="prj2.umt:468:88">nums</samp> successfully using your <samp data-coord="prj2.umt:468:119">DLinkSeq</samp> implementation.
+You should also be able to run the <samp data-coord="prj2.umt:468:182">seq-test</samp> executable but
+without support for the <samp data-coord="prj2.umt:468:233">shift</samp> and <samp data-coord="prj2.umt:468:245">pop</samp> commands.
+</p></li><li data-coord="prj2.umt:473:0"><p data-coord="prj2.umt:473:8">Now write the code for you <samp data-coord="prj2.umt:473:35">Seq</samp> <samp data-coord="prj2.umt:473:41">shift()</samp> and <samp data-coord="prj2.umt:473:55">pop()</samp>
+operations using the textbook's code for <samp data-coord="prj2.umt:473:112">remove()</samp> as
+starting points.  Once again, you should find that the code
+for the two operations are duals of each other.
+</p></li></ol></li><li data-coord="prj2.umt:478:0"><p data-coord="prj2.umt:478:4">Use valgrind to verify that your program does not leak memory.
+</p></li><li data-coord="prj2.umt:480:0"><p data-coord="prj2.umt:480:4">Iterate until you meet all requirements.  
+</p></li><li data-coord="prj2.umt:482:0"><p data-coord="prj2.umt:482:4">Clean up for submission.  It is up to you whether or not you
+submit the files you copied from the <samp data-coord="prj2.umt:482:106">extras</samp> directory, but
+ensure that typing <samp data-coord="prj2.umt:482:153">make</samp> in your <samp data-coord="prj2.umt:482:168">submit/prj2-sol</samp> directory
+builds a working <samp data-coord="prj2.umt:482:217">nums</samp> executable without any errors or warnings.
+</p></li></ol><p data-coord="prj2.umt:487:0">It is a good idea to commit and push your project periodically
+whenever you have made significant changes.  When it is complete
+please follow the procedure covered in <em data-coord="prj2.umt:487:196"><a href="../../labs/lab0/lab0.html" data-coord="prj2.umt:487:196">Lab 0</a></em> to merge your <samp data-coord="prj2.umt:487:218">prj2-sol</samp> branch into your <samp data-coord="prj2.umt:487:246">master</samp> branch and
+submit your project to the TA via github.
+</p></section></section>
+    </div> <!-- #content -->
+  </body>
+</html>
