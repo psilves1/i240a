@@ -1,0 +1,145 @@
+Script started on 2020-03-22 14:32:12-04:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="148" LINES="40"]
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ mkdir dir
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ touch t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls
+[0m[01;34mdir[0m  [01;34mexercises[0m  [01;34mlab6[0m  lab6.html  lab6.LOG  lab6.pdf  lab6.umt  t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ -l
+-l: command not found
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ -lls -[K[K[K[K[Kl[K[Kls -s [K[Kl 
+total 160
+drwxr-xr-x 2 psilves1 psilves1   4096 Mar 22 14:32 [0m[01;34mdir[0m
+drwxr-xr-x 3 psilves1 psilves1   4096 Mar 22 14:31 [01;34mexercises[0m
+drwxr-xr-x 2 psilves1 psilves1   4096 Mar 22 14:31 [01;34mlab6[0m
+-rw-r--r-- 1 psilves1 psilves1  27756 Mar 22 14:31 lab6.html
+-rw-r--r-- 1 psilves1 psilves1      0 Mar 22 14:32 lab6.LOG
+-rw-r--r-- 1 psilves1 psilves1 105735 Mar 22 14:31 lab6.pdf
+-rw-r--r-- 1 psilves1 psilves1  14517 Mar 22 14:31 lab6.umt
+-rw-r--r-- 1 psilves1 psilves1      0 Mar 22 14:32 t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ t[Kls -tl
+total 160
+-rw-r--r-- 1 psilves1 psilves1      0 Mar 22 14:32 t1.c
+drwxr-xr-x 2 psilves1 psilves1   4096 Mar 22 14:32 [0m[01;34mdir[0m
+-rw-r--r-- 1 psilves1 psilves1      0 Mar 22 14:32 lab6.LOG
+drwxr-xr-x 3 psilves1 psilves1   4096 Mar 22 14:31 [01;34mexercises[0m
+drwxr-xr-x 2 psilves1 psilves1   4096 Mar 22 14:31 [01;34mlab6[0m
+-rw-r--r-- 1 psilves1 psilves1  27756 Mar 22 14:31 lab6.html
+-rw-r--r-- 1 psilves1 psilves1 105735 Mar 22 14:31 lab6.pdf
+-rw-r--r-- 1 psilves1 psilves1  14517 Mar 22 14:31 lab6.umt
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ dir ls [K[K[K[K[K[K[Kls dir
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls
+[0m[01;34mdir[0m  [01;34mexercises[0m  [01;34mlab6[0m  lab6.html  lab6.LOG  lab6.pdf  lab6.umt  t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls 0[K-l
+total 160
+drwxr-xr-x 2 psilves1 psilves1   4096 Mar 22 14:32 [0m[01;34mdir[0m
+drwxr-xr-x 3 psilves1 psilves1   4096 Mar 22 14:31 [01;34mexercises[0m
+drwxr-xr-x 2 psilves1 psilves1   4096 Mar 22 14:31 [01;34mlab6[0m
+-rw-r--r-- 1 psilves1 psilves1  27756 Mar 22 14:31 lab6.html
+-rw-r--r-- 1 psilves1 psilves1      0 Mar 22 14:32 lab6.LOG
+-rw-r--r-- 1 psilves1 psilves1 105735 Mar 22 14:31 lab6.pdf
+-rw-r--r-- 1 psilves1 psilves1  14517 Mar 22 14:31 lab6.umt
+-rw-r--r-- 1 psilves1 psilves1      0 Mar 22 14:32 t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls -l [K[Ktl
+total 160
+-rw-r--r-- 1 psilves1 psilves1      0 Mar 22 14:32 t1.c
+drwxr-xr-x 2 psilves1 psilves1   4096 Mar 22 14:32 [0m[01;34mdir[0m
+-rw-r--r-- 1 psilves1 psilves1      0 Mar 22 14:32 lab6.LOG
+drwxr-xr-x 3 psilves1 psilves1   4096 Mar 22 14:31 [01;34mexercises[0m
+drwxr-xr-x 2 psilves1 psilves1   4096 Mar 22 14:31 [01;34mlab6[0m
+-rw-r--r-- 1 psilves1 psilves1  27756 Mar 22 14:31 lab6.html
+-rw-r--r-- 1 psilves1 psilves1 105735 Mar 22 14:31 lab6.pdf
+-rw-r--r-- 1 psilves1 psilves1  14517 Mar 22 14:31 lab6.umt
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls l[Kt[K-t
+lab6.LOG  t1.c  [0m[01;34mdir[0m  [01;34mexercises[0m  [01;34mlab6[0m  lab6.html  lab6.pdf  lab6.umt
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ cd lab6
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/lab6[00m$ ls
+hl-fine_blue.css  hl-fine_blue.sty
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/lab6[00m$ cd .
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/lab6[00m$ cd..[K[K ..
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ cd exercises 
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises[00m$ ls
+[0m[01;34m4-quoting[0m
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises[00m$ ls Y[KT*
+ls: cannot access 'T*': No such file or directory
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises[00m$ cd ..
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls
+[0m[01;34mdir[0m  [01;34mexercises[0m  [01;34mlab6[0m  lab6.html  lab6.LOG  lab6.pdf  lab6.umt  t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ cd [K[K[Kls t*
+t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls dir/*.?
+ls: cannot access 'dir/*.?': No such file or directory
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ cd dir
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/dir[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/dir[00m$ clear
+[H[2J[3J]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/dir[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/dir[00m$ ls
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/dir[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/dir[00m$ ls
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/dir[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/dir[00m$ cd ..
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls
+[0m[01;34mdir[0m  [01;34mexercises[0m  [01;34mlab6[0m  lab6.html  lab6.LOG  lab6.pdf  lab6.umt  t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ cd lab[K[K[Kexercises
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises[00m$ ls
+[0m[01;34m4-quoting[0m
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises[00m$ cd ..
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ l[Kls Y[KT*
+ls: cannot access 'T*': No such file or directory
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls dir/*..[K?
+ls: cannot access 'dir/*.?': No such file or directory
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls [t-v]*.c
+t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls .[K?[K> ls.g[Klog
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ cat ls.log
+dir
+exercises
+lab6
+lab6.html
+lab6.LOG
+lab6.pdf
+lab6.umt
+ls.log
+t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ cat >cat. [Klog
+asd;lkfjdsa
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ cat cat.log
+asd;lkfjdsa
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ ls dir >> [Kls.log
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ cat ls.log
+dir
+exercises
+lab6
+lab6.html
+lab6.LOG
+lab6.pdf
+lab6.umt
+ls.log
+t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ cd [K[K[Kls
+cat.log  [0m[01;34mdir[0m  [01;34mexercises[0m  [01;34mlab6[0m  lab6.html  lab6.LOG  lab6.pdf  lab6.umt  ls.log  t1.c
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6[00m$ cd lab[K[K[Kexercies [K[Ks[K[Kses
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises[00m$ ls
+[0m[01;34m4-quoting[0m
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises[00m$ cd 5-[K[K4-quoting [K[Kg
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ ls
+'**'  '1$2'  "'12"  '1"2'  'a$b'  '\\ab'  'a"b'  "a'b"   -l
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ ls [K[K[Kecho '$'
+$
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ ls -l ??[cs[Kz}[K]*
+ls: cannot access '??[cz]*': No such file or directory
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ ls -l ??[cz]*[C[C[C[1P]*[1P]*$]*
+ls: cannot access '??[$]*': No such file or directory
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ ls -l ??[$]*[1P[$]*
+-rw-r--r-- 1 psilves1 psilves1 0 Mar 22 14:31 '1$2'
+-rw-r--r-- 1 psilves1 psilves1 0 Mar 22 14:31 'a$b'
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ ls -l ?[$]*[1P]*"]*"]*'"]*
+-rw-r--r-- 1 psilves1 psilves1 0 Mar 22 14:31 "a'b"
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ ls -l ?["'"]*[1P]*[1P]*[1P]*\]*
+ls: cannot access '?[]*': No such file or directory
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ ls -l ?[\]*"\]*[1P\]*[C[1P]*[1P]*_]*[1P]*@]*[1P]*?]*[1P]*>]*[1P]*?]*[C[C[C[*[1P*[1P*[*]*']*[1P]*\]*
+ls: cannot access '??[]*': No such file or directory
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ ls -l ??[\]*/[K[1P]*']*[1P]*/]*
+ls: cannot access '??[/]*': No such file or directory
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ ls -l ??[/]*[1P]**]**]*
+ls: cannot access '??[**]*': No such file or directory
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ ls -d "[K/[K/*
+[0m[01;36m/bin[0m   [01;34m/cdrom[0m  [01;34m/etc[0m   [01;36m/lib[0m    [01;36m/lib64[0m   [01;34m/lost+found[0m  [01;34m/mnt[0m  [01;34m/proc[0m  [01;34m/run[0m   [01;34m/snap[0m  /swapfile  [30;42m/tmp[0m  [01;34m/var[0m
+[01;34m/boot[0m  [01;34m/dev[0m    [01;34m/home[0m  [01;36m/lib32[0m  [01;36m/libx32[0m  [01;34m/media[0m       [01;34m/opt[0m  [01;34m/root[0m  [01;36m/sbin[0m  [01;34m/srv[0m   [01;34m/sys[0m       [01;34m/usr[0m
+]0;psilves1@psilves1-Inspiron-7373: ~/Documents/i240a/submit/lab6/exercises/4-quoting[01;32mpsilves1@psilves1-Inspiron-7373[00m:[01;34m~/Documents/i240a/submit/lab6/exercises/4-quoting[00m$ 's [K[K[Kls [K[K[Kexit
+
+Script done on 2020-03-22 14:42:28-04:00 [COMMAND_EXIT_CODE="0"]
