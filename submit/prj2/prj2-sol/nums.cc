@@ -4,7 +4,7 @@
 #include <fstream>
 
 #include "arrayseq.hh"
-//#include "dlinkseq.hh"
+#include "dlinkseq.hh"
 
 using TestType = int;
 
@@ -72,7 +72,7 @@ int main(int argc, char* argv[]){
         }
 
         //TODO Change this to the DLinkSeq implementation once you're finished
-        ptr = ArraySeq<TestType>::make();
+        ptr = DLinkSeq<TestType>::make();
         Seq<TestType>* seq = ptr.get();
 
         int w;
@@ -86,6 +86,7 @@ int main(int argc, char* argv[]){
         }
 
         ConstIterPtr<TestType> start = seq->cbegin();
+        //++(*start);
 
         ConstIterPtr<TestType> end = seq->cend();
 
@@ -96,8 +97,8 @@ int main(int argc, char* argv[]){
 
             ++(*start);
             --(*end);
-        }
 
+        }
     }
     
 

@@ -13,11 +13,13 @@ template <typename E> class DLinkSeqConstIter;
 template <typename E>
 class DLinkSeq : public Seq<E> {
 
+  friend class DLinkSeqConstIter<E>;
+
 public:
     
     DLinkSeq(int size){
-        head = new Node(); //might need to change to raw pointer
-        this->size = size;
+        head = nullptr;//new Node(); //might need to change to raw pointer
+        this->maxSize = size;
     }
 
     static SeqPtr<E> make(int size = 8) {
@@ -30,35 +32,33 @@ public:
   /** clear contents from this seq, making it empty. */
   void clear(){         //Possible memory leak???
       
-      if(head->next != nullptr){
-          head->next->clear();
-      }
-      if(head->prev != nullptr){
-          head->prev->clear();
-      }
+    for(int i = 0; i < currSize; i++)
+    {
+      pop();
+    }
 
-    delete head;
-      
-  }
+    currSize = 0;
+
+  };
   
   /** add item to the start of this seq. */
   void unshift(const E& item){
-      assert(size < maxSize && "dlink seq overflow"); 
+      assert(currSize < maxSize && "dlink seq overflow"); 
       if(head == nullptr){
         head = new Node();
         head->next = nullptr;
         head->prev = nullptr;
         head->element = item;
-        size = 1;
+        currSize++;
         return;
       }
-      auto dlink = new Node();
+      auto *dlink = new Node();
       dlink->element = item;
       dlink->next = head;
       dlink->prev = nullptr;
       head->prev = dlink;
       head = dlink;
-      size++;
+      currSize++;
       return;
   };
   
@@ -66,26 +66,28 @@ public:
    *  fails if this seq is empty.
    */
   E shift(){
-    assert(size > 0 && "shift on empty dlink seq"); 
+    assert(currSize > 0 && "shift on empty dlink seq"); 
     int x = head->element;
     auto tmp = head;
     head = head->next;
+    head->prev = nullptr;
     delete tmp; 
-    size--;
-    return element;
+    currSize--;
+    return x;
   };
   
   /** add item at the end of this seq. */
   void push(const E& item){
 
-    assert(size < maxSize && "dlink seq overflow");
+    assert(currSize < maxSize && "dlink seq overflow");
 
       if(head == nullptr){
         head = new Node();
         head->next = nullptr;
         head->prev = nullptr;
         head->element = item;
-        size = 1;
+        //std::cout << "head elem : " << head->element << "\n item: " << item << std::endl;
+        currSize++;
         return;
       }
       
@@ -94,13 +96,15 @@ public:
     auto ptr = head;
 
     while(ptr->next != nullptr){
-        ptr = ptr->next();
+        ptr = ptr->next;
     }
+
+    
 
     ptr->next = tmp;
     tmp->prev = ptr;
 
-    size++;
+    currSize++;
 
   };
   
@@ -108,50 +112,60 @@ public:
    *  fails if this seq is empty.
    */
     E pop(){
-        assert(size > 0 && "empty dlink seq");
+        assert(currSize > 0 && "empty dlink seq");
 
-        auto tmp = new Node({item, nullptr, nullptr});
+        //auto tmp = new Node({0, nullptr, nullptr});
 
         auto ptr = head;
 
         while(ptr->next != nullptr){
-            ptr = ptr->next();
+            ptr = ptr->next;
         }
 
         int x = ptr->element;
 
-        delete ptr;
+          if(ptr->prev == nullptr){
+            head = nullptr;
+          }else{
+            ptr->prev->next = nullptr;
+            //ptr->next->prev = nullptr;
+            delete ptr;
+          }
 
-        size--;
+        currSize--;
 
         return x;
     }
-  
+
   /** return number of elements in this seq. */
-  int size(){
-      return size;
+  int size() const{
+      return currSize;
   }
 
   /** return an iterator initialized to start of this seq */
-  ConstIterPtr<E> cbegin(){
-      
+  ConstIterPtr<E> cbegin() const {
+    const DLinkSeq* constThis = static_cast<const DLinkSeq*>(this);
+    return std::make_unique<DLinkSeqConstIter<E>>(constThis);
   }
 
   /** return an iterator initialized to end of this seq */
-  virtual ConstIterPtr<E> cend() const = 0;
+  ConstIterPtr<E> cend() const {
+    const DLinkSeq* constThis = static_cast<const DLinkSeq*>(this);
+    return std::make_unique<DLinkSeqConstIter<E>>(constThis, false);
+  }
 
 private: 
 
     typedef struct Node{
         E element;
-        DLinkSeq* next;
-        DLinkSeq* prev;
+        Node* next;
+        Node* prev;
     } Node;
 
     int maxSize;
-    int size = 0; 
+    int currSize = 0; 
 
-    Node *head;
+    Node *head = nullptr;
 
 };
 
@@ -204,7 +218,8 @@ public:
   }
 
 private:
-  Node *ptr;
+
+  typename DLinkSeq<E>::Node *ptr;
 };
 
 
