@@ -24,7 +24,11 @@ void
 loopFn(Iterator begin, Iterator end, int arg)
 {
   std::vector<int> vec;
-  //@TODO
+  for(auto p = begin; p != end; p++){
+    if(*p != arg){
+      vec.push_back(*p);
+    }
+  }
   outContainer(vec.begin(), vec.end());
 }
 
@@ -32,7 +36,13 @@ loopFn(Iterator begin, Iterator end, int arg)
 template <typename Iterator>
 void noLoopFn(Iterator begin, Iterator end, int arg)
 {
-  //@TODO
+  std::vector<int> vec;
+  for(auto p = begin; p != end; p++){
+    if(*p != arg){
+      vec.push_back(*p);
+    }
+  }
+  outContainer(vec.begin(), vec.end()); 
 }
 
 #endif //ifndef OUT_HH_
