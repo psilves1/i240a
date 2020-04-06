@@ -13,8 +13,13 @@
 template <typename Iterator>
 void loopFn(Iterator begin, Iterator end, int arg) {
   std::cout << "[ ";
-  auto print = [](const int& i) { std::cout << i << " " ; };
-  std::for_each(begin, end, print);
+  
+  for (auto p = begin; p != end; ++p) {
+    std::cout << *p << " ";
+  }
+
+  //auto print = [](const int& i) { std::cout << i << " " ; };
+  //std::for_each(begin, end, print);
   std::cout << "]" << std::endl;
 }
 
