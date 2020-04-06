@@ -43,7 +43,12 @@ static void
 go(std::string containerSpec, std::vector<int> ints, int arg)
 {
   if (containerSpec == "[]") {
-    //@TODO
+    int arr[ints.size()];
+    for(long unsigned int j = 0; j < ints.size(); j++){
+      arr[j] = ints.at(j);
+    }
+      loopFn(arr, &arr[ints.size()], arg);
+      noLoopFn(arr, &arr[ints.size()], arg);
   }
   else if (containerSpec == "deque") {
     std::deque<int> container(ints.begin(), ints.end());
