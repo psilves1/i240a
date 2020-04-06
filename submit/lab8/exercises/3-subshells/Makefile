@@ -1,3 +1,3 @@
 all:
 		cd ~/cs240
-		ls
+		ls ~/cs240
