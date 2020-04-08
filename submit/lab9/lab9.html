@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 240: Lab 9</title>
+    <link href="lab9/hl-fine_blue.css" rel="stylesheet"/><link href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" 
+       rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" async=""></script>    
+
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exams-quizzes/index.html">Exams &amp; Quizzes</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hws/index.html">Homeworks</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../online/index.html">Online</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <section data-coord="lab9.umt:1:0"><h1 data-coord="lab9.umt:1:0">Lab 9</h1><p data-coord="lab9.umt:3:0"><strong data-coord="lab9.umt:3:0">Date</strong>: Apr 2, 2020
+</p><p data-coord="lab9.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><p data-coord="lab9.umt:9:0">In the listings which follow, comments are any text extending from 
+a <samp data-coord="lab9.umt:9:70">#</samp> character to end-of-line.
+</p><section data-coord="lab9.umt:12:0"><h2 data-coord="lab9.umt:12:0">Aims</h2><p data-coord="lab9.umt:15:0">The aim of this lab is to allow you to compare the performance of some
+common sorting algorithms.  The lab will give you some exposure to
+the following topics:
+</p><ul data-coord="lab9.umt:19:0"><li data-coord="lab9.umt:19:0"><p data-coord="lab9.umt:19:4">More shell scripting concepts.
+</p></li><li data-coord="lab9.umt:21:0"><p data-coord="lab9.umt:21:4">The use of gnuplot.
+</p></li><li data-coord="lab9.umt:23:0"><p data-coord="lab9.umt:23:4">The performance of common sorting algorithms.
+</p></li></ul></section><section data-coord="lab9.umt:28:0"><h2 data-coord="lab9.umt:28:0">Exercises</h2><section data-coord="lab9.umt:31:0"><h3 data-coord="lab9.umt:31:0">Starting up</h3><p data-coord="lab9.umt:34:0">Follow the <em data-coord="lab9.umt:34:44"><a href="../submission/submission.html" data-coord="lab9.umt:34:44">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="lab9.umt:34:104">lab9</samp> branch and a new
+<samp data-coord="lab9.umt:34:128">submit/lab9</samp> directory.  Start a <samp data-coord="lab9.umt:34:162">script</samp> session to log
+your interaction into a <samp data-coord="lab9.umt:34:210">lab9.LOG</samp> file.
+</p><p data-coord="lab9.umt:39:0">You will be doing all your work in your <samp data-coord="lab9.umt:39:40">submit/lab9</samp> directory:
+</p><pre data-coord="lab9.umt:42:0">$ cd ~/i240?/submit/lab9
+</pre><p data-coord="lab9.umt:45:0">Copy over the <a href="exercises" data-coord="lab9.umt:45:27">exercises</a> directory:
+</p><pre data-coord="lab9.umt:48:0">$ cp -r ~/cs240/labs/lab9/exercises .
+</pre><p data-coord="lab9.umt:51:0">The rest of this lab assumes that you are using <samp data-coord="lab9.umt:51:48">bash</samp> as your shell.
+</p></section></section><section data-coord="lab9.umt:53:0"><h2 data-coord="lab9.umt:53:0">Exercise 1</h2><p data-coord="lab9.umt:56:0">In this exercise, you will create data files which will be used
+in future exercises.  
+</p><p data-coord="lab9.umt:59:0">Linux distributions come with a <a href="http://man7.org/linux/man-pages/man1/seq.1.html" data-coord="lab9.umt:59:83">seq</a> command.  Play with it:
+</p><pre>$ <span class="hl kwc">seq</span> <span class="hl num">5</span>
+$ <span class="hl kwc">seq</span> <span class="hl num">2 11</span>
+$ <span class="hl kwc">seq</span> <span class="hl num">2 2 11</span>
+$ <span class="hl kwc">seq</span> <span class="hl num">11</span> <span class="hl kwb">-2</span> <span class="hl num">2</span></pre><p data-coord="lab9.umt:69:0">The shell also supports looping through consecutive "words" using
+a <code><span class="hl kwa">for</span></code>-loop.  Play with it:
+</p><pre>$ <span class="hl kwa">for</span> x <span class="hl kwa">in</span> <span class="hl num">22 33 44</span><span class="hl opt">;</span> <span class="hl kwa">do</span> <span class="hl kwb">echo</span> <span class="hl kwd">$x</span><span class="hl opt">;</span> <span class="hl kwa">done</span>
+$ <span class="hl kwa">for</span> x <span class="hl kwa">in</span> <span class="hl str">`seq 100 -20 0`</span><span class="hl opt">;</span> <span class="hl kwa">do</span> <span class="hl kwb">echo</span> <span class="hl kwd">$x</span><span class="hl opt">;</span> <span class="hl kwa">done</span></pre><p data-coord="lab9.umt:78:0">Recall from the earlier labs that the output of a command within
+backquotes (or <samp data-coord="lab9.umt:78:80">$(...)</samp>) is expanded into the containing command.  So
+the last command above is as though you had typed:
+</p><pre>$ <span class="hl kwa">for</span> x <span class="hl kwa">in</span> <span class="hl num">100 80 60 40 20 0</span><span class="hl opt">;</span> <span class="hl kwa">do</span> <span class="hl kwb">echo</span> <span class="hl kwd">$x</span><span class="hl opt">;</span> <span class="hl kwa">done</span></pre><p data-coord="lab9.umt:87:0">Another feature of bash is that it defines a shell variable
+<samp data-coord="lab9.umt:87:60">$RANDOM</samp> which has a different random integer value each time
+it is accessed. Play with it:
+</p><pre>$ <span class="hl kwb">echo</span> <span class="hl kwd">$RANDOM</span>
+$ <span class="hl kwa">for</span> x <span class="hl kwa">in</span> <span class="hl str">`seq 50`</span><span class="hl opt">;</span> <span class="hl kwa">do</span> <span class="hl kwb">echo -n</span> <span class="hl str">&quot;</span> <span class="hl ipl">$RANDOM</span> <span class="hl str">&quot;</span><span class="hl opt">;</span> <span class="hl kwa">done</span></pre><p data-coord="lab9.umt:97:0">The range of values generated by <samp data-coord="lab9.umt:97:33">$RANDOM</samp> is limited and the
+randomness is not supposed to be great, but it is good enough for
+generating random data.
+</p><p data-coord="lab9.umt:101:0">Make sure you are in the <samp data-coord="lab9.umt:101:25">exercises</samp> directory.  Use the above
+features, to generate the following 3 data files in the <samp data-coord="lab9.umt:101:119">exercises</samp>
+directory:
+</p><dl data-coord="lab9.umt:105:0"><dt data-coord="lab9.umt:105:2"> <samp data-coord="lab9.umt:105:1">ascending.dat</samp> </dt><dd data-coord="lab9.umt:106:0"><p data-coord="lab9.umt:106:4">A file containing 100,000 whitespace separated integers ordered in
+ascending order.
+</p></dd><dt data-coord="lab9.umt:109:2"> <samp data-coord="lab9.umt:109:1">descending.dat</samp> </dt><dd data-coord="lab9.umt:110:0"><p data-coord="lab9.umt:110:4">A file containing 100,000 whitespace separated integers ordered in
+descending order.
+</p></dd><dt data-coord="lab9.umt:113:2"> <samp data-coord="lab9.umt:113:1">random.dat</samp> </dt><dd data-coord="lab9.umt:114:0"><p data-coord="lab9.umt:114:4">A file containing 100,000 whitespace separated random integers.
+</p></dd></dl><p data-coord="lab9.umt:116:0">First try out the commands in the shell to generate integers for some
+small count like 10.  Then use output file redirection to capture
+100,000 integers in files having the above names.  Look at the
+generated files in an editor to verify.
+</p></section><section data-coord="lab9.umt:121:0"><h2 data-coord="lab9.umt:121:0">Exercise 2: Playing with Different Sorting Algorithms</h2><p data-coord="lab9.umt:124:0">Change over to the <a href="exercises/2-sorts" data-coord="lab9.umt:124:40">2-sorts</a> directory.  It
+contains a file <a href="exercises/2-sorts/sorts.cc" data-coord="lab9.umt:124:109">sorts.cc</a> which
+implements 5 sorting algorithms; the implementations are along
+the lines of what was discussed in class.  The algorithms
+are:
+</p><ul data-coord="lab9.umt:130:0"><li data-coord="lab9.umt:130:0"><p data-coord="lab9.umt:130:4"><samp data-coord="lab9.umt:130:4">insertionSort()</samp>.
+</p></li><li data-coord="lab9.umt:132:0"><p data-coord="lab9.umt:132:4"><samp data-coord="lab9.umt:132:4">bubbleSort()</samp>.
+</p></li><li data-coord="lab9.umt:134:0"><p data-coord="lab9.umt:134:4"><samp data-coord="lab9.umt:134:4">selectionSort()</samp>.
+</p></li><li data-coord="lab9.umt:136:0"><p data-coord="lab9.umt:136:4"><samp data-coord="lab9.umt:136:4">mergeSort()</samp>.
+</p></li><li data-coord="lab9.umt:138:0"><p data-coord="lab9.umt:138:4"><samp data-coord="lab9.umt:138:4">quickSort()</samp>.
+</p></li></ul><p data-coord="lab9.umt:140:0">All algorithms are set up to simply sort an <samp data-coord="lab9.umt:140:44">int</samp>-array.
+</p><p data-coord="lab9.umt:142:0">As explained in class, the first three algorithms above have \(O(n^2)\)
+performance, whereas the last two have \(O(n\lg n)\) performance.
+</p><p data-coord="lab9.umt:145:0"><strong data-coord="lab9.umt:145:0">IMPORTANT NOTE</strong>: To avoid overloading the system please do not use
+the \(O(n^2)\) algorithms to sort more than 10,000 integers.
+</p><p data-coord="lab9.umt:148:0">Compile the program using the <samp data-coord="lab9.umt:148:30">Makefile</samp> which is in the parent directory.
+Run the program to get a usage message:
+</p><pre>$ .<span class="hl opt">/</span>main 
+usage<span class="hl opt">:</span> .<span class="hl opt">/</span>main <span class="hl opt">[</span><span class="hl kwb">-v</span><span class="hl opt">]</span> ALGORITHM INTS_DATA_FILE|<span class="hl opt">- [</span>N...<span class="hl opt">]</span>
+$</pre><p data-coord="lab9.umt:158:0">The arguments are as follows:
+</p><dl data-coord="lab9.umt:160:0"><dt data-coord="lab9.umt:160:2"> <samp data-coord="lab9.umt:160:1">-v</samp> </dt><dd data-coord="lab9.umt:161:0"><p data-coord="lab9.umt:161:4">If this option is specified, then the results of each
+sort is output as a line containing whitespace separated
+integers.
+</p></dd><dt data-coord="lab9.umt:165:2"> <samp data-coord="lab9.umt:165:1">ALGORITHM</samp> </dt><dd data-coord="lab9.umt:166:0"><p data-coord="lab9.umt:166:4">This required argument must specify one of <samp data-coord="lab9.umt:166:47">insertionSort</samp>,
+<samp data-coord="lab9.umt:166:68">bubbleSort</samp>, <samp data-coord="lab9.umt:166:82">selectionSort</samp>, <samp data-coord="lab9.umt:166:99">mergeSort</samp> or <samp data-coord="lab9.umt:166:114">quickSort</samp>.
+</p></dd><dt data-coord="lab9.umt:169:2"> <samp data-coord="lab9.umt:169:1">INTS_DATA_FILE</samp> </dt><dd data-coord="lab9.umt:170:0"><p data-coord="lab9.umt:170:4">This required argument must specify a path to a file containing
+whitespace separated integers to be sorted.  If specified
+as <samp data-coord="lab9.umt:170:137">-</samp>, then integers are read from standard input.
+</p></dd><dt data-coord="lab9.umt:174:2"> <samp data-coord="lab9.umt:174:1">N...</samp> </dt><dd data-coord="lab9.umt:175:0"><p data-coord="lab9.umt:175:4">A possibly empty sequence of positive integers.  Specifies the
+number of integers from <samp data-coord="lab9.umt:175:95">INTS_DATA_FILE</samp> to be sorted.  This will
+be used in subsequent exercises to obtain the run sorts for
+different values of <samp data-coord="lab9.umt:175:225">N</samp>.  If this argument is not specified, then
+the entire contents of <samp data-coord="lab9.umt:175:298">INTS_DATA_FILE</samp> will be sorted.
+</p></dd></dl><p data-coord="lab9.umt:181:0">Examples:
+</p><pre>$ <span class="hl kwc">seq</span> <span class="hl num">100</span> <span class="hl kwb">-8</span> <span class="hl num">0</span> | .<span class="hl opt">/</span>main <span class="hl kwb">-v</span> insertionSort <span class="hl opt">-</span>
+<span class="hl num">4 12 20 28 36 44 52 60 68 76 84 92 100</span> 
+$ <span class="hl kwb">echo</span> <span class="hl kwd">$RANDOM $RANDOM $RANDOM $RANDOM</span> \
+    | .<span class="hl opt">/</span>main <span class="hl kwb">-v</span> mergeSort <span class="hl opt">-</span>
+<span class="hl num">9180 15138 15262 22610</span>
+$ <span class="hl kwc">seq</span> <span class="hl num">100</span> <span class="hl kwb">-4</span> <span class="hl num">0</span> | .<span class="hl opt">/</span>main <span class="hl kwb">-v</span> selectionSort <span class="hl opt">-</span> <span class="hl num">4 7</span>
+<span class="hl num">88 92 96 100</span> 
+<span class="hl num">60 64 68 72 76 80 84</span> 
+$ <span class="hl kwc">seq</span> <span class="hl num">100</span> <span class="hl kwb">-4</span> <span class="hl num">0</span> | .<span class="hl opt">/</span>main <span class="hl kwb">-v</span> bubbleSort <span class="hl opt">-</span> <span class="hl num">4 7</span>
+<span class="hl num">88 92 96 100</span> 
+<span class="hl num">60 64 68 72 76 80 84</span> 
+$ <span class="hl kwc">seq</span> <span class="hl num">100</span> <span class="hl kwb">-4</span> <span class="hl num">0</span> | .<span class="hl opt">/</span>main  bubbleSort <span class="hl opt">-</span> <span class="hl num">4 7</span>
+$ alg0<span class="hl opt">=</span><span class="hl str">&quot;insertionSort bubbleSort selectionSort&quot;</span>
+$ alg1<span class="hl opt">=</span><span class="hl str">&quot;mergeSort quickSort&quot;</span>
+$ <span class="hl kwa">for</span> a <span class="hl kwa">in</span> <span class="hl kwd">$alg0 $alg1</span><span class="hl opt">;</span> <span class="hl kwa">do</span> \
+    <span class="hl kwb">echo</span> <span class="hl str">&quot;***</span> <span class="hl ipl">$a</span><span class="hl str">&quot;</span><span class="hl opt">;</span> \
+    <span class="hl kwa">time</span> .<span class="hl opt">/</span>main <span class="hl kwd">$a</span> ..<span class="hl opt">/</span>random.dat <span class="hl num">10000</span><span class="hl opt">;</span> \
+  <span class="hl kwa">done</span>
+<span class="hl opt">***</span> insertionSort
+
+real    <span class="hl num">0</span>m0.208s
+user    <span class="hl num">0</span>m0.203s
+sys     <span class="hl num">0</span>m0.005s
+...
+$</pre><p data-coord="lab9.umt:212:0">The <samp data-coord="lab9.umt:212:4">time</samp> in the last command above is used to show the time taken for
+each run of the program.  The <samp data-coord="lab9.umt:212:102">real</samp> time is the elapsed "wall-clock"
+time, <samp data-coord="lab9.umt:212:149">user</samp> and <samp data-coord="lab9.umt:212:160">sys</samp> times are the time spent in user-space,
+system-space respectively.
+</p><p data-coord="lab9.umt:217:0">Note that the times for quicksort and mergesort are much smaller than
+those for the other sorts.
+</p></section><section data-coord="lab9.umt:220:0"><h2 data-coord="lab9.umt:220:0">Exercise 3: Sorting Algorithm Operations</h2><p data-coord="lab9.umt:223:0">Important measures for different sorting algorithms are the number
+of comparison and swap operations.
+</p><p data-coord="lab9.umt:226:0">Change over to the <a href="exercises/3-stats" data-coord="lab9.umt:226:40">3-stats</a> directory.  It
+contains essentially a copy of the code from the previous exercise
+except for one change: in the previous exercise, the comparison
+operations were hardcoded as <samp data-coord="lab9.umt:226:223">&lt;</samp>, <samp data-coord="lab9.umt:226:228">&gt;</samp>, etc. in the code and swaps
+were hardcoded to a <samp data-coord="lab9.umt:226:280">swap()</samp> function.  In this exercise, they
+have been replaced by virtual functions of an <samp data-coord="lab9.umt:226:369">Ops</samp> <samp data-coord="lab9.umt:226:375">class</samp>
+in <a href="exercises/3-stats/ops.hh" data-coord="lab9.umt:226:414">ops.hh</a> with implementation in
+<a href="exercises/3-stats/ops.cc" data-coord="lab9.umt:226:471">ops.cc.</a>
+</p><pre><span class="hl kwc">class</span> Ops <span class="hl opt">{</span>
+<span class="hl kwc">public</span><span class="hl opt">:</span>
+
+  <span class="hl com">/** return &lt; 0, == 0, &gt; 0 if a &lt; b, a == b, a &gt; b */</span>
+  <span class="hl kwc">virtual</span> <span class="hl kwb">int</span> <span class="hl kwd">compare</span><span class="hl opt">(</span><span class="hl kwb">int</span> a<span class="hl opt">,</span> <span class="hl kwb">int</span> b<span class="hl opt">);</span>
+  
+  <span class="hl com">/** swap a[i] and a[j] */</span>
+  <span class="hl kwc">virtual</span> <span class="hl kwb">void</span> <span class="hl kwd">swap</span><span class="hl opt">(</span><span class="hl kwb">int</span> a<span class="hl opt">[],</span> <span class="hl kwb">int</span> i<span class="hl opt">,</span> <span class="hl kwb">int</span> j<span class="hl opt">);</span>
+<span class="hl opt">};</span></pre><p data-coord="lab9.umt:247:0">Extend this class to count the number of <samp data-coord="lab9.umt:247:41">compare()</samp> and <samp data-coord="lab9.umt:247:57">swap()</samp>
+operations.  Specifically:
+</p><ol data-coord="lab9.umt:250:0"><li data-coord="lab9.umt:250:0"><p data-coord="lab9.umt:250:4">Define a new class which inherits from the above class.
+</p></li><li data-coord="lab9.umt:252:0"><p data-coord="lab9.umt:252:4">This class should define members which maintain counters
+for the number of calls to <samp data-coord="lab9.umt:252:92">compare()</samp> and <samp data-coord="lab9.umt:252:108">swap()</samp>.
+</p></li><li data-coord="lab9.umt:255:0"><p data-coord="lab9.umt:255:4">Override the <samp data-coord="lab9.umt:255:17">compare()</samp> and <samp data-coord="lab9.umt:255:33">swap()</samp> functions.  Have
+them merely wrap the corresponding functions in the
+base class by calling the corresponding base class
+function (using syntax like <samp data-coord="lab9.umt:255:202">this-&gt;Ops::compare()</samp>).
+Additionally, they should also update the appropriate
+counter.
+</p></li></ol><p data-coord="lab9.umt:262:0">Add code to <samp data-coord="lab9.umt:262:12">main.cc</samp> so that when run, the program will
+output three <strong data-coord="lab9.umt:262:70">tab-separated columns</strong> containing the
+following headings:
+</p><dl data-coord="lab9.umt:266:0"><dt data-coord="lab9.umt:266:2"> <samp data-coord="lab9.umt:266:1">n</samp> </dt><dd data-coord="lab9.umt:267:0"><p data-coord="lab9.umt:267:4">The number of integers being sorted.
+</p></dd><dt data-coord="lab9.umt:269:2"> <samp data-coord="lab9.umt:269:1">compares</samp> </dt><dd data-coord="lab9.umt:270:0"><p data-coord="lab9.umt:270:4">The total number of calls to <samp data-coord="lab9.umt:270:33">compare()</samp> for sorting
+the <samp data-coord="lab9.umt:270:65">n</samp> integers.
+</p></dd><dt data-coord="lab9.umt:273:2"> <samp data-coord="lab9.umt:273:1">swaps</samp> </dt><dd data-coord="lab9.umt:274:0"><p data-coord="lab9.umt:274:4">The total number of calls to <samp data-coord="lab9.umt:274:33">compare()</samp> for sorting
+the <samp data-coord="lab9.umt:274:65">n</samp> integers.
+</p></dd></dl><p data-coord="lab9.umt:277:0">An example output:
+</p><pre>$ .<span class="hl opt">/</span>main quickSort ..<span class="hl opt">/</span>random.dat <span class="hl str">`seq 10000 10000 100000`</span>
+n       compares        swaps
+<span class="hl num">10000   209967  38265</span>
+<span class="hl num">20000   447434  81683</span>
+<span class="hl num">30000   713555  126515</span>
+<span class="hl num">40000   967632  172602</span>
+<span class="hl num">50000   1314331 217209</span>
+<span class="hl num">60000   1551919 267604</span>
+<span class="hl num">70000   1889324 315032</span>
+<span class="hl num">80000   2170144 365113</span>
+<span class="hl num">90000   2436807 418455</span>
+<span class="hl num">100000  2714756 469392</span>
+$ <span class="hl kwa">for</span> f <span class="hl kwa">in</span> <span class="hl str">`seq 100000`</span><span class="hl opt">;</span> <span class="hl kwa">do</span> <span class="hl kwb">echo</span> <span class="hl kwd">$f</span><span class="hl opt">;</span> <span class="hl kwa">done</span> <span class="hl opt">&gt;</span> ..<span class="hl opt">/</span>ascending.dat
+$ .<span class="hl opt">/</span>main insertionSort ..<span class="hl opt">/</span>ascending.dat <span class="hl str">`seq 2000 2000 10000`</span>
+n       compares        swaps
+<span class="hl num">2000    1999    0</span>
+<span class="hl num">4000    3999    0</span>
+<span class="hl num">6000    5999    0</span>
+<span class="hl num">8000    7999    0</span>
+<span class="hl num">10000   9999    0</span>
+$ .<span class="hl opt">/</span>main insertionSort ..<span class="hl opt">/</span>descending.dat <span class="hl str">`seq 2000 2000 10000`</span>
+n       compares        swaps
+<span class="hl num">2000    1999000 1999000</span>
+<span class="hl num">4000    7998000 7998000</span>
+<span class="hl num">6000    17997000        17997000</span>
+<span class="hl num">8000    31996000        31996000</span>
+<span class="hl num">10000   49995000        49995000</span>
+$</pre><p data-coord="lab9.umt:311:0">Note that <samp data-coord="lab9.umt:311:10">insertionSort()</samp> performs no swaps when the data
+is already sorted.
+</p><p data-coord="lab9.umt:314:0">Collect data:
+</p><pre><span class="hl slc"># alg0 and alg1 as defined in previous exercise</span>
+$ <span class="hl kwa">for</span> a <span class="hl kwa">in</span> <span class="hl kwd">$alg0</span><span class="hl opt">;</span> <span class="hl kwa">do</span> \
+    .<span class="hl opt">/</span>main <span class="hl kwd">$a</span> ..<span class="hl opt">/</span>random.dat <span class="hl str">`seq 1000 1000 10000`</span> <span class="hl opt">&gt;</span> <span class="hl kwd">$a</span>.dat<span class="hl opt">;</span> \
+  <span class="hl kwa">done</span>
+$ <span class="hl kwa">for</span> a <span class="hl kwa">in</span> <span class="hl kwd">$alg1</span><span class="hl opt">;</span> <span class="hl kwa">do</span> \
+    .<span class="hl opt">/</span>main <span class="hl kwd">$a</span> ..<span class="hl opt">/</span>random.dat <span class="hl str">`seq 10000 10000 100000`</span> <span class="hl opt">&gt;</span> <span class="hl kwd">$a</span>.dat<span class="hl opt">;</span> \
+  <span class="hl kwa">done</span></pre><p data-coord="lab9.umt:327:0">You can look at the generated <samp data-coord="lab9.umt:327:30">*.dat</samp> files using a text editor,
+but you can also view the data as a graphical plot:
+</p><ol data-coord="lab9.umt:330:0"><li data-coord="lab9.umt:330:0"><p data-coord="lab9.umt:330:4">Use gnuplot to convert each data file into a <samp data-coord="lab9.umt:330:49">png</samp> image:
+</p><pre>    $ <span class="hl kwa">for</span> a <span class="hl kwa">in</span> <span class="hl kwd">$alg0 $alg1</span><span class="hl opt">;</span> <span class="hl kwa">do</span> ..<span class="hl opt">/</span>plot.gp <span class="hl kwd">$a</span>.dat <span class="hl opt">&gt;</span> <span class="hl kwd">$a</span>.png<span class="hl opt">;</span> <span class="hl kwa">done</span></pre></li><li data-coord="lab9.umt:337:0"><p data-coord="lab9.umt:337:4">If you are on a graphical terminal, you can view the <samp data-coord="lab9.umt:337:57">.png</samp> images:
+</p><pre>    $ <span class="hl kwa">for</span> f <span class="hl kwa">in</span> <span class="hl kwd">$alg0 $alg1</span><span class="hl opt">;</span> <span class="hl kwa">do</span> display <span class="hl kwd">$f</span>.png<span class="hl opt">;</span> <span class="hl kwa">done</span></pre><p data-coord="lab9.umt:345:4">If you are not on a graphical terminal, download the <samp data-coord="lab9.umt:345:57">*.png</samp> files
+onto your local workstation and view them using a browser or any
+image viewer.
+</p></li></ol></section><section data-coord="lab9.umt:349:0"><h2 data-coord="lab9.umt:349:0">Exercise 4: Sorting Algorithm Times</h2><p data-coord="lab9.umt:352:0">Change over to the <a href="exercises/4-time" data-coord="lab9.umt:352:39">4-time</a> directory.  It contains
+a <samp data-coord="lab9.umt:352:72">now</samp> module specified by <a href="exercises/4-time/now.hh" data-coord="lab9.umt:352:125">now.hh</a> which contains a <samp data-coord="lab9.umt:352:149">now()</samp> function which returns the
+number of milliseconds since Jan 1, 1970.  You can use that function
+to time each call to a <samp data-coord="lab9.umt:352:276">sort()</samp> function.
+</p><p data-coord="lab9.umt:357:0">Copy over the files from Exercise 2.  Change the code around the call
+to <samp data-coord="lab9.umt:357:73">sort()</samp> within <samp data-coord="lab9.umt:357:89">go()</samp> in <samp data-coord="lab9.umt:357:99">main.cc</samp> to:
+</p><pre>  <span class="hl kwb">long</span> t0 <span class="hl opt">=</span> <span class="hl kwd">now</span><span class="hl opt">();</span>
+  <span class="hl kwd">sort</span><span class="hl opt">(</span>a<span class="hl opt">,</span> n<span class="hl opt">);</span>
+  <span class="hl kwb">long</span> t1 <span class="hl opt">=</span> <span class="hl kwd">now</span><span class="hl opt">();</span>
+  <span class="hl slc">//t1 - t0 contains time for sort() in millis</span></pre><p data-coord="lab9.umt:367:0">As you did in the previous exercise, add code to <samp data-coord="lab9.umt:367:49">main.cc</samp> so that
+when run, the program will output two <strong data-coord="lab9.umt:367:105">tab-separated columns</strong>
+containing the following headings:
+</p><dl data-coord="lab9.umt:371:0"><dt data-coord="lab9.umt:371:2"> <samp data-coord="lab9.umt:371:1">n</samp> </dt><dd data-coord="lab9.umt:372:0"><p data-coord="lab9.umt:372:4">The number of integers being sorted.
+</p></dd><dt data-coord="lab9.umt:374:2"> <samp data-coord="lab9.umt:374:1">time</samp> </dt><dd data-coord="lab9.umt:375:0"><p data-coord="lab9.umt:375:4">The amount of time in millis taken for the call to <samp data-coord="lab9.umt:375:55">sort()</samp>.
+</p></dd></dl><p data-coord="lab9.umt:377:0">Example output:
+</p><pre>$ .<span class="hl opt">/</span>main insertionSort ..<span class="hl opt">/</span>random.dat <span class="hl str">`seq 1000 1000 10000`</span>
+n       <span class="hl kwa">time</span>
+<span class="hl num">1000    11</span>
+<span class="hl num">2000    26</span>
+<span class="hl num">3000    25</span>
+<span class="hl num">4000    33</span>
+<span class="hl num">5000    51</span>
+<span class="hl num">6000    73</span>
+<span class="hl num">7000    100</span>
+<span class="hl num">8000    131</span>
+<span class="hl num">9000    164</span>
+<span class="hl num">10000   204</span>
+$ .<span class="hl opt">/</span>main quickSort ..<span class="hl opt">/</span>random.dat <span class="hl str">`seq 10000 10000 100000`</span>
+n       <span class="hl kwa">time</span>
+<span class="hl num">10000   6</span>
+<span class="hl num">20000   10</span>
+<span class="hl num">30000   7</span>
+<span class="hl num">40000   6</span>
+<span class="hl num">50000   7</span>
+<span class="hl num">60000   6</span>
+<span class="hl num">70000   8</span>
+<span class="hl num">80000   9</span>
+<span class="hl num">90000   10</span>
+<span class="hl num">100000  11</span>
+$ </pre><p data-coord="lab9.umt:408:0">Once you have your changes working, collect the timing data for all
+the algorithms as in the previous exercise.  Use the
+<a href="exercises/plot.gp" data-coord="lab9.umt:408:142">plot.gp</a> gnuplot program to obtain <samp data-coord="lab9.umt:408:176">.png</samp> plots.
+View the plots using <samp data-coord="lab9.umt:408:211">display</samp> if you have a graphical terminal;
+otherwise download and view on your workstation.
+</p><section data-coord="lab9.umt:414:0"><h3 data-coord="lab9.umt:414:0">Winding Up</h3><p data-coord="lab9.umt:417:0">Follow the <em data-coord="lab9.umt:417:44"><a href="../submission/submission.html" data-coord="lab9.umt:417:44">provided directions</a></em> for
+winding up this lab. Terminate your <samp data-coord="lab9.umt:417:106">script</samp> session producing the log
+file <samp data-coord="lab9.umt:417:146">lab9.LOG</samp> in your <samp data-coord="lab9.umt:417:165">lab9</samp> directory.  Add all your files to
+git and commit.  Then merge your <samp data-coord="lab9.umt:417:239">lab9</samp> branch into the <samp data-coord="lab9.umt:417:262">master</samp>
+branch and commit your changes.
+</p></section></section></section>
+    </div> <!-- #content -->
+  </body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 240: Lab 6</title>
+    <link href="lab6/hl-fine_blue.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exams-quizzes/index.html">Exams &amp; Quizzes</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hws/index.html">Homeworks</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../online/index.html">Online</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <section data-coord="lab6.umt:1:0"><h1 data-coord="lab6.umt:1:0">Lab 6</h1><p data-coord="lab6.umt:3:0"><strong data-coord="lab6.umt:3:0">Date</strong>: Mar 12, 2020
+</p><p data-coord="lab6.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><p data-coord="lab6.umt:9:0">In the listings which follow, comments are any text extending from 
+a <samp data-coord="lab6.umt:9:70">#</samp> character to end-of-line.
+</p><section data-coord="lab6.umt:13:0"><h2 data-coord="lab6.umt:13:0">Aims</h2><p data-coord="lab6.umt:16:0">The aim of this lab is to introduce you to the Unix command-line.  After
+completing this lab, you should be familiar with the following topics:
+</p><ul data-coord="lab6.umt:19:0"><li data-coord="lab6.umt:19:0"><p data-coord="lab6.umt:19:4">Simple Unix commands like <samp data-coord="lab6.umt:19:30">ls</samp>, <samp data-coord="lab6.umt:19:36">cat</samp>, and <samp data-coord="lab6.umt:19:47">wc</samp>.
+</p></li><li data-coord="lab6.umt:21:0"><p data-coord="lab6.umt:21:4">The typical syntax of Unix commands.
+</p></li><li data-coord="lab6.umt:23:0"><p data-coord="lab6.umt:23:4">The use of wildcards on the command-line.
+</p></li><li data-coord="lab6.umt:25:0"><p data-coord="lab6.umt:25:4">The standard I/O streams.
+</p></li><li data-coord="lab6.umt:27:0"><p data-coord="lab6.umt:27:4">How to redirect the standard I/O streams to files and commands.
+</p></li><li data-coord="lab6.umt:29:0"><p data-coord="lab6.umt:29:4">How to get help on a Unix system.
+</p></li></ul></section><section data-coord="lab6.umt:34:0"><h2 data-coord="lab6.umt:34:0">Background</h2><p data-coord="lab6.umt:37:0">The Unix shell is a command-line program which allows users to interact with
+a Unix system.  Even though we colloquially use the term <em data-coord="lab6.umt:37:134">the Unix shell</em>,
+there are many Unix shells with names like <samp data-coord="lab6.umt:37:195">sh</samp>, <samp data-coord="lab6.umt:37:201">csh</samp>, <samp data-coord="lab6.umt:37:208">bash</samp>, <samp data-coord="lab6.umt:37:216">tcsh</samp>, etc.
+The first popular shell was <samp data-coord="lab6.umt:37:257">sh</samp> written by Stephen Bourne.
+</p><p data-coord="lab6.umt:42:0">All information within a Unix system is stored within <em data-coord="lab6.umt:42:54">files</em>.  As far as
+Unix is concerned a <em data-coord="lab6.umt:42:94">file</em> is nothing but a unstructured sequence of bytes.
+Unlike other OS's, Unix itself does not require that the files have any kind
+of record structure.  The structure of a file is dictated only by the
+application programs which manipulate the file.
+</p><p data-coord="lab6.umt:48:0">The collection of files on a unix system is organized in a hierarchy of
+<em data-coord="lab6.umt:48:72">folders</em> or <em data-coord="lab6.umt:48:85">directories</em>; i.e., a directory consists of a collection of
+files and other directories.  The root directory of the entire hierarchy is
+denoted as <samp data-coord="lab6.umt:48:233">/</samp>.  Any Unix process always has a current directory denoted as
+<samp data-coord="lab6.umt:48:298">.</samp> (the character period), and can refer to the parent of the current
+directory using <samp data-coord="lab6.umt:48:385">..</samp> (two period characters).
+</p><p data-coord="lab6.umt:55:0">A file or directory <strong data-coord="lab6.umt:55:20">name</strong> can consist of a sequence of any characters
+other than <samp data-coord="lab6.umt:55:82">/</samp> or the ASCII <samp data-coord="lab6.umt:55:99">NUL</samp> character (`'\0'` in C syntax).  A
+<strong data-coord="lab6.umt:55:140">pathname</strong> is a sequence of directory names, optionally followed by a
+filename separated by <samp data-coord="lab6.umt:55:232">/</samp> characters. If the pathname begins with a
+<samp data-coord="lab6.umt:55:278">/</samp>, then it is an absolute pathname, otherwise it is a relative
+pathname interpreted relative to the <em data-coord="lab6.umt:55:380">current directory</em>.
+</p><p data-coord="lab6.umt:62:0">Example names:
+</p><pre data-coord="lab6.umt:65:0">  /bin/ls		#an absolute path name
+  bin/hello		#a relative path name
+  ./hello		#the file hello in the current directory
+  ../hello		#the file hello in the parent of the current directory
+</pre><p data-coord="lab6.umt:71:0">A shell <strong data-coord="lab6.umt:71:8">command</strong> consists of a <em data-coord="lab6.umt:71:32">command-name</em> followed by <em data-coord="lab6.umt:71:59">options</em>
+and <em data-coord="lab6.umt:71:73">arguments</em> separated by blanks.  The arguments specify the
+information needed by the command whereas the options control how the
+command works.  Usually, options begin with a <samp data-coord="lab6.umt:71:249">-</samp> or <samp data-coord="lab6.umt:71:256">--</samp>, but since
+each command defines the exact syntax of options and arguments there
+can be subtle differences in the syntax of options between different
+commands.
+</p><p data-coord="lab6.umt:79:0">Example commands:
+</p><pre data-coord="lab6.umt:82:0">$ ls        #a simple command without arguments or options
+$ ls -l	    #list the contents of a directory in a long format (option -l).
+$ ls dir    #list contents of directory dir (an argument).
+$ ls -l dir #list contents of dir (argument) in long format (option -l).
+$ ls -d -l dir #list information about dir (not contents)
+$ ls --directory -l dir #long option --directory equivalent to -d above
+$ ls -dl dir #like -d -l; many commands allow short options to be combined
+</pre><p data-coord="lab6.umt:91:0">To get help for a command, use the <samp data-coord="lab6.umt:91:35">man</samp> command.  Example, <samp data-coord="lab6.umt:91:60">man ls</samp>.
+</p></section><section data-coord="lab6.umt:94:0"><h2 data-coord="lab6.umt:94:0">Exercises</h2><section data-coord="lab6.umt:100:0"><h3 data-coord="lab6.umt:100:0">Starting up</h3><p data-coord="lab6.umt:103:0">Follow the <em data-coord="lab6.umt:103:44"><a href="../submission/submission.html" data-coord="lab6.umt:103:44">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="lab6.umt:103:104">lab6</samp> branch and a new
+<samp data-coord="lab6.umt:103:128">submit/lab6</samp> directory.  Start a <samp data-coord="lab6.umt:103:162">script</samp> session to log
+your interaction into a <samp data-coord="lab6.umt:103:210">lab6.LOG</samp> file.
+</p><p data-coord="lab6.umt:108:0">You will be doing all your work in your <samp data-coord="lab6.umt:108:40">submit/lab6</samp> directory:
+</p><pre data-coord="lab6.umt:111:0">$ cd ~/i240?/submit/lab6
+</pre><p data-coord="lab6.umt:114:0">Copy over the <a href="exercises" data-coord="lab6.umt:114:27">exercises</a> directory:
+</p><pre data-coord="lab6.umt:117:0">$ cp -r ~/cs240/labs/lab6/exercises .
+</pre></section><section data-coord="lab6.umt:121:0"><h3 data-coord="lab6.umt:121:0">Exercise 1: Some Basic Commands</h3><p data-coord="lab6.umt:124:0">In this exercise we will create some empty files using the <samp data-coord="lab6.umt:124:59">touch</samp>
+command.  (On an existing file, the <samp data-coord="lab6.umt:124:103">touch</samp> command modifies its
+last-modified timestamp; however, if the file does not exist, then the
+<samp data-coord="lab6.umt:124:203">touch</samp> command will create it)
+</p><p data-coord="lab6.umt:129:0">Type the following commands:
+</p><pre data-coord="lab6.umt:134:0">$ mkdir dir  #create a directory for this exercise
+$ touch t1.c T1.s v.c v1.s x.c dir/t2.c dir/T2.s1 dir/t3
+$ ls	     #see contents within current directory sorted by name
+$ ls -l	     #long contents of current directory: the columns will
+     	     #show permissions (r = read allowed; w = write allowed;
+	     #x = execute allowed, 3 groups for owner, group and other; 
+	     #initial d for directories), owner name, group name, size in
+	     #bytes, last modification time, name.
+$ ls -tl     #sort by last modification time instead of by name
+</pre><p data-coord="lab6.umt:145:0">Now type in commands to list:
+</p><ol data-coord="lab6.umt:147:0"><li data-coord="lab6.umt:147:0"><p data-coord="lab6.umt:147:4">The contents of <samp data-coord="lab6.umt:147:20">dir</samp> (only the names), sorted by name.
+</p></li><li data-coord="lab6.umt:149:0"><p data-coord="lab6.umt:149:4">The long contents of <samp data-coord="lab6.umt:149:25">dir</samp>, sorted by name.
+</p></li><li data-coord="lab6.umt:151:0"><p data-coord="lab6.umt:151:4">The long contents of <samp data-coord="lab6.umt:151:25">dir</samp>, sorted by last modification time.
+</p></li><li data-coord="lab6.umt:153:0"><p data-coord="lab6.umt:153:4">The contents of <samp data-coord="lab6.umt:153:20">dir</samp> (only the names), sorted by last modification
+ time.
+</p></li></ol><p data-coord="lab6.umt:156:0">To familiarize yourself with how Unix <samp data-coord="lab6.umt:156:38">man</samp> pages are setup, do a <samp data-coord="lab6.umt:156:66">man
+touch</samp>, followed by <samp data-coord="lab6.umt:156:91">man ls</samp> in the auxiliary terminal window.  If your
+terminal is setup correctly you should be able to use the <samp data-coord="lab6.umt:156:201">PgUp</samp> and <samp data-coord="lab6.umt:156:212">PgDn</samp>
+keys on your keyboard to move back and forth within the man page.
+Minimally, the spacebar should page forward.
+</p></section><section data-coord="lab6.umt:163:0"><h3 data-coord="lab6.umt:163:0">Exercise 2: Wildcards</h3><p data-coord="lab6.umt:166:0">The following characters are interpreted specially by the shell to allow 
+specification of file-"globbing" patterns:
+</p><dl data-coord="lab6.umt:169:0"><dt data-coord="lab6.umt:169:2"> <samp data-coord="lab6.umt:169:1">*</samp></dt><dd data-coord="lab6.umt:170:0"><p data-coord="lab6.umt:170:5">matches any sequence of file-name characters (including the empty
+sequence).
+</p></dd><dt data-coord="lab6.umt:173:2"> <samp data-coord="lab6.umt:173:1">?</samp></dt><dd data-coord="lab6.umt:174:0"><p data-coord="lab6.umt:174:5">matches any single character.
+</p></dd><dt data-coord="lab6.umt:176:2"> <samp data-coord="lab6.umt:176:1">[</samp><em data-coord="lab6.umt:176:4">XY ... Z</em><samp data-coord="lab6.umt:176:14">]</samp></dt><dd data-coord="lab6.umt:177:0"><p data-coord="lab6.umt:177:5">matches any one of the characters <em data-coord="lab6.umt:177:39">XY ... Z</em>.  For example, <samp data-coord="lab6.umt:177:65">[aeiou]</samp>
+matches a vowel character.
+</p></dd><dt data-coord="lab6.umt:181:2"> <samp data-coord="lab6.umt:181:1">[</samp><em data-coord="lab6.umt:181:4">X</em><samp data-coord="lab6.umt:181:7">-</samp><em data-coord="lab6.umt:181:10">Y</em><samp data-coord="lab6.umt:181:13">]</samp></dt><dd data-coord="lab6.umt:182:0"><p data-coord="lab6.umt:182:5">match character <em data-coord="lab6.umt:182:21">X</em> through <em data-coord="lab6.umt:182:33">Y</em>. For example, <samp data-coord="lab6.umt:182:51">[0-9]</samp> matches a digit.
+</p></dd></dl><p data-coord="lab6.umt:184:0">The special interpretation occurs only when there are files which
+match the pattern.  To prevent the special interpretation, you can
+quote the special character by preceeding with a backspace or by
+enclosing within single <samp data-coord="lab6.umt:184:222">'</samp> or double <samp data-coord="lab6.umt:184:236">"</samp> quotes.  This is covered in
+a subsequent exercise,
+</p><p data-coord="lab6.umt:190:0">Type the following commands:
+</p><pre data-coord="lab6.umt:193:0">$ ls T*		#should only list T1.s
+$ ls dir/*.?	#should not list dir/T2.s1 or dir/t3
+$ ls [t-v]*.c	#should only list t1.c, v.c
+</pre><p data-coord="lab6.umt:198:0">Now type in the commands to list:
+</p><ol data-coord="lab6.umt:200:0"><li data-coord="lab6.umt:200:0"><p data-coord="lab6.umt:200:4">All the names in directory <samp data-coord="lab6.umt:200:31">/bin</samp> whose second character is <samp data-coord="lab6.umt:200:64">p</samp> through
+ <samp data-coord="lab6.umt:200:81">s</samp>.  
+</p></li><li data-coord="lab6.umt:203:0"><p data-coord="lab6.umt:203:4">All the names in <samp data-coord="lab6.umt:203:21">/etc</samp> which end in the two characters <samp data-coord="lab6.umt:203:60">rc</samp>.
+</p></li><li data-coord="lab6.umt:205:0"><p data-coord="lab6.umt:205:4">All the names in <samp data-coord="lab6.umt:205:21">/bin</samp> which contain exactly 3 letters.
+</p></li></ol></section><section data-coord="lab6.umt:208:0"><h3 data-coord="lab6.umt:208:0">Exercise 3: Standard Streams and I/O Redirection</h3><p data-coord="lab6.umt:211:0">Every process on a Unix system has access to 3 standard input-output
+(I/O) streams:
+</p><dl data-coord="lab6.umt:214:0"><dt data-coord="lab6.umt:214:2"> <strong data-coord="lab6.umt:214:1">Standard input</strong></dt><dd data-coord="lab6.umt:215:0"><p data-coord="lab6.umt:215:4">The process can read its textual input data from this stream.  
+</p></dd><dt data-coord="lab6.umt:217:2"> <strong data-coord="lab6.umt:217:1">Standard output</strong></dt><dd data-coord="lab6.umt:218:0"><p data-coord="lab6.umt:218:4">The process can write its normal textual output to this stream.
+</p></dd><dt data-coord="lab6.umt:220:2"> <strong data-coord="lab6.umt:220:1">Standard error</strong></dt><dd data-coord="lab6.umt:221:0"><p data-coord="lab6.umt:221:4">The process can write its error messages to this stream.
+</p></dd></dl><p data-coord="lab6.umt:223:0">By default, all 3 streams refer to the terminal.  However, it is possible to
+redirect the streams to files or commands.
+</p><p data-coord="lab6.umt:226:0">If a command is followed by a <samp data-coord="lab6.umt:226:30">&gt;</samp> character followed by a filename, then the
+standard output of the command is <strong data-coord="lab6.umt:226:111">redirected</strong> to the file.
+</p><p data-coord="lab6.umt:229:0">Try <samp data-coord="lab6.umt:229:4">ls &gt; ls.log</samp>.  No output should be produced on the terminal; instead
+the output should have been redirected to <samp data-coord="lab6.umt:229:116">ls.log</samp>.  Do <samp data-coord="lab6.umt:229:130">cat ls.log</samp> to see
+its contents (the <samp data-coord="lab6.umt:229:168">cat</samp> command con*cat*enates the files specified by its
+command-line arguments onto standard output; if there are no files
+specified, then it merely copies standard input to standard output).
+</p><p data-coord="lab6.umt:235:0">Try <samp data-coord="lab6.umt:235:4">cat &gt;cat.log</samp>.  There should be no output.  Type a couple of lines of
+garbage text on the terminal and terminate with a <samp data-coord="lab6.umt:235:125">control-D</samp> character.
+Then type <samp data-coord="lab6.umt:235:158">cat cat.log</samp> and you should see your garbage text displayed on
+the terminal (note this is a handy trick when you happen to get onto a
+barely working computer which does not have a functioning text editor).
+</p><p data-coord="lab6.umt:241:0">If a command is followed by <samp data-coord="lab6.umt:241:28">&gt;&gt;</samp> characters followed by a filename, then the
+standard output of the command will be <strong data-coord="lab6.umt:241:116">appended</strong> to the filename.
+</p><p data-coord="lab6.umt:244:0">Try <samp data-coord="lab6.umt:244:4">ls dir &gt;&gt;ls.log</samp>, followed by <samp data-coord="lab6.umt:244:35">cat ls.log</samp>.  You should see the output
+of both redirections.
+</p><p data-coord="lab6.umt:247:0">If a command is followed by the <samp data-coord="lab6.umt:247:32">&lt;</samp> character followed by a filename, then
+the standard input of the command is redirected from filename.  
+</p><p data-coord="lab6.umt:250:0">Try <samp data-coord="lab6.umt:250:4">cat &lt;ls.log</samp>; i.e., the <samp data-coord="lab6.umt:250:29">cat</samp> command is run without any arguments,
+hence it will copy its standard input to standard output.  Since the
+standard input is being redirected from <samp data-coord="lab6.umt:250:182">ls.log</samp>, this command should do
+exactly the same as <samp data-coord="lab6.umt:250:235">cat ls.log</samp> without the input redirection.
+</p><p data-coord="lab6.umt:255:0">Finally, if two command are separated by the <samp data-coord="lab6.umt:255:45">|</samp> character, then the standard
+output of the first command is fed into the standard input of the second
+command.  The combined command is known as a <em data-coord="lab6.umt:255:196">pipeline</em>.
+</p><p data-coord="lab6.umt:259:0">For example, <samp data-coord="lab6.umt:259:13">wc -l</samp> will print out the number of lines on its standard
+input (do <samp data-coord="lab6.umt:259:82">man wc</samp> in your auxiliary terminal for other options). So
+try <samp data-coord="lab6.umt:259:145">ls | wc -l</samp> to get a count of the number of files in the current
+directory.
+</p><p data-coord="lab6.umt:264:0">Now type in the commands to achieve the following:
+</p><ol data-coord="lab6.umt:266:0"><li data-coord="lab6.umt:266:0"><p data-coord="lab6.umt:266:4">Produce on the terminal a count of the number of filenames in the
+<samp data-coord="lab6.umt:266:74">/bin</samp> directory which are exactly 4 letters in length.
+</p></li><li data-coord="lab6.umt:269:0"><p data-coord="lab6.umt:269:4">Create a file <samp data-coord="lab6.umt:269:18">bin-c.log</samp> containing all the filenames in the <samp data-coord="lab6.umt:269:66">/bin</samp>
+directory which start with the character <samp data-coord="lab6.umt:269:118">c</samp>.
+</p></li><li data-coord="lab6.umt:272:0"><p data-coord="lab6.umt:272:4">Print out the number of lines in the file <samp data-coord="lab6.umt:272:46">bin-c.log</samp> created by
+the previous command.
+</p></li><li data-coord="lab6.umt:275:0"><p data-coord="lab6.umt:275:4">Do a <samp data-coord="lab6.umt:275:9">man tr</samp> in the auxiliary terminal to understand how to
+translate all lowercase characters to uppercase.  Then list out
+all the names in the current directory with all names in
+uppercase.
+</p></li></ol></section><section data-coord="lab6.umt:281:0"><h3 data-coord="lab6.umt:281:0">Exercise 4: Quoting</h3><p data-coord="lab6.umt:284:0">In Unix, a filename can contain any character other than a
+forward-slash <samp data-coord="lab6.umt:284:73">/</samp> (which is used as a <em data-coord="lab6.umt:284:97">path-separator</em> character) and
+an ASCII <samp data-coord="lab6.umt:284:138">NUL</samp> character <samp data-coord="lab6.umt:284:154">\0</samp>.  However, since many non-alphanumeric
+characters are special to the shell, specifying the names of files
+which contain special characters requires quoting.  This exercise
+deals with that.  
+</p><p data-coord="lab6.umt:291:0">Change over to the <a href="./exercises/4-quoting" data-coord="lab6.umt:291:44">4-quoting</a> directory.  Do
+an <samp data-coord="lab6.umt:291:72">ls</samp> and you will notice filenames containing characters which are
+special to most Unix shells.
+</p><p data-coord="lab6.umt:295:0">To understand how quotes work within <samp data-coord="lab6.umt:295:37">bash</samp>, let's first play with using
+backslash as the quote character.  Try the following commands:
+</p><pre>$ <span class="hl kwb">echo</span> <span class="hl esc">\\</span>
+$ <span class="hl kwb">echo</span> <span class="hl esc">\&apos;</span>
+$ <span class="hl kwb">echo</span> \<span class="hl opt">*</span>
+$ <span class="hl kwb">echo</span> \<span class="hl kwd">$HOME</span><span class="hl esc">\&quot;\\</span></pre><p data-coord="lab6.umt:306:0">The <samp data-coord="lab6.umt:306:4">echo</samp> command merely echoes its arguments.  The above examples
+should show you that <samp data-coord="lab6.umt:306:89">\</samp> can always be used to quote the following
+character.
+</p><p data-coord="lab6.umt:310:0">Now play with characters enclosed within single quotes (`'`).  You will
+see that no character within single-quotes is special in any way.
+</p><pre>$ <span class="hl kwb">echo</span> <span class="hl str">&apos;</span><span class="hl esc">\&apos;</span>
+<span class="hl str">$ echo &apos;</span><span class="hl esc">\\</span><span class="hl str">&apos;</span>
+<span class="hl str">$ echo &apos;</span><span class="hl opt">*</span>$~<span class="hl str">&apos;</span></pre><p data-coord="lab6.umt:320:0">Since no character within single-quotes is special, there is no way to
+specify a single-quote within single-quotes.  If you try something like
+<samp data-coord="lab6.umt:320:143">echo '\''</samp>, you will get a secondary shell prompt <samp data-coord="lab6.umt:320:194">&gt;</samp> as the shell
+terminates the first string at the second occurrence of <samp data-coord="lab6.umt:320:267">'</samp> and then starts
+looking for a terminating quote for the third <samp data-coord="lab6.umt:320:333">'</samp>.  If you type in a <samp data-coord="lab6.umt:320:356">'</samp> at
+the <samp data-coord="lab6.umt:320:367">&gt;</samp> prompt, you should see output containing a <samp data-coord="lab6.umt:320:414">\</samp> and a newline
+character.
+</p><pre>$ <span class="hl kwb">echo</span> <span class="hl str">&apos;</span><span class="hl esc">\&apos;</span><span class="hl str">&apos;</span>
+<span class="hl opt">&gt;</span> <span class="hl str">&apos;</span></pre><p data-coord="lab6.umt:334:0">Now try using <samp data-coord="lab6.umt:334:14">"</samp> as your quote character:
+</p><pre>$ <span class="hl kwb">echo</span> <span class="hl str">&quot;</span><span class="hl esc">\&quot;\\</span><span class="hl str">&quot;</span>
+$ <span class="hl kwb">echo</span> <span class="hl str">&quot;</span><span class="hl ipl">$HOME</span><span class="hl str">&quot;</span></pre><p data-coord="lab6.umt:342:0">You will see that some characters are still interpreted specially within
+the double-quotes.
+</p><p data-coord="lab6.umt:345:0">It is possible to spread a single command over multiple physical lines by
+quoting the newline character (usually by a backslash).  For example,
+</p><pre>$ <span class="hl kwb">echo</span> \
+<span class="hl opt">&gt;</span> abc \
+<span class="hl opt">&gt;</span> <span class="hl num">123</span></pre><p data-coord="lab6.umt:355:0">This is useful for splitting up long commands over multiple physical lines.
+After processing the quoted newlines, the shell sees only a single logical
+line.
+</p><p data-coord="lab6.umt:359:0">Recall the file-globbing patterns from the earlier exercise.  Now
+use those along with your knowledge of quoting and the <samp data-coord="lab6.umt:359:121">ls</samp> command
+to:
+</p><ol data-coord="lab6.umt:363:0"><li data-coord="lab6.umt:363:0"><p data-coord="lab6.umt:363:4">List precisely those files in the current directory which contain a
+dollar sign <samp data-coord="lab6.umt:363:88">$</samp> in their names.
+</p></li><li data-coord="lab6.umt:366:0"><p data-coord="lab6.umt:366:4">List precisely those files in the current directory which contain a 
+single-quote <samp data-coord="lab6.umt:366:90">'</samp> in their names.
+</p></li><li data-coord="lab6.umt:369:0"><p data-coord="lab6.umt:369:4">List precisely those files in the current directory which start with
+a backslash <samp data-coord="lab6.umt:369:89">\</samp>.
+</p></li><li data-coord="lab6.umt:372:0"><p data-coord="lab6.umt:372:4">List precisely those files in the current directory which contain a
+name consisting of exactly 2 characters.
+</p></li></ol><p data-coord="lab6.umt:375:0">Is the result for the last question consistent with what you would expect
+after looking at the output of a simple <samp data-coord="lab6.umt:375:114">ls</samp> command?  According to <samp data-coord="lab6.umt:375:142">ls</samp>,
+there are two filenames <samp data-coord="lab6.umt:375:172">**</samp> and <samp data-coord="lab6.umt:375:181">-l</samp> consisting of exactly 2 characters.
+If you succeeded in picking those out using a globbing pattern, the <samp data-coord="lab6.umt:375:290">ls</samp>
+program would have seen <samp data-coord="lab6.umt:375:319">-l</samp> and <samp data-coord="lab6.umt:375:328">**</samp> as its arguments.  It would regard
+<samp data-coord="lab6.umt:375:368">-l</samp> as a command-line option specifying a <em data-coord="lab6.umt:375:411">long listing</em> for its remaining
+argument <samp data-coord="lab6.umt:375:453">**</samp>.  
+</p><p data-coord="lab6.umt:383:0">The problem is that globbing is implemented entirely within
+the shell.  This is often advantageous but the flip side is that a
+command like <samp data-coord="lab6.umt:383:140">ls</samp> cannot distinguish the origin of an argument <samp data-coord="lab6.umt:383:190">-l</samp> as
+originating from a glob pattern or actually typed by a user as an
+option. You cannot fix by any quoting within the shell.
+</p><p data-coord="lab6.umt:389:0">Fortunately, many modern Unix commands allow a special option <samp data-coord="lab6.umt:389:62">--</samp>
+which guarantees that the following arguments are not treated as
+command-line options.  Now use <samp data-coord="lab6.umt:389:163">--</samp> to fix your solution above.
+</p></section><section data-coord="lab6.umt:393:0"><h3 data-coord="lab6.umt:393:0">Winding Up</h3><p data-coord="lab6.umt:396:0">Follow the <em data-coord="lab6.umt:396:44"><a href="../submission/submission.html" data-coord="lab6.umt:396:44">provided directions</a></em> for
+winding up this lab. Terminate your <samp data-coord="lab6.umt:396:106">script</samp> session producing the log
+file <samp data-coord="lab6.umt:396:146">lab6.LOG</samp> in your <samp data-coord="lab6.umt:396:165">lab6</samp> directory.  Add all your files to
+git and commit.  Then merge your <samp data-coord="lab6.umt:396:239">lab6</samp> branch into the <samp data-coord="lab6.umt:396:262">master</samp>
+branch and commit your changes.
+</p></section></section><section data-coord="lab6.umt:402:0"><h2 data-coord="lab6.umt:402:0">References</h2><p data-coord="lab6.umt:405:0">Brian W. Kernighan, Rob Pike, <em data-coord="lab6.umt:405:30">The Unix Programming Environment</em>,
+Prentice-Hall, 1984.
+</p><p data-coord="lab6.umt:408:0">Web shell tutorials: do a google search on <em data-coord="lab6.umt:408:43">bourne shell</em> or <em data-coord="lab6.umt:408:61">bash
+tutorials</em>.
+</p><p data-coord="lab6.umt:412:0"><em data-coord="lab6.umt:412:0"><a href="http://www.gnu.org/software/bash/manual/html_node/index.html#Top" data-coord="lab6.umt:412:0">GNU bash Manual</a></em>.
+</p><p data-coord="lab6.umt:414:0">Rob Pike and Brian Kernighan, <em data-coord="lab6.umt:414:30">Program design in the UNIX
+environment</em>, AKA <em data-coord="lab6.umt:414:76">cat -v Considered Harmful</em>, AT&amp;T Bell Laboratories
+Technical Journal, October 1984, Vol. 63, No. 8, Pt 2.  Available as
+ps/pdf at <em data-coord="lab6.umt:414:242"><a href="http://harmful.cat-v.org/cat-v/" data-coord="lab6.umt:414:242">&lt;http://harmful.cat-v.org/cat-v/&gt;</a></em>.
+</p></section></section>
+    </div> <!-- #content -->
+  </body>
+</html>

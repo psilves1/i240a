@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 240: Lab 7</title>
+    <link href="lab7/hl-fine_blue.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exams-quizzes/index.html">Exams &amp; Quizzes</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hws/index.html">Homeworks</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../online/index.html">Online</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <section data-coord="lab7.umt:1:0"><h1 data-coord="lab7.umt:1:0">Lab 7</h1><p data-coord="lab7.umt:3:0"><strong data-coord="lab7.umt:3:0">Date</strong>: Mar 19, 2020
+</p><p data-coord="lab7.umt:5:0">This document first describes the aims of this lab.  It then provides
+necessary background.  It then describes the exercises which need to be
+performed.
+</p><p data-coord="lab7.umt:9:0">In the listings which follow, comments are any text extending from 
+a <samp data-coord="lab7.umt:9:70">#</samp> character to end-of-line.
+</p><section data-coord="lab7.umt:13:0"><h2 data-coord="lab7.umt:13:0">Aims</h2><p data-coord="lab7.umt:16:0">The aim of this lab is to introduce you to STL containers and
+iterators.  After completing this lab, you should have some familiarity
+with some STL containers, iterators and algorithms.
+</p></section><section data-coord="lab7.umt:22:0"><h2 data-coord="lab7.umt:22:0">Background</h2><p data-coord="lab7.umt:25:0">A good source for background material for this lab is
+<em data-coord="lab7.umt:25:113"><a href="http://cs.stmarys.ca/~porter/csc/ref/stl/iterators.html" data-coord="lab7.umt:25:113">this web
+page</a></em> which is at just the right level of detail.  Please read it
+thoroughly upto and including the <strong data-coord="lab7.umt:25:223">Container classes and their
+associated iterator types</strong> section.  Please also scan the rest of the
+document as we will need some of that material in the third exercise.  Make
+sure you understand the following:
+</p><ul data-coord="lab7.umt:33:0"><li data-coord="lab7.umt:33:0"><p data-coord="lab7.umt:33:4">STL ranges represented by a half-open interval <samp data-coord="lab7.umt:33:51">[begin, end)</samp>.
+</p></li><li data-coord="lab7.umt:35:0"><p data-coord="lab7.umt:35:4">The different iterator types.
+</p></li><li data-coord="lab7.umt:37:0"><p data-coord="lab7.umt:37:4">The container classes.
+</p></li></ul><p data-coord="lab7.umt:39:0">The facilities provided by the STL makes it possible to write
+code without loops.  In the exercises which follow, we will
+write code both with and without explicit loops.
+</p><p data-coord="lab7.umt:43:0"><strong data-coord="lab7.umt:43:0">Important Note</strong>: Do not confuse the <samp data-coord="lab7.umt:43:37">cbegin()</samp> and <samp data-coord="lab7.umt:43:52">cend()</samp> iterators
+from your <em data-coord="lab7.umt:43:114"><a href="../../projects/prj2/prj2.html" data-coord="lab7.umt:43:114">Project 2</a></em> with the
+<samp data-coord="lab7.umt:43:135">begin()</samp> and <samp data-coord="lab7.umt:43:149">end()</samp> iterators in this lab.  They are quite different.
+</p></section><section data-coord="lab7.umt:48:0"><h2 data-coord="lab7.umt:48:0">Exercises</h2><section data-coord="lab7.umt:54:0"><h3 data-coord="lab7.umt:54:0">Starting up</h3><p data-coord="lab7.umt:57:0">Follow the <em data-coord="lab7.umt:57:44"><a href="../submission/submission.html" data-coord="lab7.umt:57:44">provided directions</a></em> for
+starting up this lab in a new git <samp data-coord="lab7.umt:57:104">lab7</samp> branch and a new
+<samp data-coord="lab7.umt:57:128">submit/lab7</samp> directory.  Start a <samp data-coord="lab7.umt:57:162">script</samp> session to log
+your interaction into a <samp data-coord="lab7.umt:57:210">lab7.LOG</samp> file.
+</p><p data-coord="lab7.umt:62:0">You will be doing all your work in your <samp data-coord="lab7.umt:62:40">submit/lab7</samp> directory:
+</p><pre data-coord="lab7.umt:65:0">$ cd ~/i240?/submit/lab7
+</pre><p data-coord="lab7.umt:68:0">Copy over the <a href="exercises" data-coord="lab7.umt:68:27">exercises</a> directory:
+</p><pre data-coord="lab7.umt:71:0">$ cp -r ~/cs240/labs/lab7/exercises .
+</pre></section><section data-coord="lab7.umt:75:0"><h3 data-coord="lab7.umt:75:0">Exercise 1: Outputting Containers via Elements</h3><p data-coord="lab7.umt:78:0">Change over to the <a href="exercises/1-out" data-coord="lab7.umt:78:38">1-out</a> directory.  It
+contains a <a href="exercises/1-out/main.cc" data-coord="lab7.umt:78:97">main.cc</a> and
+<a href="exercises/1-out/out.hh" data-coord="lab7.umt:78:135">out.hh.</a>  Familiarize yourself
+with <samp data-coord="lab7.umt:78:170">main.cc</samp>; you will be modifying it slightly in this
+exercise and reusing it for subsequent exercises:
+</p><ul data-coord="lab7.umt:84:0"><li data-coord="lab7.umt:84:0"><p data-coord="lab7.umt:84:4">The usage of <samp data-coord="lab7.umt:84:17">main.cc</samp> is:
+</p><pre>    $ .<span class="hl opt">/</span>main
+    usage<span class="hl opt">:</span> .<span class="hl opt">/</span>main CONTAINER_SPEC INTS_DATA_FILE <span class="hl opt">[</span>INT<span class="hl opt">]</span></pre><p data-coord="lab7.umt:92:4">The arguments are:
+</p><dl data-coord="lab7.umt:94:0"><dt data-coord="lab7.umt:94:6"> <samp data-coord="lab7.umt:94:1">CONTAINER_SPEC</samp> </dt><dd data-coord="lab7.umt:95:0"><p data-coord="lab7.umt:95:8">Specifies the kind of container to be used.
+</p></dd><dt data-coord="lab7.umt:97:6"> <samp data-coord="lab7.umt:97:1">INTS_DATA_FILE</samp> </dt><dd data-coord="lab7.umt:98:0"><p data-coord="lab7.umt:98:8">The path to a file which should contain whitespace-separated
+integers. If specified as <samp data-coord="lab7.umt:98:96">-</samp>, then the integers are
+read from standard input.
+</p></dd><dt data-coord="lab7.umt:102:6"> <samp data-coord="lab7.umt:102:1">[INT]</samp> </dt><dd data-coord="lab7.umt:103:0"><p data-coord="lab7.umt:103:8">This optional integer argument is used by subsequent
+exercises.
+</p></dd></dl></li><li data-coord="lab7.umt:106:0"><p data-coord="lab7.umt:106:4">After checking the validity of the arguments, <samp data-coord="lab7.umt:106:50">main()</samp> uses
+<samp data-coord="lab7.umt:106:68">readIntsFromFile()</samp> to read the data file specified by
+<samp data-coord="lab7.umt:106:128">INTS_DATA_FILE</samp>.
+</p></li><li data-coord="lab7.umt:110:0"><p data-coord="lab7.umt:110:4">The guts of the action occurs within the <samp data-coord="lab7.umt:110:45">go()</samp> function.
+Depending on the <samp data-coord="lab7.umt:110:83">containerSpec</samp>, it creates the correct type of
+<samp data-coord="lab7.umt:110:135">container</samp> from the incoming <samp data-coord="lab7.umt:110:165">ints</samp> <samp data-coord="lab7.umt:110:172">vector</samp>.  For each container
+type it uses a constructor which uses the <samp data-coord="lab7.umt:110:248">[begin(), end())</samp> range
+of the <samp data-coord="lab7.umt:110:284">ints</samp> <samp data-coord="lab7.umt:110:291">vector</samp>.
+</p></li></ul><p data-coord="lab7.umt:116:0">Compile the first exercise using the <a href="exercises/Makefile" data-coord="lab7.umt:116:59">Makefile</a>
+in the parent directory using <samp data-coord="lab7.umt:116:98">make -f ../Makefile</samp>.  You should
+be able to run the program using a <a href="exercises/test.data" data-coord="lab7.umt:116:191">test.data</a>
+file in the parent directory:
+</p><pre>$ .<span class="hl opt">/</span>main deque ..<span class="hl opt">/</span><span class="hl kwb">test</span>.data 
+<span class="hl opt">[ ]</span>
+<span class="hl opt">[</span> <span class="hl num">22 43 12 56 64 42 11 22</span> <span class="hl opt">]</span>
+$</pre><p data-coord="lab7.umt:129:0">The reason for the empty sequence on the first line of the output is
+that <samp data-coord="lab7.umt:129:74">loopFn()</samp> is not fully implemented.  Complete the implementation
+by looping through <samp data-coord="lab7.umt:129:159">[begin, end)</samp>.
+</p><pre><span class="hl kwa">for</span> <span class="hl opt">(</span><span class="hl kwc">auto</span> p <span class="hl opt">=</span> begin<span class="hl opt">;</span> p <span class="hl opt">!=</span> end<span class="hl opt">; ++</span>p<span class="hl opt">) {</span>
+  <span class="hl slc">//output *p</span>
+<span class="hl opt">}</span></pre><p data-coord="lab7.umt:139:0">Compile and test.  Make sure to test all the different container types
+(listed within the <samp data-coord="lab7.umt:139:90">go()</samp> function in <samp data-coord="lab7.umt:139:109">main.cc</samp>).  Note the different
+behavior for <samp data-coord="lab7.umt:139:154">set</samp> and <samp data-coord="lab7.umt:139:164">multiset</samp> which are sorted (unlike the
+mathematical definition of a set). Note also that the <samp data-coord="lab7.umt:139:258">set</samp>
+container removes duplicates.
+</p><p data-coord="lab7.umt:145:0">Note that <samp data-coord="lab7.umt:145:10">out.hh</samp> contains an implementation for <samp data-coord="lab7.umt:145:50">noLoopFn()</samp> which
+uses STL's <samp data-coord="lab7.umt:145:80">for_each()</samp> algorithm.  This algorithm's first two
+arguments specify the range over which to iterate.  Its third argument
+is <samp data-coord="lab7.umt:145:206">print()</samp>; this is a lambda function (a function which is anonymous
+and does not have a name) which prints its argument <samp data-coord="lab7.umt:145:326">i</samp>.
+</p><p data-coord="lab7.umt:152:0">When looking at the code for the <samp data-coord="lab7.umt:152:33">go()</samp> function in
+<a href="exercises/1-out/main.cc" data-coord="lab7.umt:152:79">main.cc,</a> you may have noticed that one of
+the container types <samp data-coord="lab7.umt:152:141">"[]"</samp> is unimplemented.  This is meant to specify
+that the container to be used is a normal C++ array.  You should now
+implement this:
+</p><ul data-coord="lab7.umt:158:0"><li data-coord="lab7.umt:158:0"><p data-coord="lab7.umt:158:4">You will need to declare an array having <samp data-coord="lab7.umt:158:45">ints.size()</samp> elements.
+</p></li><li data-coord="lab7.umt:160:0"><p data-coord="lab7.umt:160:4">You can use an index <samp data-coord="lab7.umt:160:25">0 &lt;= i &lt; ints.size()</samp> to loop through
+<samp data-coord="lab7.umt:160:68">ints</samp>, assigning successive elements from ints to the array.
+Note that even though <samp data-coord="lab7.umt:160:156">ints</samp> is a <samp data-coord="lab7.umt:160:168">vector</samp>, you can index
+it as <samp data-coord="lab7.umt:160:202">ints[i]</samp> to get the <samp data-coord="lab7.umt:160:223">i</samp>'th element.
+</p></li><li data-coord="lab7.umt:165:0"><p data-coord="lab7.umt:165:4">Once you have copied over the array, you can represent
+a range for the array as a pointer to its first element
+and a pointer one beyond its last element.  You can
+use this range to call <samp data-coord="lab7.umt:165:202">loopFn()</samp> and <samp data-coord="lab7.umt:165:217">noLoopFn()</samp>.
+</p></li></ul><p data-coord="lab7.umt:170:0">Once you have made these changes, test and verify that
+you can use a C++ array as a container.
+</p></section><section data-coord="lab7.umt:173:0"><h3 data-coord="lab7.umt:173:0">Exercise 2: Finding an Element in a Container</h3><p data-coord="lab7.umt:176:0">This exercise will search the container for the value specified by
+the optional third argument to <samp data-coord="lab7.umt:176:98">main()</samp>.
+</p><p data-coord="lab7.umt:179:0">Change over to the <a href="exercises/2-find" data-coord="lab7.umt:179:39">2-find</a> directory.  It contains
+a <a href="exercises/2-find/find.hh" data-coord="lab7.umt:179:100">find.hh</a> file.  It does not contain
+<samp data-coord="lab7.umt:179:135">main.cc</samp>; copy over your completed <samp data-coord="lab7.umt:179:171">main.cc</samp> from Exercise 1; change
+the <samp data-coord="lab7.umt:179:209">include "out.hh"</samp> to <samp data-coord="lab7.umt:179:231">include "find.hh"</samp>.
+</p><p data-coord="lab7.umt:184:0">You should be able to compile the program (using the <samp data-coord="lab7.umt:184:53">Makefile</samp> in the
+parent directory) without any errors, but it will not do anything as
+the implementations of <samp data-coord="lab7.umt:184:163">loopFn()</samp> and <samp data-coord="lab7.umt:184:178">noLoopFn()</samp> are empty.
+</p><p data-coord="lab7.umt:188:0">Implement <samp data-coord="lab7.umt:188:10">loopFn()</samp>.  Simply iterate through the container
+over the range <samp data-coord="lab7.umt:188:75">[begin, end)</samp>; dereference the iterator to
+get its value and compare with <samp data-coord="lab7.umt:188:150">arg</samp>.  If the comparison
+succeeds break out of the iteration loop and print <samp data-coord="lab7.umt:188:227">FOUND</samp>;
+otherwise print <samp data-coord="lab7.umt:188:252">NOT FOUND</samp>.
+</p><p data-coord="lab7.umt:194:0">The <samp data-coord="lab7.umt:194:4">noLoopFn()</samp> is even simpler.  Use
+<a href="http://www.cplusplus.com/reference/algorithm/find/" data-coord="lab7.umt:194:93">std::find()</a>
+which takes 3 arguments: <samp data-coord="lab7.umt:194:130">begin</samp>, <samp data-coord="lab7.umt:194:139">end</samp> and the value being search for
+which is <samp data-coord="lab7.umt:194:185">arg</samp>; <samp data-coord="lab7.umt:194:192">std::find()</samp> returns an iterator; if the value being
+searched for is found then the iterator points to the found element;
+otherwise it is set to <samp data-coord="lab7.umt:194:338">end</samp>. Use this to print <samp data-coord="lab7.umt:194:363">FOUND</samp>, <samp data-coord="lab7.umt:194:372">NOT FOUND</samp>
+as appropriate.
+</p><p data-coord="lab7.umt:202:0">Compile and test to verify that your code works.
+</p></section><section data-coord="lab7.umt:205:0"><h3 data-coord="lab7.umt:205:0">Exercise 3: Sorting Containers</h3><p data-coord="lab7.umt:208:0">Change over to the <a href="exercises/3-sort" data-coord="lab7.umt:208:39">3-sort</a> directory.  It contains
+a <a href="exercises/3-sort/sort.hh" data-coord="lab7.umt:208:100">sort.hh</a> file.  It does not contain
+<samp data-coord="lab7.umt:208:135">main.cc</samp>; copy over your completed <samp data-coord="lab7.umt:208:171">main.cc</samp> from Exercise 1; change
+the <samp data-coord="lab7.umt:208:209">include "out.hh"</samp> to <samp data-coord="lab7.umt:208:231">include "sort.hh"</samp>.
+</p><p data-coord="lab7.umt:213:0">Attempt to compile this exercise.  It will fail with errors.  The
+problem is that <a href="http://www.cplusplus.com/reference/algorithm/sort/" data-coord="lab7.umt:213:136">sort()</a> requires a <strong data-coord="lab7.umt:213:154">random access iterator</strong>; look at the section
+<strong data-coord="lab7.umt:213:200">Container classes and their associated iterator types</strong> in the
+<em data-coord="lab7.umt:213:322"><a href="http://cs.stmarys.ca/~porter/csc/ref/stl/iterators.html" data-coord="lab7.umt:213:322">background
+material</a></em> to check which containers have random access iterators.
+Comment out the other containers in the <samp data-coord="lab7.umt:213:440">go()</samp> function.  You can
+deactive code by putting it into a
+</p><pre><span class="hl ppc">#if 0</span>
+
+<span class="hl ppc">#endif</span></pre><p data-coord="lab7.umt:229:0">section.
+</p><p data-coord="lab7.umt:231:0">You should now be able to compile and run the program.  Verify that
+all the containers are now sorted.
+</p></section></section><section data-coord="lab7.umt:234:0"><h2 data-coord="lab7.umt:234:0">Exercise 4: Collecting Elements with Removal</h2><p data-coord="lab7.umt:237:0">In this exercise, you will move elements from the specified
+container to a vector, except for the element which is specified
+by the optional <samp data-coord="lab7.umt:237:141">INT</samp> argument to <samp data-coord="lab7.umt:237:159">main()</samp>.
+</p><p data-coord="lab7.umt:241:0">Change over to the <a href="exercises/4-rm" data-coord="lab7.umt:241:37">4-rm</a> directory.  It contains
+a <a href="exercises/4-rm/rm.hh" data-coord="lab7.umt:241:92">rm.hh</a> file.  It does not contain
+<samp data-coord="lab7.umt:241:125">main.cc</samp>; copy over your completed <samp data-coord="lab7.umt:241:161">main.cc</samp> from Exercise 1; change
+the <samp data-coord="lab7.umt:241:199">include "out.hh"</samp> to <samp data-coord="lab7.umt:241:221">include "rm.hh"</samp>.
+</p><p data-coord="lab7.umt:246:0">You should be able to compile the program (using the <samp data-coord="lab7.umt:246:53">Makefile</samp> in the
+parent directory) without any errors, but it will not do anything as
+the implementations of <samp data-coord="lab7.umt:246:163">loopFn()</samp> and <samp data-coord="lab7.umt:246:178">noLoopFn()</samp> are empty.
+</p><p data-coord="lab7.umt:250:0">Implement <samp data-coord="lab7.umt:250:10">loopFn()</samp> by iterating over <samp data-coord="lab7.umt:250:39">[begin, end)</samp>. On each
+iteration copy over the current element over to the <samp data-coord="lab7.umt:250:115">vector</samp> <samp data-coord="lab7.umt:250:124">vec</samp>,
+if it is not equal to <samp data-coord="lab7.umt:250:153">arg</samp>.  If equal to <samp data-coord="lab7.umt:250:173">arg</samp> do not copy it
+as long this is the first occurrence of <samp data-coord="lab7.umt:250:234">arg</samp> in <samp data-coord="lab7.umt:250:243">[begin, end)</samp>.
+This can easily be taken care of by using some kind of <samp data-coord="lab7.umt:250:314">isSeen</samp>
+flag.  Note that you can append to a <samp data-coord="lab7.umt:250:360">vector</samp> by using
+the <samp data-coord="lab7.umt:250:382">push_back()</samp> member function.
+</p><p data-coord="lab7.umt:258:0">The <samp data-coord="lab7.umt:258:4">noLoopFn()</samp> is slightly more complicated:
+</p><ol data-coord="lab7.umt:260:0"><li data-coord="lab7.umt:260:0"><p data-coord="lab7.umt:260:4">Use
+<a href="http://www.cplusplus.com/reference/algorithm/find/" data-coord="lab7.umt:260:66">std::find()</a>
+to return an iterator <samp data-coord="lab7.umt:260:104">x</samp> to the first occurrence of <samp data-coord="lab7.umt:260:135">arg</samp> in
+<samp data-coord="lab7.umt:260:148">[begin, end)</samp>.
+</p></li><li data-coord="lab7.umt:265:0"><p data-coord="lab7.umt:265:4">Declare a vector <samp data-coord="lab7.umt:265:21">vec</samp> initialized with the elements from
+<samp data-coord="lab7.umt:265:66">[begin, x)</samp>.
+</p></li><li data-coord="lab7.umt:268:0"><p data-coord="lab7.umt:268:4">If <samp data-coord="lab7.umt:268:7">x != end</samp>, copy over the remaining elements <samp data-coord="lab7.umt:268:52">[++x, end)</samp> to
+the vector.  You can do so by using
+<a href="http://www.cplusplus.com/reference/algorithm/copy/" data-coord="lab7.umt:268:166">std::copy()</a>
+with a
+<a href="http://www.cplusplus.com/reference/iterator/back_inserter/" data-coord="lab7.umt:268:259">back_inserter</a> as <code><span class="hl kwc">std</span><span class="hl opt">::</span><span class="hl kwd">copy</span><span class="hl opt">(++</span>x<span class="hl opt">,</span> end<span class="hl opt">,</span> <span class="hl kwc">std</span><span class="hl opt">::</span><span class="hl kwd">back_inserter</span><span class="hl opt">(</span>vec<span class="hl opt">))</span></code>.
+</p></li><li data-coord="lab7.umt:275:0"><p data-coord="lab7.umt:275:4">Use the provided <samp data-coord="lab7.umt:275:21">outContainer()</samp> to output <samp data-coord="lab7.umt:275:48">vec</samp>.
+</p></li></ol><p data-coord="lab7.umt:277:0">Compile and test.
+</p><section data-coord="lab7.umt:280:0"><h3 data-coord="lab7.umt:280:0">Winding Up</h3><p data-coord="lab7.umt:283:0">Follow the <em data-coord="lab7.umt:283:44"><a href="../submission/submission.html" data-coord="lab7.umt:283:44">provided directions</a></em> for
+winding up this lab. Terminate your <samp data-coord="lab7.umt:283:106">script</samp> session producing the log
+file <samp data-coord="lab7.umt:283:146">lab7.LOG</samp> in your <samp data-coord="lab7.umt:283:165">lab7</samp> directory.  Add all your files to
+git and commit.  Then merge your <samp data-coord="lab7.umt:283:239">lab7</samp> branch into the <samp data-coord="lab7.umt:283:262">master</samp>
+branch and commit your changes.
+</p></section></section></section>
+    </div> <!-- #content -->
+  </body>
+</html>
