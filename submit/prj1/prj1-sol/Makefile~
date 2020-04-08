@@ -1,4 +1,0 @@
-main:	main.o
-
-main.o:
-	gcc -g -Wall -std=c++17 -c main.cc
