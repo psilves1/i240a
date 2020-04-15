@@ -1,0 +1,1 @@
+/bin/g++  -g   CMakeFiles/prj2_so.dir/command.cc.o CMakeFiles/prj2_so.dir/nums.cc.o CMakeFiles/prj2_so.dir/seq-test.cc.o  -o prj2_so 

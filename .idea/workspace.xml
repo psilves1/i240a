@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2aca77ac-320b-43a2-9aec-7972653c602d" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1aaTfhPuRHLzNkRRysY8I47MVzN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="cf.first.check.clang-format" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/submit/prj1-sol/wordcounts" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" PASS_PARENT_ENVS_2="true" RUN_PATH="$PROJECT_DIR$/submit/prj1-sol/wordcounts" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2aca77ac-320b-43a2-9aec-7972653c602d" name="Default Changelist" comment="" />
+      <created>1586972809450</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586972809450</updated>
+      <workItem from="1586972810896" duration="66000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="690" y="241" width="530" height="605" key="FileChooserDialogImpl" timestamp="1586972869984">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="690" y="241" width="530" height="605" key="FileChooserDialogImpl/0.0.1920.1080@0.0.1920.1080" timestamp="1586972869984" />
+    <state width="800" height="255" key="ImportCMakeProjectWizard.bottomPanel" timestamp="1586972872540">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="800" height="255" key="ImportCMakeProjectWizard.bottomPanel/0.0.1920.1080@0.0.1920.1080" timestamp="1586972872540" />
+    <state width="800" height="595" key="ImportCMakeProjectWizard.topPanel" timestamp="1586972872539">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="800" height="595" key="ImportCMakeProjectWizard.topPanel/0.0.1920.1080@0.0.1920.1080" timestamp="1586972872539" />
+  </component>
+</project>

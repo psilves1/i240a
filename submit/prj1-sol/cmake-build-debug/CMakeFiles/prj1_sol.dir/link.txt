@@ -1,0 +1,1 @@
+/bin/g++  -g   CMakeFiles/prj1_sol.dir/main.cc.o  -o prj1_sol 

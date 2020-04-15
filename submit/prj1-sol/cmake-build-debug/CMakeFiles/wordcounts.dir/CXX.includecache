@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/psilves1/CLionProjects/i240a/submit/prj1-sol/main.cc
+iostream
+-
+vector
+-
+fstream
+-
+cstdlib
+-
+unordered_map
+-
+algorithm
+-
+map
+-
+main.h
+/home/psilves1/CLionProjects/i240a/submit/prj1-sol/main.h
+
+/home/psilves1/CLionProjects/i240a/submit/prj1-sol/main.h
+iostream
+-
+vector
+-
+fstream
+-
+cstdlib
+-
+unordered_map
+-
+
