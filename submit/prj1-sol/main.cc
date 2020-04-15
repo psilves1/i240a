@@ -23,6 +23,16 @@ bool wordCountCompare(WordCount a, WordCount b){
   return a.second > b.second;
 }
 
+std::string format_word(const std::string& in) {
+  std::string formatted = "";
+  for (unsigned int i = 0; i < in.length(); i++) {
+    char c = in[i];
+    if (!(('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z'))) { continue; }
+    formatted += 'a'+(c-'A')%('a'-'A');
+  }
+  return formatted;
+}
+
 int go(int argc, char *argv[]){
 
   //ADD A USAGE MESSAGE
@@ -76,9 +86,9 @@ int go(int argc, char *argv[]){
   for(int i = 4; i < argc; i++){
     std::ifstream in(args.at(i));
     while (in.good()) {
-      std::string w;
-      in >> w;
-
+      std::string temp;
+      in >> temp;
+      std::string w = format_word(temp);
     
       //Checks if the word fits within our requirments
       if((int)w.length() > MAX_WORD_LEN)
@@ -89,7 +99,7 @@ int go(int argc, char *argv[]){
     
       //checks if w is in our map.
       //If so, increament w counter by 1.
-      //If not, add it to the map    
+      //If not, add it to the map
       if(map[w] == 0){
 	map[w] = 1;
       }
