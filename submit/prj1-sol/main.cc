@@ -23,13 +23,14 @@ bool wordCountCompare(WordCount a, WordCount b){
   return a.second > b.second;
 }
 
-int main(int argc, char *argv[]){
+int go(int argc, char *argv[]){
 
   //ADD A USAGE MESSAGE
   //if argc < some num -> print usage message
   //return true if first arg is less than second arg                                                                                              
   if(argc < 5){
-    std::cerr << "usage: ./wordcounts MAX_N_OUT MIN_WORD_LEN MAX_WORD_LEN FILE..." << std::endl;
+    //std::cerr << "usage: ./wordcounts MAX_N_OUT MIN_WORD_LEN MAX_WORD_LEN FILE..." << std::endl;
+    throw std::invalid_argument("usage: ./wordcounts MAX_N_OUT MIN_WORD_LEN MAX_WORD_LEN FILE...");
     return 0;
   }
 
@@ -40,25 +41,29 @@ int main(int argc, char *argv[]){
   std::string::size_type endIndex;
   const int MAX_N_OUT =  std::stoi(args.at(1), &endIndex);
   if(!(endIndex == args.at(1).length())){
-    std::cerr << "Please use a proper integer for MAX_N_OUT" << std::endl;
+    //std::cerr << "Please use a proper integer for MAX_N_OUT" << std::endl;
+    throw std::invalid_argument("bag integer value " + args.at(1));
     return 0;
   }
 
   const int MIN_WORD_LEN =  std::stoi(args.at(2), &endIndex);
   if(!(endIndex == args.at(2).length())){
-    std::cerr << "Please use a proper integer for MIN_WORD_LEN" << std::endl;
-    return 0;
+    //std::cerr << "Please use a proper integer for MIN_WORD_LEN" << std::endl;
+      throw std::invalid_argument("bag integer value " + args.at(2));
+      return 0;
   }
 
   const int MAX_WORD_LEN =  std::stoi(args.at(3), &endIndex);
   if(!(endIndex == args.at(3).length())){
-    std::cerr << "Please use a proper integer for MAX_WORD_LEN" << std::endl;
-    return 0;
+    //std::cerr << "Please use a proper integer for MAX_WORD_LEN" << std::endl;
+      throw std::invalid_argument("bag integer value " + args.at(3));
+      return 0;
   }
 
   //checks if min is greater than max
   if(MIN_WORD_LEN > MAX_WORD_LEN){
-    std::cout << "MIN_WORD_LEN is greater than MAX_WORD_LEN" << std::endl;
+    //std::cout << "MIN_WORD_LEN is greater than MAX_WORD_LEN" << std::endl;
+    throw std::invalid_argument("MIN_WORD_LEN is greater than MAX_WORD_LEN");
     return 0;
   }
 
@@ -103,7 +108,8 @@ int main(int argc, char *argv[]){
       */
     }
       if (!in.eof()) {
-	std::cerr << "Bad file input: No such file or directory exists" << std::endl; //                                                                                              
+	//std::cerr << "Bad file input: No such file or directory exists" << std::endl; //
+	throw std::invalid_argument("Bad file input");
 	return 0;
 	//might need to make this a better error message later                                                                                        
       }
@@ -148,4 +154,11 @@ int main(int argc, char *argv[]){
   return 0;
 }
 
-
+int main(int argc, char *argv[]){
+    try {
+        std::cout << go(argc, argv)  << std::endl;
+        }
+    catch (const std::exception& err) {
+        std::cerr << err.what() << std::endl;
+    }
+}
