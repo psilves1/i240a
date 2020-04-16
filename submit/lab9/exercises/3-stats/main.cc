@@ -94,12 +94,17 @@ go(SortP sort, std::string filePath, bool isVerbose, int nRead)
   int n = ints.size();
   Ops ops;
   sort(a, n, &ops);
-  if (isVerbose) outArray(a, n);
+  //std::cout << "" << isVerbose << std::endl;
+  if (isVerbose) {
+      //outArray(a, n);
+      std::cout<< n << "\t" << ops.compareCount << "\t\t" << ops.swapCount << std::endl;
+  }
 }
 
 int
 main(int argc, char* argv[]) {
-  if (argc < 3) {
+    std::cout << "n\tcompares\tswaps" << std::endl;
+    if (argc < 3) {
     std::cerr << "usage: " << argv[0]
 	      << " [-v] ALGORITHM INTS_DATA_FILE|- [N...]" << std::endl;
     std::exit(1);

@@ -1,12 +1,12 @@
-#include "ops.hh"
+/*#include "ops.hh"
 
-/** return < 0, == 0, > 0 if a < b, a == b, a > b */
+/** return < 0, == 0, > 0 if a < b, a == b, a > b
 int
 Ops::compare(int a, int b) {
   return a - b;
 }
 
-/** swap a[i] and a[j] */
+/** swap a[i] and a[j]
 void
 Ops::swap(int a[], int i, int j)
 {
@@ -16,3 +16,20 @@ Ops::swap(int a[], int i, int j)
 }
 
 
+class newOps : public Ops {
+public:
+    int compare(int a, int b){
+
+        compareCount++;
+        return this->Ops::compare(a,b);
+    }
+
+    void swap(int a[], int i, int j){
+        this->Ops::swap(a,i,j);
+        swapCount++;
+    }
+
+
+};
+
+*/
