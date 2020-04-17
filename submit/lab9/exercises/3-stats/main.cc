@@ -76,7 +76,15 @@ getSort(std::string name)
   std::exit(1);
 }
 
-
+/** Output a line containing whitespace separated contents of a [0, n) */
+static void
+outArray(int a[], int n)
+{
+    for (int i = 0; i < n; i++) {
+        std::cout << a[i] << " ";
+    }
+    std::cout << std::endl;
+}
 
 static void
 go(SortP sort, std::string filePath, bool isVerbose, int nRead)
@@ -87,21 +95,24 @@ go(SortP sort, std::string filePath, bool isVerbose, int nRead)
   Ops ops;
   sort(a, n, &ops);
   //std::cout << "" << isVerbose << std::endl;
-  if (true) {
-      //outArray(a, n);
+  if (isVerbose) {
+      outArray(a, n);
+  }else{
       std::cout<< n << "\t" << ops.compareCount << "\t\t" << ops.swapCount << std::endl;
   }
 }
 
 int
 main(int argc, char* argv[]) {
-    std::cout << "n\tcompares\tswaps" << std::endl;
     if (argc < 3) {
     std::cerr << "usage: " << argv[0]
 	      << " [-v] ALGORITHM INTS_DATA_FILE|- [N...]" << std::endl;
     std::exit(1);
   }
   bool isVerbose = std::strcmp(argv[1], "-v") == 0;
+    if(!isVerbose){
+        std::cout << "n\tcompares\tswaps" << std::endl;
+    }
   bool nVerbose = (isVerbose) ? 1 : 0;
   const char* algorithm = argv[1 + nVerbose];
   const std::string filePath(argv[2 + nVerbose]);
