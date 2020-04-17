@@ -1,0 +1,1 @@
+/bin/g++  -g   CMakeFiles/lab9.dir/exercises/3-stats/main.cc.o CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.o CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.o  -o lab9 

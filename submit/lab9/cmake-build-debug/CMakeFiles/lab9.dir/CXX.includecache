@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/main.cc
+fstream
+-
+iostream
+-
+string
+-
+vector
+-
+cstdlib
+-
+cstring
+-
+ops.cc
+/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/ops.cc
+sorts.hh
+/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/sorts.hh
+
+/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/ops.cc
+ops.hh
+/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/ops.hh
+
+/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/ops.hh
+
+/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/sorts.cc
+ops.hh
+/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/ops.hh
+
+/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/sorts.hh
+cassert
+-
+ops.hh
+/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/ops.hh
+
