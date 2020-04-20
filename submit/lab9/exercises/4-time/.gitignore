@@ -1,0 +1,5 @@
+.deps
+main
+sorts.o
+main.o
+now.o

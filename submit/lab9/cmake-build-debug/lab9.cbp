@@ -44,7 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats"/>
+					<Add directory="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -68,7 +68,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats"/>
+					<Add directory="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
 					<Add directory="/usr/include/c++/9/backward"/>
@@ -86,19 +86,19 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/main.cc">
+		<Unit filename="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/main.cc">
 			<Option target="lab9"/>
 		</Unit>
-		<Unit filename="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/ops.cc">
+		<Unit filename="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/now.cc">
 			<Option target="lab9"/>
 		</Unit>
-		<Unit filename="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/ops.hh">
+		<Unit filename="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/now.hh">
 			<Option target="lab9"/>
 		</Unit>
-		<Unit filename="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/sorts.cc">
+		<Unit filename="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/sorts.cc">
 			<Option target="lab9"/>
 		</Unit>
-		<Unit filename="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/sorts.hh">
+		<Unit filename="/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/sorts.hh">
 			<Option target="lab9"/>
 		</Unit>
 		<Unit filename="/home/psilves1/CLionProjects/i240a/submit/lab9/CMakeLists.txt">

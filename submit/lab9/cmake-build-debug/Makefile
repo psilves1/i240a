@@ -123,86 +123,86 @@ lab9/fast:
 	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/build
 .PHONY : lab9/fast
 
-exercises/3-stats/main.o: exercises/3-stats/main.cc.o
+exercises/4-time/main.o: exercises/4-time/main.cc.o
 
-.PHONY : exercises/3-stats/main.o
-
-# target to build an object file
-exercises/3-stats/main.cc.o:
-	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/3-stats/main.cc.o
-.PHONY : exercises/3-stats/main.cc.o
-
-exercises/3-stats/main.i: exercises/3-stats/main.cc.i
-
-.PHONY : exercises/3-stats/main.i
-
-# target to preprocess a source file
-exercises/3-stats/main.cc.i:
-	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/3-stats/main.cc.i
-.PHONY : exercises/3-stats/main.cc.i
-
-exercises/3-stats/main.s: exercises/3-stats/main.cc.s
-
-.PHONY : exercises/3-stats/main.s
-
-# target to generate assembly for a file
-exercises/3-stats/main.cc.s:
-	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/3-stats/main.cc.s
-.PHONY : exercises/3-stats/main.cc.s
-
-exercises/3-stats/ops.o: exercises/3-stats/ops.cc.o
-
-.PHONY : exercises/3-stats/ops.o
+.PHONY : exercises/4-time/main.o
 
 # target to build an object file
-exercises/3-stats/ops.cc.o:
-	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.o
-.PHONY : exercises/3-stats/ops.cc.o
+exercises/4-time/main.cc.o:
+	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/4-time/main.cc.o
+.PHONY : exercises/4-time/main.cc.o
 
-exercises/3-stats/ops.i: exercises/3-stats/ops.cc.i
+exercises/4-time/main.i: exercises/4-time/main.cc.i
 
-.PHONY : exercises/3-stats/ops.i
+.PHONY : exercises/4-time/main.i
 
 # target to preprocess a source file
-exercises/3-stats/ops.cc.i:
-	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.i
-.PHONY : exercises/3-stats/ops.cc.i
+exercises/4-time/main.cc.i:
+	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/4-time/main.cc.i
+.PHONY : exercises/4-time/main.cc.i
 
-exercises/3-stats/ops.s: exercises/3-stats/ops.cc.s
+exercises/4-time/main.s: exercises/4-time/main.cc.s
 
-.PHONY : exercises/3-stats/ops.s
+.PHONY : exercises/4-time/main.s
 
 # target to generate assembly for a file
-exercises/3-stats/ops.cc.s:
-	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.s
-.PHONY : exercises/3-stats/ops.cc.s
+exercises/4-time/main.cc.s:
+	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/4-time/main.cc.s
+.PHONY : exercises/4-time/main.cc.s
 
-exercises/3-stats/sorts.o: exercises/3-stats/sorts.cc.o
+exercises/4-time/now.o: exercises/4-time/now.cc.o
 
-.PHONY : exercises/3-stats/sorts.o
+.PHONY : exercises/4-time/now.o
 
 # target to build an object file
-exercises/3-stats/sorts.cc.o:
-	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.o
-.PHONY : exercises/3-stats/sorts.cc.o
+exercises/4-time/now.cc.o:
+	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/4-time/now.cc.o
+.PHONY : exercises/4-time/now.cc.o
 
-exercises/3-stats/sorts.i: exercises/3-stats/sorts.cc.i
+exercises/4-time/now.i: exercises/4-time/now.cc.i
 
-.PHONY : exercises/3-stats/sorts.i
+.PHONY : exercises/4-time/now.i
 
 # target to preprocess a source file
-exercises/3-stats/sorts.cc.i:
-	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.i
-.PHONY : exercises/3-stats/sorts.cc.i
+exercises/4-time/now.cc.i:
+	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/4-time/now.cc.i
+.PHONY : exercises/4-time/now.cc.i
 
-exercises/3-stats/sorts.s: exercises/3-stats/sorts.cc.s
+exercises/4-time/now.s: exercises/4-time/now.cc.s
 
-.PHONY : exercises/3-stats/sorts.s
+.PHONY : exercises/4-time/now.s
 
 # target to generate assembly for a file
-exercises/3-stats/sorts.cc.s:
-	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.s
-.PHONY : exercises/3-stats/sorts.cc.s
+exercises/4-time/now.cc.s:
+	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/4-time/now.cc.s
+.PHONY : exercises/4-time/now.cc.s
+
+exercises/4-time/sorts.o: exercises/4-time/sorts.cc.o
+
+.PHONY : exercises/4-time/sorts.o
+
+# target to build an object file
+exercises/4-time/sorts.cc.o:
+	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.o
+.PHONY : exercises/4-time/sorts.cc.o
+
+exercises/4-time/sorts.i: exercises/4-time/sorts.cc.i
+
+.PHONY : exercises/4-time/sorts.i
+
+# target to preprocess a source file
+exercises/4-time/sorts.cc.i:
+	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.i
+.PHONY : exercises/4-time/sorts.cc.i
+
+exercises/4-time/sorts.s: exercises/4-time/sorts.cc.s
+
+.PHONY : exercises/4-time/sorts.s
+
+# target to generate assembly for a file
+exercises/4-time/sorts.cc.s:
+	$(MAKE) -f CMakeFiles/lab9.dir/build.make CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.s
+.PHONY : exercises/4-time/sorts.cc.s
 
 # Help Target
 help:
@@ -213,15 +213,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... lab9"
-	@echo "... exercises/3-stats/main.o"
-	@echo "... exercises/3-stats/main.i"
-	@echo "... exercises/3-stats/main.s"
-	@echo "... exercises/3-stats/ops.o"
-	@echo "... exercises/3-stats/ops.i"
-	@echo "... exercises/3-stats/ops.s"
-	@echo "... exercises/3-stats/sorts.o"
-	@echo "... exercises/3-stats/sorts.i"
-	@echo "... exercises/3-stats/sorts.s"
+	@echo "... exercises/4-time/main.o"
+	@echo "... exercises/4-time/main.i"
+	@echo "... exercises/4-time/main.s"
+	@echo "... exercises/4-time/now.o"
+	@echo "... exercises/4-time/now.i"
+	@echo "... exercises/4-time/now.s"
+	@echo "... exercises/4-time/sorts.o"
+	@echo "... exercises/4-time/sorts.i"
+	@echo "... exercises/4-time/sorts.s"
 .PHONY : help
 
 

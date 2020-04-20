@@ -57,57 +57,57 @@ include CMakeFiles/lab9.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/lab9.dir/flags.make
 
-CMakeFiles/lab9.dir/exercises/3-stats/main.cc.o: CMakeFiles/lab9.dir/flags.make
-CMakeFiles/lab9.dir/exercises/3-stats/main.cc.o: ../exercises/3-stats/main.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/psilves1/CLionProjects/i240a/submit/lab9/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab9.dir/exercises/3-stats/main.cc.o"
-	/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab9.dir/exercises/3-stats/main.cc.o -c /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/main.cc
+CMakeFiles/lab9.dir/exercises/4-time/main.cc.o: CMakeFiles/lab9.dir/flags.make
+CMakeFiles/lab9.dir/exercises/4-time/main.cc.o: ../exercises/4-time/main.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/psilves1/CLionProjects/i240a/submit/lab9/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lab9.dir/exercises/4-time/main.cc.o"
+	/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab9.dir/exercises/4-time/main.cc.o -c /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/main.cc
 
-CMakeFiles/lab9.dir/exercises/3-stats/main.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab9.dir/exercises/3-stats/main.cc.i"
-	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/main.cc > CMakeFiles/lab9.dir/exercises/3-stats/main.cc.i
+CMakeFiles/lab9.dir/exercises/4-time/main.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab9.dir/exercises/4-time/main.cc.i"
+	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/main.cc > CMakeFiles/lab9.dir/exercises/4-time/main.cc.i
 
-CMakeFiles/lab9.dir/exercises/3-stats/main.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab9.dir/exercises/3-stats/main.cc.s"
-	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/main.cc -o CMakeFiles/lab9.dir/exercises/3-stats/main.cc.s
+CMakeFiles/lab9.dir/exercises/4-time/main.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab9.dir/exercises/4-time/main.cc.s"
+	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/main.cc -o CMakeFiles/lab9.dir/exercises/4-time/main.cc.s
 
-CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.o: CMakeFiles/lab9.dir/flags.make
-CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.o: ../exercises/3-stats/ops.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/psilves1/CLionProjects/i240a/submit/lab9/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.o"
-	/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.o -c /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/ops.cc
+CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.o: CMakeFiles/lab9.dir/flags.make
+CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.o: ../exercises/4-time/sorts.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/psilves1/CLionProjects/i240a/submit/lab9/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.o"
+	/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.o -c /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/sorts.cc
 
-CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.i"
-	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/ops.cc > CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.i
+CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.i"
+	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/sorts.cc > CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.i
 
-CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.s"
-	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/ops.cc -o CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.s
+CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.s"
+	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/sorts.cc -o CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.s
 
-CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.o: CMakeFiles/lab9.dir/flags.make
-CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.o: ../exercises/3-stats/sorts.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/psilves1/CLionProjects/i240a/submit/lab9/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.o"
-	/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.o -c /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/sorts.cc
+CMakeFiles/lab9.dir/exercises/4-time/now.cc.o: CMakeFiles/lab9.dir/flags.make
+CMakeFiles/lab9.dir/exercises/4-time/now.cc.o: ../exercises/4-time/now.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/psilves1/CLionProjects/i240a/submit/lab9/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/lab9.dir/exercises/4-time/now.cc.o"
+	/bin/g++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/lab9.dir/exercises/4-time/now.cc.o -c /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/now.cc
 
-CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.i"
-	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/sorts.cc > CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.i
+CMakeFiles/lab9.dir/exercises/4-time/now.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lab9.dir/exercises/4-time/now.cc.i"
+	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/now.cc > CMakeFiles/lab9.dir/exercises/4-time/now.cc.i
 
-CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.s"
-	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats/sorts.cc -o CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.s
+CMakeFiles/lab9.dir/exercises/4-time/now.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lab9.dir/exercises/4-time/now.cc.s"
+	/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time/now.cc -o CMakeFiles/lab9.dir/exercises/4-time/now.cc.s
 
 # Object files for target lab9
 lab9_OBJECTS = \
-"CMakeFiles/lab9.dir/exercises/3-stats/main.cc.o" \
-"CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.o" \
-"CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.o"
+"CMakeFiles/lab9.dir/exercises/4-time/main.cc.o" \
+"CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.o" \
+"CMakeFiles/lab9.dir/exercises/4-time/now.cc.o"
 
 # External object files for target lab9
 lab9_EXTERNAL_OBJECTS =
 
-lab9: CMakeFiles/lab9.dir/exercises/3-stats/main.cc.o
-lab9: CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.o
-lab9: CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.o
+lab9: CMakeFiles/lab9.dir/exercises/4-time/main.cc.o
+lab9: CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.o
+lab9: CMakeFiles/lab9.dir/exercises/4-time/now.cc.o
 lab9: CMakeFiles/lab9.dir/build.make
 lab9: CMakeFiles/lab9.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/psilves1/CLionProjects/i240a/submit/lab9/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable lab9"

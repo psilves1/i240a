@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/3-stats 
+CXX_INCLUDES = -I/home/psilves1/CLionProjects/i240a/submit/lab9/exercises/4-time 
 

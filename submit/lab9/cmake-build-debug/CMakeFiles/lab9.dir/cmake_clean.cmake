@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/lab9.dir/exercises/3-stats/main.cc.o"
-  "CMakeFiles/lab9.dir/exercises/3-stats/ops.cc.o"
-  "CMakeFiles/lab9.dir/exercises/3-stats/sorts.cc.o"
+  "CMakeFiles/lab9.dir/exercises/4-time/main.cc.o"
+  "CMakeFiles/lab9.dir/exercises/4-time/now.cc.o"
+  "CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.o"
   "lab9"
   "lab9.pdb"
 )
