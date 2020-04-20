@@ -92,7 +92,6 @@ static void
 go(SortP sort, std::string filePath, bool isVerbose, int nRead) {
     std::vector<int> ints = readIntsFromFile(filePath, nRead);
     int *a = ints.data();
-    int n = ints.size();
     long t0 = now();
     sort(a, n);
     long t1 = now();
