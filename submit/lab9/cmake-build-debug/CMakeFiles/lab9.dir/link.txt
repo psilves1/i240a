@@ -1,1 +1,0 @@
-/bin/g++  -g   CMakeFiles/lab9.dir/exercises/4-time/main.cc.o CMakeFiles/lab9.dir/exercises/4-time/sorts.cc.o CMakeFiles/lab9.dir/exercises/4-time/now.cc.o  -o lab9 

@@ -1,4 +1,0 @@
-/home/psilves1/clion-2020.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=/bin/gcc -DCMAKE_CXX_COMPILER=/bin/g++ -G "CodeBlocks - Unix Makefiles" /home/psilves1/CLionProjects/i240a/submit/lab9
--- Configuring done
--- Generating done
--- Build files have been written to: /home/psilves1/CLionProjects/i240a/submit/lab9/cmake-build-debug
