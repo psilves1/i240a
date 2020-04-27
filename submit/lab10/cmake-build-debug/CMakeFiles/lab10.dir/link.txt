@@ -1,0 +1,1 @@
+/bin/g++  -g   CMakeFiles/lab10.dir/exercises/1-fact/fact.cc.o CMakeFiles/lab10.dir/exercises/1-fact/main.cc.o CMakeFiles/lab10.dir/exercises/1-fact/test-main.cc.o CMakeFiles/lab10.dir/exercises/2-tdd/digit-sum.cc.o CMakeFiles/lab10.dir/exercises/2-tdd/main.cc.o CMakeFiles/lab10.dir/exercises/2-tdd/test-main.cc.o  -o lab10 

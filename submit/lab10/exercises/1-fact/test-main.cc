@@ -5,6 +5,7 @@
 #include "fact.hh"
 
 TEST_CASE( "Factorials are computed", "[fact]" ) {
+
     REQUIRE( fact(1) == 1 );
     REQUIRE( fact(2) == 2 );
     REQUIRE( fact(3) == 6 );
