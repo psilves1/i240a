@@ -1,0 +1,131 @@
+                  T e a m      P r o j e c t
+
+
+*Due*: May 4 by 11:59p
+
+*Important Reminder*: As per the course .<../../misc/academic-honesty-statement/academic-honesty-policy.html> "Academic Honesty Statement",
+cheating of any kind will minimally result in your letter grade
+for the entire course being reduced by one level.
+
+			Aims
+			====
+
+The aims of this project are as follows:
+
+  + To give you some exposure to working in teams.
+
+  + To allow you to develop your own requirements.
+
+  + To provide you further experience with comparing the performance
+    of algorithms.
+
+
+       	    		Requirements
+			============
+
+  # Form a team containing a total of 3 students to work on this project.
+    The team can contain students registered for either 240A or 240B.
+
+      + A team containing a single student will not be allowed.
+
+      + Teams of more than 3 students will not be allowed.
+
+    Some exceptions for the above team sizes may be allowed in order
+    to satisfy the laws of arithmetic.
+
+  # Come up with an application for which multiple algorithms and/or
+    data structures are applicable.  These algorithms and data
+    structures need not be limited to those which have been covered in
+    this course.
+
+  # Set up a repository for this project on either github or gitlab.
+
+  # Write a clear but succinct requirements document stating exacly
+    what your project is attempting to do..
+
+  # Generate input data for your problem.
+
+  # Implement the alternative algorithms and/or data structures.
+
+  # Compare the performance of the alternatives.  Performance metrics
+    can include:
+
+      + Time.
+
+      + Space.
+
+      + # of operations.
+
+  # Analyze and summarize your results using tables or figures.
+
+  # Share your project via git.
+
+  # Present your project in a brief 15 minute zoom meeting.
+
+All documentation should be written using
+.<https://guides.github.com/features/mastering-markdown/> markdown so
+that it can be read directly on the github or gitlab web sites.
+
+
+    	    	 	 Git Repository
+			 ==============
+
+Unfortunately you cannot reuse your current `i240x` github
+repositories for this project as you will need 3 additional
+collaborators for this project and github allows only a maximum of 3
+collaborators for free private repositories.
+
+Hence one team member will need to set up another private repository.
+This can be on either github or gitlab.  This repository should be
+shared with the other 2 team members as well as `umrigar`.
+
+       	    	      Evaluation
+		      ==========
+
+Some of the factors which will affect the evaluation of this
+project:
+
+  : *Code Quality* :
+
+     + Well structured code.  Short functions which respect the
+       .<https://en.wikipedia.org/wiki/Single-responsibility_principle>
+       "single responsibility-principle".
+
+     + Good encapsulation.
+
+     + Avoiding global variables, especially global variables
+       which are written into after initialization.
+
+     + Understandable code.  Need not be commented but should still
+       be easily understandable.
+
+     + Regularity in naming.
+
+     + Consistent code formatting.
+
+  : *Problem choice* :
+     A very trivial problem or *complete* reuse of code from
+     the course will be penalized.
+
+  : *Documentation* :
+    Should see brief, to-the-point documents re. points (4) and (8) above.
+       
+  : *Team Participation* :
+     There should be commits by all team members.
+
+
+       	    	      Deadlines
+		      =========
+
+  : 4/18 :
+    Report team composition and choose presentation time slots using a
+    spreadsheet which will be made available by 4/13.
+
+  : 5/4 :
+    Project completion, final commits to project repository.
+
+  : 5/5, 5/6 :
+    15-minutes presentation of each team's project within 20-minute time
+    slots between 11:00a to 2:00p and 3:00p to 6:00p on Tue 5/5 and
+    Wed 5/6.
+    

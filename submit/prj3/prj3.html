@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../../assets/styles/article.css" rel="stylesheet" type="text/css" /> 
+    <title>CS 240: Project 3</title>
+    <link href="prj3/hl-fine_blue.css" rel="stylesheet"/><link href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" 
+       rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML" async=""></script>    
+
+  </head>
+  <body>
+    <nav>
+      <ul>
+	<li><a href="../../index.html" class="material-icons">house</a></li>
+	<li><a href="../../docs/index.html">Docs</a></li>
+	<li><a href="../../exams-quizzes/index.html">Exams &amp; Quizzes</a></li>
+	<li><a href="../../exercises/index.html">Exercises</a></li>
+	<li><a href="../../hws/index.html">Homeworks</a></li>
+	<li><a href="../../labs/index.html">Labs</a></li>
+	<li><a href="../../misc/index.html">Misc</a></li>
+	<li><a href="../../online/index.html">Online</a></li>
+	<li><a href="../../projects/index.html">Projects</a></li>
+	<li><a href="../../slides/index.html">Slides</a></li>
+      </ul>
+    </nav>
+    <div class="content">
+      <section data-coord="prj3.umt:1:0"><h1 data-coord="prj3.umt:1:0">Project 3</h1><p data-coord="prj3.umt:3:0"><strong data-coord="prj3.umt:3:0">Due</strong>: May 5 by 11:59p <br data-coord="prj3.umt:3:23"/>
+<strong data-coord="prj3.umt:3:26">No late submissions</strong>
+</p><p data-coord="prj3.umt:6:0"><strong data-coord="prj3.umt:6:0">Important Reminder</strong>: As per the course <em data-coord="prj3.umt:6:110"><a href="../../misc/academic-honesty-statement/academic-honesty-policy.html" data-coord="prj3.umt:6:110">Academic Honesty Statement</a></em>,
+cheating of any kind will minimally result in your letter grade
+for the entire course being reduced by one level.
+</p><p data-coord="prj3.umt:10:0">This document first provides the aims of this project.  It then lists
+the requirements as explicitly as possible.  This is followed by a log
+which should help you understand the requirements.  Finally, it
+provides some hints as to how those requirements can be met.
+</p><section data-coord="prj3.umt:15:0"><h2 data-coord="prj3.umt:15:0">Aims</h2><p data-coord="prj3.umt:18:0">The aims of this project are as follows:
+</p><ul data-coord="prj3.umt:20:0"><li data-coord="prj3.umt:20:0"><p data-coord="prj3.umt:20:4">Work on a program given largely a blank slate.
+</p></li><li data-coord="prj3.umt:22:0"><p data-coord="prj3.umt:22:4">To use priority queues to build a multi-queue system.
+</p></li><li data-coord="prj3.umt:24:0"><p data-coord="prj3.umt:24:4">To give you more experience with C++ programming.
+</p></li></ul></section><section data-coord="prj3.umt:27:0"><h2 data-coord="prj3.umt:27:0">Requirements</h2><p data-coord="prj3.umt:31:0">You must push a <samp data-coord="prj3.umt:31:16">submit/prj3-sol</samp> directory to your <samp data-coord="prj3.umt:31:52">master</samp> branch in
+your github repository.  Typing <samp data-coord="prj3.umt:31:103">make</samp> within that directory should
+build a <samp data-coord="prj3.umt:31:147">multi-queues</samp> executable with usage:
+</p><pre data-coord="prj3.umt:36:0">./multi-queues FILE_PATH
+</pre><p data-coord="prj3.umt:39:0">The program should read commands from the file specified by
+<samp data-coord="prj3.umt:39:60">FILE_PATH</samp>.  The commands should enter jobs into the priority queue
+system shown in the following figure:
+</p><img src="multi-queues.png" width="284"/><p data-coord="prj3.umt:45:0">Each job is characterized by an:
+</p><dl data-coord="prj3.umt:47:0"><dt data-coord="prj3.umt:47:2"> <samp data-coord="prj3.umt:47:1">id</samp> </dt><dd data-coord="prj3.umt:48:0"><p data-coord="prj3.umt:48:4">A <code><span class="hl kwc">std</span><span class="hl opt">::</span>string</code> which uniquely identifies that job.
+</p></dd><dt data-coord="prj3.umt:50:2"> <samp data-coord="prj3.umt:50:1">priority0</samp> </dt><dd data-coord="prj3.umt:51:0"><p data-coord="prj3.umt:51:4">An <code><span class="hl kwb">int</span></code> which specifies the priority of the job in
+Queue 0.  Higher numbers have priority.  If two
+jobs have the same value for <samp data-coord="prj3.umt:51:142">priority0</samp>, then
+the job which has the lexicographically greater <samp data-coord="prj3.umt:51:212">id</samp>
+has priority.
+</p></dd><dt data-coord="prj3.umt:57:2"> <samp data-coord="prj3.umt:57:1">priority1</samp> </dt><dd data-coord="prj3.umt:58:0"><p data-coord="prj3.umt:58:4">An <code><span class="hl kwb">int</span></code> which specifies the priority of the job in
+Queue 1.  Lower numbers have priority.  If two
+jobs have the same value for <samp data-coord="prj3.umt:58:141">priority1</samp>, then
+the job which has the lexicographically smaller <samp data-coord="prj3.umt:58:211">id</samp>
+has priority.
+</p></dd></dl><p data-coord="prj3.umt:64:0">The commands read from <samp data-coord="prj3.umt:64:23">FILE_PATH</samp> are:
+</p><dl data-coord="prj3.umt:66:0"><dt data-coord="prj3.umt:66:2"> <samp data-coord="prj3.umt:66:1">enter</samp> <em data-coord="prj3.umt:66:9">id</em> <em data-coord="prj3.umt:66:14">priority0</em> <em data-coord="prj3.umt:66:26">priority1</em> </dt><dd data-coord="prj3.umt:67:0"><p data-coord="prj3.umt:67:4">Enter job specified by <em data-coord="prj3.umt:67:27">id</em>, <em data-coord="prj3.umt:67:33">priority0</em> and <em data-coord="prj3.umt:67:49">priority1</em> into
+Queue 0.
+</p></dd><dt data-coord="prj3.umt:70:2"> <samp data-coord="prj3.umt:70:1">move</samp>  </dt><dd data-coord="prj3.umt:71:0"><p data-coord="prj3.umt:71:4">Move the highest priority job from Queue 0 to Queue 1.
+This command has no effect if Queue 0 is empty.
+</p></dd><dt data-coord="prj3.umt:74:2"> <samp data-coord="prj3.umt:74:1">leave</samp> </dt><dd data-coord="prj3.umt:75:0"><p data-coord="prj3.umt:75:4">Move the "highest" priority job in Queue 1 out of the
+system.  Has no effect if Queue 1 is empty.
+</p></dd></dl><p data-coord="prj3.umt:78:0">After execution of each command, the system should print
+a line on standard output:
+</p><p data-coord="prj3.umt:81:0"><em data-coord="prj3.umt:81:0">command</em> <em data-coord="prj3.umt:81:10">id</em> <em data-coord="prj3.umt:81:15">priority0</em> <em data-coord="prj3.umt:81:27">priority1</em>
+</p><p data-coord="prj3.umt:83:0">where <em data-coord="prj3.umt:83:6">command</em> is the command being executed and <em data-coord="prj3.umt:83:50">id</em> <em data-coord="prj3.umt:83:55">priority0</em> and
+<em data-coord="prj3.umt:83:71">priority1</em> are the attributes of the job being advanced through the
+system.
+</p><p data-coord="prj3.umt:87:0">Your implementation must meet the following additional non-functional
+requirements:
+</p><ul data-coord="prj3.umt:90:0"><li data-coord="prj3.umt:90:0"><p data-coord="prj3.umt:90:4">The enqueue and dequeue operations for each queue must run in time
+proportional to \(\lg(n)\), where \(n\) is the number of jobs in
+the queue.
+</p></li><li data-coord="prj3.umt:94:0"><p data-coord="prj3.umt:94:4">There should be no hardcoded limit on the size of your priority
+queues; i.e. they should grow dynamically.
+</p></li><li data-coord="prj3.umt:97:0"><p data-coord="prj3.umt:97:4">Your implementation may not use any library implementation of
+heaps.  Your submission <strong data-coord="prj3.umt:97:94">must</strong> contain source code which
+implements a which implements a heap.
+</p></li></ul></section><section data-coord="prj3.umt:102:0"><h2 data-coord="prj3.umt:102:0">Sample Log</h2><p data-coord="prj3.umt:105:0">An edited sample log of the operation of the program is shown below
+(note that there are 4 <samp data-coord="prj3.umt:105:91">enter</samp> commands and 5 <samp data-coord="prj3.umt:105:114">leave</samp> commands; the
+extra <samp data-coord="prj3.umt:105:142">leave</samp> command is simply ignored):
+</p><pre> $ <span class="hl kwc">cat</span> t.cmd
+enter id0 <span class="hl num">2 5</span>
+enter id1 <span class="hl num">3 6</span>
+enter id2 <span class="hl num">4 7</span>
+move
+leave
+enter id3 <span class="hl num">5 8</span>
+move
+move
+leave
+move
+leave
+leave
+leave
+$ .<span class="hl opt">/</span>multi-queues  t.cmd
+<span class="hl slc">#head of queue shown on right; start out with q0: [ ]; q1: [ ] </span>
+enter id0 <span class="hl num">2 5</span>  <span class="hl slc">#q0: [ id0/2/5 ]; q1: [ ]</span>
+enter id1 <span class="hl num">3 6</span>  <span class="hl slc">#q0: [ id0/2/5 id1/3/6 ]; q1: [ ]</span>
+enter id2 <span class="hl num">4 7</span>  <span class="hl slc">#q0  [ id0/2/5 id1/3/6 id2/4/7 ]; q1: [ ]</span>
+move id2 <span class="hl num">4 7</span>   <span class="hl slc">#q0  [ id0/2/5 id1/3/6 ]; q1: [ id2/4/7  ]</span>
+leave id2 <span class="hl num">4 7</span>  <span class="hl slc">#q0  [ id0/2/5 id1/3/6 ]; q1: [ ]  id2/4/7 </span>
+enter id3 <span class="hl num">5 8</span>  <span class="hl slc">#q0  [ id0/2/5 id1/3/6 id3/5/8 ]; q1: [ ] </span>
+move id3 <span class="hl num">5 8</span>   <span class="hl slc">#q0  [ id0/2/5 id1/3/6 ]; q1: [ id3/5/8 ] </span>
+move id1 <span class="hl num">3 6</span>   <span class="hl slc">#q0  [ id0/2/5 ]; q1: [ id3/5/8  id1/3/6 ] </span>
+leave id1 <span class="hl num">3 6</span>  <span class="hl slc">#q0  [ id0/2/5 ]; q1: [ id3/5/8 ]  id1/3/6 </span>
+move id0 <span class="hl num">2 5</span>   <span class="hl slc">#q0  [ ]; q1: [ id3/5/8  id0/2/5 ] </span>
+leave id0 <span class="hl num">2 5</span>  <span class="hl slc">#q0  [ ]; q1: [ id3/5/8 ] id0/2/5</span>
+leave id3 <span class="hl num">5 8</span>  <span class="hl slc">#q0  [ ]; q1: [ ] id3/5/8</span>
+$</pre></section><section data-coord="prj3.umt:142:0"><h2 data-coord="prj3.umt:142:0">Provided Files</h2><p data-coord="prj3.umt:145:0">You are being provided with the following files in the
+<a href="./prj3-sol" data-coord="prj3.umt:145:69">prj3-sol</a> directory.  They must be
+submitted along with your project, whether you modify them or not.
+</p><dl data-coord="prj3.umt:149:0"><dt data-coord="prj3.umt:149:2"> Job module </dt><dd data-coord="prj3.umt:150:0"><p data-coord="prj3.umt:150:4"><a href="./prj3-sol/job.hh" data-coord="prj3.umt:150:25">job.hh</a> specification file and
+<a href="./prj3-sol/job.cc" data-coord="prj3.umt:150:80">job.cc</a> implementation file.
+Provides facilities for reading and writing jobs.
+</p></dd><dt data-coord="prj3.umt:154:2"> Command module </dt><dd data-coord="prj3.umt:155:0"><p data-coord="prj3.umt:155:4"><a href="./prj3-sol/command.hh" data-coord="prj3.umt:155:29">command.hh</a> specification file and
+<a href="./prj3-sol/command.cc" data-coord="prj3.umt:155:92">command.cc</a> implementation file.
+Provides facilities for reading and writing commands.
+</p></dd><dt data-coord="prj3.umt:159:2"> Command-stream module </dt><dd data-coord="prj3.umt:160:0"><p data-coord="prj3.umt:160:4"><a href="./prj3-sol/command-stream.hh" data-coord="prj3.umt:160:36">command-stream.hh</a> specification file and
+<a href="./prj3-sol/command-stream.cc" data-coord="prj3.umt:160:113">command-stream.cc</a> implementation file.
+Provides facilities for reading a stream of commands from a file.
+</p></dd><dt data-coord="prj3.umt:164:2"> Command Stream Test </dt><dd data-coord="prj3.umt:165:0"><p data-coord="prj3.umt:165:4">The file <a href="prj3-sol/command-test.cc" data-coord="prj3.umt:165:41">command-test.cc</a> illustrates
+the use of the command stream module.
+</p></dd><dt data-coord="prj3.umt:168:2"> Test Commands </dt><dd data-coord="prj3.umt:169:0"><p data-coord="prj3.umt:169:4">The <a href="prj3-sol/t.cmd" data-coord="prj3.umt:169:26">t.cmd</a> file used for generating the above log.
+</p></dd></dl></section><section data-coord="prj3.umt:171:0"><h2 data-coord="prj3.umt:171:0">Hints</h2><p data-coord="prj3.umt:174:0">The following steps are not prescriptive in that you may choose to
+ignore them as long as you meet all project requirements.
+</p><p data-coord="prj3.umt:177:0">This project largely involves assembling code together and hooking
+up the different pieces to meet the requirements.  Unlike previous
+programs you are not being provided with any <samp data-coord="prj3.umt:177:179">main()</samp> program and
+will have to implement the (admittedly trivial) command-line
+program by yourself.
+</p><p data-coord="prj3.umt:183:0">These hints do not contain the boilerplace of setting your project
+and project submission.  Please adapt the instructions from
+previous projects to this project.
+</p><ol data-coord="prj3.umt:187:0"><li data-coord="prj3.umt:187:0"><p data-coord="prj3.umt:187:4">Play with the code with which you have been provided.  Set up
+a <samp data-coord="prj3.umt:187:72">Makefile</samp> to build the <samp data-coord="prj3.umt:187:96">command-test</samp> executable.  Verify
+that it works.
+</p></li><li data-coord="prj3.umt:191:0"><p data-coord="prj3.umt:191:4">Decide on the source code which you will use for implementing
+a binary heap.  Possibilities include:
+</p><ol data-coord="prj3.umt:194:0"><li data-coord="prj3.umt:194:0"><p data-coord="prj3.umt:194:8">The code discussed in class.  This will need to be adapted
+to handle entries which are <samp data-coord="prj3.umt:194:103">Job</samp>'s and to permit any
+number of entries.
+</p></li><li data-coord="prj3.umt:198:0"><p data-coord="prj3.umt:198:8">The code from the textbook. This will need to be adapted to
+permit any number of entries.
+</p></li><li data-coord="prj3.umt:201:0"><p data-coord="prj3.umt:201:8">Some code you pull off the internet.  YMMV.
+</p></li></ol><p data-coord="prj3.umt:203:4">You will need to parameterize the heap code with a comparison function
+which can be used to compare <samp data-coord="prj3.umt:203:108">Job</samp>'s.  The code from the textbook
+is already set up with one.
+</p></li><li data-coord="prj3.umt:207:0"><p data-coord="prj3.umt:207:4">Build a class to encapsulate the multi-queues system.  It will
+contain instances of two heaps parameterized by job comparison
+functions for each of the two queues and provide methods for each
+of the commands.
+</p></li><li data-coord="prj3.umt:212:0"><p data-coord="prj3.umt:212:4">Write code similar to <samp data-coord="prj3.umt:212:26">command-test.cc</samp> to drive your multi-queues
+class from the commands in a file.
+</p></li><li data-coord="prj3.umt:215:0"><p data-coord="prj3.umt:215:4">Use valgrind to verify that your program does not leak memory.
+</p></li><li data-coord="prj3.umt:217:0"><p data-coord="prj3.umt:217:4">Iterate until you meet all requirements.  
+</p></li><li data-coord="prj3.umt:219:0"><p data-coord="prj3.umt:219:4">Clean up for submission.  Ensure that typing <samp data-coord="prj3.umt:219:49">make</samp> in your
+<samp data-coord="prj3.umt:219:68">submit/prj3-sol</samp> directory builds a working <samp data-coord="prj3.umt:219:113">nums</samp> executable
+without any errors or warnings.
+</p></li></ol></section></section>
+    </div> <!-- #content -->
+  </body>
+</html>
