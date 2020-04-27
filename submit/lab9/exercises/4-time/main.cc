@@ -6,8 +6,8 @@
 #include <cstdlib>
 #include <cstring>
 
-#include "ops.hh"
 #include "sorts.hh"
+#include "now.hh"
 
 /** Return vector of n int's read from filePath into a[].  If filePath
  *  is "-" read from stdin.  If n < 0, read entire contents of file.
@@ -41,8 +41,8 @@ readIntsFromFile(const std::string filePath, int n)
   return ints;
 }
 
-//type for pointer to a sorting function 
-using SortP = void (*)(int a[], int n, Ops* ops);
+//type for pointer to a sorting function
+using SortP = void (*)(int a[], int n);
 
 //map algorithm name to corresponding function
 struct Algorithm {
@@ -70,7 +70,7 @@ getSort(std::string name)
     if (algName == name) return algorithms[i].sort;
     if (names.size() > 0) names += "|";
     names += algName;
-  } 
+  }
   std::cerr << "unknown algorithm " << name
 	    << " must be one of " << names << std::endl;
   std::exit(1);
@@ -80,38 +80,40 @@ getSort(std::string name)
 static void
 outArray(int a[], int n)
 {
-    for (int i = 0; i < n; i++) {
-        std::cout << a[i] << " ";
-    }
-    std::cout << std::endl;
+  for (int i = 0; i < n; i++) {
+      std::cout << "Ran" << std::endl;
+    std::cout << a[i] << " ";
+  }
+  std::cout << std::endl;
 }
 
+
 static void
-go(SortP sort, std::string filePath, bool isVerbose, int nRead)
-{
-  std::vector<int> ints = readIntsFromFile(filePath, nRead);
-  int* a = ints.data();
-  int n = ints.size();
-  Ops ops;
-  sort(a, n, &ops);
-  //std::cout << "" << isVerbose << std::endl;
-  if (isVerbose) {
-      outArray(a, n);
-  }else{
-      std::cout<< n << "\t" << ops.compareCount << "\t\t" << ops.swapCount << std::endl;
-  }
+go(SortP sort, std::string filePath, bool isVerbose, int nRead) {
+    std::vector<int> ints = readIntsFromFile(filePath, nRead);
+    int *a = ints.data();
+    long t0 = now();
+    sort(a, n);
+    long t1 = now();
+    if (isVerbose)
+        outArray(a, n);
+    else {
+        std::cout << "" << n << "\t" << t1 - t0 << std::endl;
+
+    }
 }
 
 int
 main(int argc, char* argv[]) {
-    if (argc < 3) {
+  if (argc < 3) {
     std::cerr << "usage: " << argv[0]
 	      << " [-v] ALGORITHM INTS_DATA_FILE|- [N...]" << std::endl;
     std::exit(1);
   }
   bool isVerbose = std::strcmp(argv[1], "-v") == 0;
+
     if(!isVerbose){
-        std::cout << "n\tcompares\tswaps" << std::endl;
+        std::cout << "n\ttime" << std::endl;
     }
   bool nVerbose = (isVerbose) ? 1 : 0;
   const char* algorithm = argv[1 + nVerbose];
