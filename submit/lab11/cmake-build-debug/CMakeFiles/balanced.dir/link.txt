@@ -1,0 +1,1 @@
+/bin/g++  -g   CMakeFiles/balanced.dir/lab11/balanced.cc.o  -o balanced 
